@@ -72,14 +72,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Bradeb Investment Limited — Construction · Civil · Fumigation" },
+      { name: "description", content: "Tanzania's premier certified contractor for building construction, civil engineering and fumigation services. CRB Class V certified." },
+      { name: "author", content: "Bradeb Investment Limited" },
+      { property: "og:title", content: "Bradeb Investment Limited" },
+      { property: "og:description", content: "Build with confidence. Build with Bradeb." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
