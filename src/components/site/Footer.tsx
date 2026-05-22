@@ -51,7 +51,7 @@ export function Footer() {
       </div>
       <div className="border-t border-teal/30">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 flex flex-col md:flex-row justify-between gap-2 text-[12px]">
-          <p>© 2025 Bradeb Investment Limited. All Rights Reserved.</p>
+          <p>© 2026 Bradeb Investment Limited. All Rights Reserved.</p>
           <p>CRB No. B5/1722/01/2024 · TIN: 142-322-722 · Incorporated in Tanzania</p>
         </div>
       </div>

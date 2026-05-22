@@ -107,7 +107,7 @@ function Index() {
           <div className="flex whitespace-nowrap animate-marquee text-teal font-semibold text-xs uppercase tracking-[0.25em]">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex gap-12 px-6 shrink-0">
-                {["CRB Certified Class V","Building Contractor","Civil Contractor","VAT Registered","WCF Employer","Est. 2020","Dar es Salaam"].map(t => (
+                {["CRB Certified Class V", "Building Contractor", "Civil Contractor", "VAT Registered", "WCF Employer", "Est. 2020", "Dar es Salaam"].map(t => (
                   <span key={t} className="flex items-center gap-12">{t}<span className="text-teal/40">◆</span></span>
                 ))}
               </div>
@@ -220,7 +220,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 text-center">
           <p className="text-[#4a5568] mb-8">Fully certified and legally compliant in Tanzania</p>
           <div className="flex flex-wrap justify-center gap-3">
-            {["BRELA","CRB Building Class V","CRB Civil Class V","TRA VAT","WCF Registered"].map(t => (
+            {["BRELA", "CRB Building Class V", "CRB Civil Class V", "TRA VAT", "WCF Registered"].map(t => (
               <span key={t} className="px-5 py-2.5 rounded-full bg-white border border-navy/20 text-navy font-semibold text-sm">{t}</span>
             ))}
           </div>
