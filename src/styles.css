@@ -153,5 +153,55 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
   }
+  h1,h2,h3,h4,h5 { font-family: var(--font-heading); }
+}
+
+@layer utilities {
+  .text-stroke-white { -webkit-text-stroke: 2px #fff; color: transparent; }
+  .eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; }
+  .label-cap { font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .animate-marquee { animation: marquee 40s linear infinite; }
+  .animate-marquee:hover { animation-play-state: paused; }
+
+  @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .animate-float { animation: float-y 3s ease-in-out infinite; }
+
+  @keyframes pulse-ring { 0%,100% { box-shadow: 0 0 60px 0 rgba(21,117,117,0.4); } 50% { box-shadow: 0 0 100px 20px rgba(21,117,117,0.6); } }
+  .animate-pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
+
+  @keyframes clip-up { from { clip-path: inset(0 0 100% 0); opacity: 0; } to { clip-path: inset(0 0 0% 0); opacity: 1; } }
+  .animate-clip-up { animation: clip-up 0.8s cubic-bezier(0.65,0,0.35,1) both; }
+
+  @keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-up { animation: fade-up 0.7s ease-out both; }
+
+  @keyframes scale-in-soft { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+  .animate-scale-in-soft { animation: scale-in-soft 0.7s ease-out both; }
+
+  @keyframes scroll-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+  .animate-scroll-bounce { animation: scroll-bounce 2s ease-in-out infinite; }
+
+  @keyframes draw-line { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
+  .animate-draw { stroke-dasharray: 1000; animation: draw-line 2.5s ease-out forwards; }
+
+  @keyframes spin-slow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+  @keyframes particle-up { 0% { transform: translateY(100vh); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.5; } 100% { transform: translateY(-10vh); opacity: 0; } }
+  .animate-particle { animation: particle-up 15s linear infinite; }
+
+  .magnetic { transition: transform 0.25s ease; }
+  .magnetic:hover { transform: translateY(-3px) scale(1.03); }
+
+  .nav-link-underline { position: relative; }
+  .nav-link-underline::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:100%; background:#157575; transform:scaleX(0); transform-origin:left; transition: transform 0.3s ease; }
+  .nav-link-underline:hover::after, .nav-link-underline[data-status="active"]::after { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
