@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal, SplitText } from "@/components/site/Reveal";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -149,12 +150,14 @@ function ContactPage() {
             { Icon: Phone, t: "Phone", v: "+255 754 230 234", href: "tel:+255754230234" },
             { Icon: Mail, t: "Email", v: "boraentity20@gmail.com", href: "mailto:boraentity20@gmail.com" },
             { Icon: MapPin, t: "Location", v: "Mbezi Beach, Dar es Salaam", href: "https://maps.google.com/?q=Mbezi+Beach" },
-          ].map(({ Icon, t, v, href }) => (
-            <a key={t} href={href} className="group">
-              <Icon className="mx-auto text-teal mb-4 group-hover:scale-110 transition" size={32} />
-              <p className="label-cap text-teal mb-2">{t}</p>
-              <p className="text-white font-semibold">{v}</p>
-            </a>
+          ].map(({ Icon, t, v, href }, i) => (
+            <Reveal key={t} delay={i * 120} variant="scale" className="block">
+              <a href={href} className="group block">
+                <Icon className="mx-auto text-teal mb-4 group-hover:scale-125 group-hover:text-gold transition-all duration-300" size={32} />
+                <p className="label-cap text-teal mb-2">{t}</p>
+                <p className="text-white font-semibold group-hover:text-gold transition-colors">{v}</p>
+              </a>
+            </Reveal>
           ))}
         </div>
       </section>

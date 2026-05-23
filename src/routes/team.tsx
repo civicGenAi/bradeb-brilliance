@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Mail, Linkedin, ShieldCheck, Target, Users, Award } from "lucide-react";
 
 export const Route = createFileRoute("/team")({
@@ -84,14 +85,15 @@ function TeamPage() {
       <section className="py-24" style={{ backgroundColor: "#f5f6f8" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((m, i) => (
-            <article key={m.init} className="group rounded-2xl overflow-hidden bg-white border border-black/5 transition-all hover:-translate-y-2 hover:border-t-[3px] hover:border-gold animate-fade-up" style={{ animationDelay: `${i*0.1}s` }}>
-              <div className="h-32 flex items-end justify-center relative" style={{ backgroundColor: m.bg }}>
-                <div className="h-20 w-20 rounded-full bg-gold text-navy font-heading font-black flex items-center justify-center text-xl translate-y-10 border-4 border-white">
+            <Reveal as="article" delay={i * 120} variant="scale" key={m.init} className="group hover-lift-glow tilt-3d rounded-2xl overflow-hidden bg-white border border-black/5 transition-all hover:border-t-[3px] hover:border-gold">
+              <div className="h-32 flex items-end justify-center relative overflow-hidden" style={{ backgroundColor: m.bg }}>
+                <span className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="h-20 w-20 rounded-full bg-gold text-navy font-heading font-black flex items-center justify-center text-xl translate-y-10 border-4 border-white group-hover:scale-110 transition-transform">
                   {m.init}
                 </div>
               </div>
               <div className="pt-14 pb-6 px-6 text-center">
-                <h3 className="font-heading font-bold text-navy text-lg">{m.name}</h3>
+                <h3 className="font-heading font-bold text-navy text-lg group-hover:text-teal transition-colors">{m.name}</h3>
                 <p className="text-teal text-sm font-semibold mb-3">{m.role}</p>
                 <p className="text-[#4a5568] text-sm mb-5">Personal description goes here — bringing years of dedicated expertise to Bradeb's mission.</p>
                 <div className="flex justify-center gap-3">
@@ -99,7 +101,7 @@ function TeamPage() {
                   <a href="#" className="text-teal hover:text-navy"><Linkedin size={16} /></a>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -107,18 +109,20 @@ function TeamPage() {
       {/* Culture */}
       <section className="py-24" style={{ backgroundColor: "#1f4590" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-12 items-center">
-          <h2 className="font-heading font-extrabold text-white text-3xl md:text-4xl leading-tight">"Our team's expertise spans every field of civil and building construction."</h2>
+          <h2 className="font-heading font-extrabold text-white text-3xl md:text-4xl leading-tight overflow-hidden">
+            <SplitText text="&ldquo;Our team's expertise spans every field of civil and building construction.&rdquo;" />
+          </h2>
           <div className="grid grid-cols-2 gap-4">
             {[
               { Icon: ShieldCheck, t: "Safety First" },
               { Icon: Target, t: "Results Driven" },
               { Icon: Users, t: "Team Spirit" },
               { Icon: Award, t: "Excellence" },
-            ].map(({ Icon, t }) => (
-              <div key={t} className="flex items-center gap-3 bg-white/5 rounded-xl p-5 border border-white/10">
-                <Icon className="text-teal" size={20} />
+            ].map(({ Icon, t }, i) => (
+              <Reveal as="div" delay={i * 100} variant="scale" key={t} className="group flex items-center gap-3 bg-white/5 rounded-xl p-5 border border-white/10 hover:border-gold hover:bg-white/10 transition-all">
+                <Icon className="text-teal group-hover:scale-125 group-hover:text-gold transition-all" size={20} />
                 <span className="text-white font-semibold">{t}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

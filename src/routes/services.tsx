@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal, SplitText } from "@/components/site/Reveal";
 import { ArrowRight, Building2, HardHat, Wrench, Zap, Bug, Bird, Snail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
@@ -36,14 +37,14 @@ function ServicesPage() {
         </svg>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20">
           <p className="eyebrow text-teal mb-6 animate-fade-up">Our Expertise</p>
-          <h1 className="font-heading font-black text-white text-5xl md:text-7xl leading-[0.95] max-w-3xl">
+          <h1 className="font-heading font-black text-white text-5xl md:text-7xl leading-[0.95] max-w-3xl overflow-hidden">
             <span className="block animate-clip-up">Solutions That</span>
-            <span className="block text-teal animate-clip-up" style={{ animationDelay: "0.25s" }}>Build Legacies</span>
+            <span className="block text-gradient-gold animate-clip-up" style={{ animationDelay: "0.25s" }}>Build Legacies</span>
           </h1>
           <p className="mt-8 max-w-2xl text-white/70 text-lg animate-fade-up" style={{ animationDelay: "0.5s" }}>
             From foundations to finishing — construction and pest control under one roof.
           </p>
-          <Link to="/contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition">
+          <Link to="/contact" className="btn-shine mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition">
             Request a Service Quote <ArrowRight size={16} />
           </Link>
         </div>
@@ -62,14 +63,14 @@ function ServicesPage() {
               { Icon: HardHat, t: "Civil Works", b: "Structural, foundations, concrete." },
               { Icon: Wrench, t: "Mechanical Contracting", b: "HVAC, plumbing, systems installation." },
               { Icon: Zap, t: "Electrical Engineering", b: "LV/HV installations and certified wiring." },
-            ].map(({ Icon, t, b }) => (
-              <article key={t} className="group bg-white border-t border-navy/30 p-6 h-[280px] flex flex-col justify-between transition-all hover:border-t-[3px] hover:border-teal hover:-translate-y-1">
-                <Icon className="text-teal" size={32} />
+            ].map(({ Icon, t, b }, i) => (
+              <Reveal as="article" delay={i * 110} key={t} className="group hover-lift-glow bg-white border-t border-navy/30 p-6 h-[280px] flex flex-col justify-between transition-all hover:border-t-[3px] hover:border-teal rounded-md">
+                <Icon className="text-teal group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" size={32} />
                 <div>
                   <h3 className="font-heading font-bold text-navy text-xl mb-2">{t}</h3>
                   <p className="text-[#4a5568] text-sm leading-relaxed">{b}</p>
                 </div>
-              </article>
+              </Reveal>
             ))}
           </div>
           <div className="mt-12">
@@ -127,16 +128,16 @@ function ServicesPage() {
       <section className="py-24" style={{ backgroundColor: "#0a1628" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <p className="eyebrow text-teal mb-3">Our Process</p>
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-14">How We Work</h2>
+          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-14 overflow-hidden"><SplitText text="How We Work" /></h2>
           <div className="grid md:grid-cols-5 gap-4">
             {["Consultation","Site Survey","Planning","Execution","Handover"].map((step, i) => (
-              <div key={step} className="group relative">
+              <Reveal as="div" delay={i * 120} variant="scale" key={step} className="group relative">
                 <div className="rounded-xl border border-white/10 p-6 h-40 flex flex-col justify-between bg-white/5 transition-all hover:border-teal hover:bg-teal/10">
-                  <span className="font-heading font-black text-gold text-3xl">{String(i+1).padStart(2,"0")}</span>
+                  <span className="font-heading font-black text-gold text-3xl group-hover:scale-110 origin-left transition-transform inline-block">{String(i+1).padStart(2,"0")}</span>
                   <p className="font-heading font-bold text-white">{step}</p>
                 </div>
                 {i < 4 && <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-teal" size={20} />}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

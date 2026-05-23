@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal } from "@/components/site/Reveal";
 import { Download, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/certifications")({
@@ -57,13 +58,14 @@ function CertsPage() {
       <section className="py-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 gap-5">
           {certs.map((c, i) => (
-            <article key={c.t} className="group bg-white rounded-xl overflow-hidden border border-black/5 transition-all hover:-translate-y-2 hover:border-t-[3px] hover:border-gold animate-fade-up" style={{ animationDelay: `${i*0.08}s` }}>
-              <div className="h-16 flex items-center justify-center" style={{ backgroundColor: c.color }}>
-                <ShieldCheck className="text-white" size={28} />
+            <Reveal as="article" delay={i * 80} variant="scale" key={c.t} className="group hover-lift-glow tilt-3d bg-white rounded-xl overflow-hidden border border-black/5 transition-all hover:border-t-[3px] hover:border-gold">
+              <div className="h-16 flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: c.color }}>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                <ShieldCheck className="text-white group-hover:scale-125 transition-transform" size={28} />
               </div>
               <div className="p-5 h-[200px] flex flex-col justify-between">
                 <div>
-                  <h3 className="font-heading font-bold text-navy text-sm leading-snug mb-2">{c.t}</h3>
+                  <h3 className="font-heading font-bold text-navy text-sm leading-snug mb-2 group-hover:text-teal transition-colors">{c.t}</h3>
                   <p className="text-teal text-xs font-semibold">{c.body}</p>
                   <p className="text-[#4a5568] text-xs mt-2">{c.num}</p>
                 </div>
@@ -72,7 +74,7 @@ function CertsPage() {
                   <span className="px-2 py-1 rounded-full bg-soft-green/15 text-soft-green text-[10px] font-bold uppercase tracking-wider">Valid</span>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
