@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal, SplitText } from "@/components/site/Reveal";
 import logo from "@/assets/logo.png";
 import { ArrowRight, Check, Building2, HardHat, Bug } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -44,10 +45,27 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 function Index() {
+  // Mouse parallax on hero logo
+  const heroRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const hero = heroRef.current;
+    const img = logoRef.current;
+    if (!hero || !img) return;
+    const onMove = (e: MouseEvent) => {
+      const r = hero.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width - 0.5) * 18;
+      const y = ((e.clientY - r.top) / r.height - 0.5) * 18;
+      img.style.transform = `perspective(900px) rotateY(${-12 + x}deg) rotateX(${-y}deg) translateZ(0)`;
+    };
+    hero.addEventListener("mousemove", onMove);
+    return () => hero.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden flex items-center" style={{ background: "radial-gradient(ellipse at center, #1f4590 0%, #07396c 70%, #0a1628 100%)" }}>
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center" style={{ background: "radial-gradient(ellipse at center, #1f4590 0%, #07396c 70%, #0a1628 100%)" }}>
         {/* Layer 2: grid */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -91,7 +109,7 @@ function Index() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative animate-float">
               <div className="absolute inset-0 rounded-full animate-pulse-ring" />
-              <img src={logo} alt="Bradeb shield" className="relative w-[320px] md:w-[420px] bg-white rounded-2xl p-8" style={{ transform: "perspective(800px) rotateY(-12deg)" }} />
+              <img ref={logoRef} src={logo} alt="Bradeb shield" className="relative w-[320px] md:w-[420px] bg-white rounded-2xl p-8 transition-transform duration-300 ease-out" style={{ transform: "perspective(900px) rotateY(-12deg)" }} />
             </div>
           </div>
         </div>
@@ -119,23 +137,25 @@ function Index() {
       {/* A: Intro */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: "#f5f6f8" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="border-l-4 border-gold pl-8">
+          <Reveal variant="left" className="border-l-4 border-gold pl-8">
             <p className="eyebrow text-teal mb-4">Our Promise</p>
-            <h2 className="font-heading font-extrabold text-navy text-3xl md:text-[2.2rem] leading-tight">"We don't just build structures. We build futures."</h2>
-          </div>
+            <h2 className="font-heading font-extrabold text-navy text-3xl md:text-[2.2rem] leading-tight overflow-hidden">
+              <SplitText text='"We don&apos;t just build structures. We build futures."' />
+            </h2>
+          </Reveal>
           <ul className="space-y-6">
             {[
               ["Integrity", "Honest work, transparent pricing, lasting partnerships."],
               ["Safety", "Every project meets the highest EHS standards."],
               ["Quality", "World-class delivery across every discipline."],
-            ].map(([title, body]) => (
-              <li key={title} className="flex gap-4">
+            ].map(([title, body], i) => (
+              <Reveal as="li" delay={i * 120} key={title} className="flex gap-4">
                 <div className="shrink-0 h-10 w-10 rounded-full bg-teal flex items-center justify-center text-white"><Check size={18} /></div>
                 <div>
                   <h3 className="font-heading font-bold text-navy text-lg">{title}</h3>
                   <p className="text-[#4a5568]">{body}</p>
                 </div>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>
@@ -163,17 +183,17 @@ function Index() {
       {/* C: Services preview */}
       <section className="py-24 lg:py-32 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="mb-14">
+          <Reveal className="mb-14">
             <p className="eyebrow text-teal mb-3">What We Offer</p>
             <h2 className="font-heading font-extrabold text-navy text-4xl md:text-5xl">End-to-End Building Solutions</h2>
-          </div>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { Icon: Building2, title: "Building Construction", body: "Residential, commercial and industrial buildings delivered turnkey." },
               { Icon: HardHat, title: "Civil Engineering", body: "Structural works, foundations, concrete and infrastructure." },
               { Icon: Bug, title: "Fumigation & Pest Control", body: "Pre/post-construction treatment, gaseous fumigation and more.", green: true },
             ].map(({ Icon, title, body, green }, i) => (
-              <article key={i} className="group relative bg-white border border-black/5 rounded-2xl p-8 h-[360px] flex flex-col justify-between transition-all hover:-translate-y-2 hover:shadow-2xl">
+              <Reveal as="article" delay={i * 140} key={i} className="group hover-lift-glow tilt-3d relative bg-white border border-black/5 rounded-2xl p-8 h-[360px] flex flex-col justify-between">
                 <div>
                   <div className={`h-14 w-14 rounded-xl flex items-center justify-center text-white mb-6`} style={{ backgroundColor: green ? "#5b995a" : "#157575" }}>
                     <Icon size={26} />
@@ -183,7 +203,7 @@ function Index() {
                 </div>
                 <Link to="/services" className="text-teal font-semibold text-sm inline-flex items-center gap-2">See more <ArrowRight size={14} /></Link>
                 <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-teal scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
-              </article>
+              </Reveal>
             ))}
           </div>
           <div className="text-center mt-12">
@@ -201,17 +221,17 @@ function Index() {
           <rect x="280" y="240" width="20" height="20" stroke="#157575" />
         </svg>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[2fr_1fr] gap-12 items-center">
-          <div>
+          <Reveal variant="left">
             <p className="eyebrow text-gold mb-4">Featured Project</p>
-            <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-4">Kijitonyama Residential Complex</h2>
+            <h2 className="font-heading font-extrabold text-4xl md:text-5xl mb-4 text-gradient-gold">Kijitonyama Residential Complex</h2>
             <p className="text-white/70 mb-8 max-w-2xl">A 9-month residential build delivered to Safia & Mohamed Mnyau in Kinondoni — exemplifying Bradeb's signature quality and on-time delivery.</p>
             <div className="flex flex-wrap gap-6 mb-10">
               <div><p className="eyebrow text-teal">Value</p><p className="font-heading font-extrabold text-gold text-2xl">TZS 320M</p></div>
               <div><p className="eyebrow text-teal">Duration</p><p className="font-heading font-extrabold text-white text-2xl">9 Months</p></div>
               <div><p className="eyebrow text-teal">Location</p><p className="font-heading font-extrabold text-white text-2xl">Kinondoni</p></div>
             </div>
-            <Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-teal px-7 py-3.5 text-white text-sm font-semibold uppercase tracking-[0.15em]">View All Projects <ArrowRight size={16} /></Link>
-          </div>
+            <Link to="/projects" className="btn-shine inline-flex items-center gap-2 rounded-full bg-teal px-7 py-3.5 text-white text-sm font-semibold uppercase tracking-[0.15em] hover:bg-gold hover:text-near-black transition-colors">View All Projects <ArrowRight size={16} /></Link>
+          </Reveal>
         </div>
       </section>
 
@@ -229,13 +249,15 @@ function Index() {
 
       {/* F: Contact teaser */}
       <section className="py-28" style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}>
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-6">Ready to Start Your Project?</h2>
+        <Reveal className="mx-auto max-w-4xl px-6 text-center">
+          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-6 overflow-hidden">
+            <SplitText text="Ready to Start Your Project?" />
+          </h2>
           <p className="text-white/70 mb-10 max-w-xl mx-auto">Let's discuss how Bradeb can deliver your next construction, civil or fumigation project on time and on budget.</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform">
+          <Link to="/contact" className="btn-shine inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform">
             Contact Us Today <ArrowRight size={16} />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </PageShell>
   );

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Leaf, HeartPulse, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
@@ -85,14 +86,15 @@ function AboutPage() {
             { t: "Mission", b: "Deliver world-class construction and fumigation services that exceed client expectations.", bg: "#1f4590", text: "white" },
             { t: "Vision", b: "To be a top-rated regional market leader in construction and pest control.", bg: "#157575", text: "white" },
             { t: "Values", b: "Integrity · Commitment · Safety First — in every project we touch.", bg: "#0a1628", text: "gold", accent: true },
-          ].map((c) => (
-            <article key={c.t} className="group rounded-2xl p-10 h-[350px] flex flex-col justify-between transition-all hover:-translate-y-2 hover:scale-[1.02]" style={{ backgroundColor: c.bg }}>
+          ].map((c, i) => (
+            <Reveal as="article" delay={i * 140} key={c.t} className="group hover-lift-glow tilt-3d rounded-2xl p-10 h-[350px] flex flex-col justify-between" >
+              <div style={{ position: "absolute", inset: 0, borderRadius: "inherit", backgroundColor: c.bg, zIndex: -1 }} />
               <div className="h-12 w-12 rounded-full border-2 border-white/40 flex items-center justify-center text-white font-heading font-black">{c.t[0]}</div>
               <div className="transition-transform group-hover:-translate-y-2">
                 <h3 className={`font-heading font-black text-3xl mb-3 ${c.accent ? "text-gold" : "text-white"}`}>{c.t}</h3>
                 <p className="text-white/80 leading-relaxed">{c.b}</p>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -101,7 +103,7 @@ function AboutPage() {
       <section className="py-24" style={{ backgroundColor: "#1f4590" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <p className="eyebrow text-teal mb-3">How We Deliver</p>
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-12">Our Objectives</h2>
+          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-12 overflow-hidden"><SplitText text="Our Objectives" /></h2>
           <div className="divide-y divide-white/10">
             {[
               "Create detailed project schedules",
@@ -111,10 +113,10 @@ function AboutPage() {
               "Cost minimisation without quality loss",
               "Reliable on-time delivery",
             ].map((o, i) => (
-              <div key={o} className="py-6 grid grid-cols-[80px_1fr] items-center">
+              <Reveal as="div" delay={i * 80} key={o} variant="left" className="group py-6 grid grid-cols-[80px_1fr] items-center cursor-default hover:bg-white/[0.03] -mx-4 px-4 rounded transition-colors">
                 <span className="font-heading font-black text-gold text-4xl">{String(i + 1).padStart(2, "0")}</span>
-                <p className="text-white text-lg md:text-xl font-medium">{o}</p>
-              </div>
+                <p className="text-white text-lg md:text-xl font-medium group-hover:translate-x-2 transition-transform">{o}</p>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -130,12 +132,12 @@ function AboutPage() {
               { Icon: Leaf, t: "Environment", b: "Sustainable methods and responsible material sourcing on every site." },
               { Icon: HeartPulse, t: "Health", b: "Worker wellbeing prioritised through training, PPE, and supervision." },
               { Icon: ShieldCheck, t: "Safety", b: "Zero-harm culture with documented procedures and on-site safety officers." },
-            ].map(({ Icon, t, b }) => (
-              <div key={t} className="bg-white/10 backdrop-blur rounded-2xl p-8 border-b-4 border-gold">
-                <Icon className="text-white mb-5" size={36} />
+            ].map(({ Icon, t, b }, i) => (
+              <Reveal as="div" delay={i * 150} variant="scale" key={t} className="group bg-white/10 backdrop-blur rounded-2xl p-8 border-b-4 border-gold hover-lift-glow">
+                <Icon className="text-white mb-5 group-hover:scale-110 group-hover:rotate-6 transition-transform" size={36} />
                 <h3 className="font-heading font-bold text-white text-2xl mb-3">{t}</h3>
                 <p className="text-white/85 leading-relaxed">{b}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
