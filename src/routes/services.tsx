@@ -127,16 +127,16 @@ function ServicesPage() {
       <section className="py-24" style={{ backgroundColor: "#0a1628" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <p className="eyebrow text-teal mb-3">Our Process</p>
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-14">How We Work</h2>
+          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-14 overflow-hidden"><SplitText text="How We Work" /></h2>
           <div className="grid md:grid-cols-5 gap-4">
             {["Consultation","Site Survey","Planning","Execution","Handover"].map((step, i) => (
-              <div key={step} className="group relative">
+              <Reveal as="div" delay={i * 120} variant="scale" key={step} className="group relative">
                 <div className="rounded-xl border border-white/10 p-6 h-40 flex flex-col justify-between bg-white/5 transition-all hover:border-teal hover:bg-teal/10">
-                  <span className="font-heading font-black text-gold text-3xl">{String(i+1).padStart(2,"0")}</span>
+                  <span className="font-heading font-black text-gold text-3xl group-hover:scale-110 origin-left transition-transform inline-block">{String(i+1).padStart(2,"0")}</span>
                   <p className="font-heading font-bold text-white">{step}</p>
                 </div>
                 {i < 4 && <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-teal" size={20} />}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
