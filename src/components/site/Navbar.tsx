@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
@@ -8,7 +8,6 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
-  { to: "/certifications", label: "Certifications" },
   { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
 ];
@@ -46,15 +45,14 @@ export function Navbar() {
 
         <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
-            <Link
+            <NavLink
               key={l.to}
               to={l.to}
-              className="nav-link-underline text-white text-[13px] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-teal"
-              activeOptions={{ exact: l.to === "/" }}
-              activeProps={{ style: { color: "#26d4a0" } }}
+              end={l.to === "/"}
+              className={({ isActive }) => `nav-link-underline text-[13px] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-teal ${isActive ? 'text-[#26d4a0]' : 'text-white'}`}
             >
               {l.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -82,16 +80,15 @@ export function Navbar() {
       >
         <div className="pt-24 px-8 flex flex-col gap-2">
           {links.map((l, i) => (
-            <Link
+            <NavLink
               key={l.to}
               to={l.to}
-              className="border-l-2 border-transparent pl-4 py-3 text-white font-semibold uppercase tracking-[0.15em] text-sm transition-all hover:border-teal hover:text-teal"
-              activeProps={{ style: { borderColor: "#157575", color: "#26d4a0" } }}
-              activeOptions={{ exact: l.to === "/" }}
+              end={l.to === "/"}
+              className={({ isActive }) => `border-l-2 pl-4 py-3 font-semibold uppercase tracking-[0.15em] text-sm transition-all hover:border-[#157575] hover:text-[#26d4a0] ${isActive ? 'border-[#157575] text-[#26d4a0]' : 'border-transparent text-white'}`}
               style={{ animation: open ? `fade-up 0.4s ease ${i * 0.06}s both` : undefined }}
             >
               {l.label}
-            </Link>
+            </NavLink>
           ))}
           <Link to="/contact" className="mt-6 inline-flex w-fit rounded-full bg-teal px-6 py-3 text-white text-xs font-semibold uppercase tracking-[0.15em]">
             Get Quote →

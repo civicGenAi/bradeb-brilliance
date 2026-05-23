@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import logo from "@/assets/logo.png";
-import { ArrowRight, Check, Building2, HardHat, Bug } from "lucide-react";
+import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 
@@ -83,15 +83,17 @@ export default function Index() {
               <span className="block text-stroke-white animate-clip-up" style={{ animationDelay: "0.3s" }}>CONFIDENCE</span>
               <span className="block text-teal animate-clip-up" style={{ animationDelay: "0.6s" }}>BUILD WITH BRADEB.</span>
             </h1>
-            <p className="mt-8 text-white/70 text-base label-cap" style={{ letterSpacing: "0.15em" }}>Construction · Civil Engineering · Fumigation Services</p>
-            <p className="mt-4 text-white/80 max-w-xl leading-relaxed animate-fade-up" style={{ animationDelay: "0.8s" }}>
+            <p className="mt-8 text-white/70 text-base label-cap hidden md:block" style={{ letterSpacing: "0.15em" }}>Construction · Civil Engineering · Fumigation Services</p>
+            <p className="mt-8 text-white/70 text-sm label-cap md:hidden" style={{ letterSpacing: "0.15em" }}>Construction & Engineering</p>
+            
+            <p className="mt-4 text-white/80 max-w-xl leading-relaxed animate-fade-up hidden md:block" style={{ animationDelay: "0.8s" }}>
               Tanzania's trusted certified contractor since 2020 — delivering excellence across construction, civil engineering and pest control.
             </p>
             <div className="mt-10 flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "1s" }}>
-              <Link to="/projects" className="magnetic inline-flex items-center gap-2 rounded-full bg-teal px-7 py-4 text-white text-sm font-semibold uppercase tracking-[0.15em]">
+              <Link to="/projects" className="magnetic inline-flex items-center gap-2 rounded-full bg-teal px-7 py-4 text-white text-sm font-semibold uppercase tracking-[0.15em] w-full md:w-auto justify-center">
                 Explore Our Work <ArrowRight size={16} />
               </Link>
-              <Link to="/certifications" className="magnetic inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-4 text-white text-sm font-semibold uppercase tracking-[0.15em] hover:border-teal hover:text-teal">
+              <Link to="/services" className="magnetic hidden md:inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-4 text-white text-sm font-semibold uppercase tracking-[0.15em] hover:border-teal hover:text-teal">
                 View Certifications
               </Link>
             </div>
@@ -105,9 +107,10 @@ export default function Index() {
         </div>
 
         {/* Scroll cue */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/60 text-[11px] tracking-[0.3em] uppercase flex flex-col items-center gap-2 animate-scroll-bounce">
-          <span>Scroll to explore</span>
-          <span className="block w-px h-8 bg-teal" />
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/80 text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex flex-col items-center gap-3 animate-bounce">
+          <span className="bg-navy/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(38,212,160,0.3)] flex items-center gap-2">
+            Scroll to explore <ArrowDown size={14} className="text-teal" />
+          </span>
         </div>
 
         {/* Marquee */}
@@ -152,52 +155,58 @@ export default function Index() {
       </section>
 
       {/* B: Stats */}
-      <section className="py-20 border-b-2 border-teal" style={{ backgroundColor: "#1f4590" }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 divide-x divide-teal/40">
+      <section className="py-12 border-b-2 border-teal relative z-10 shadow-2xl" style={{ backgroundColor: "#1f4590" }}>
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 flex flex-wrap justify-center lg:justify-between items-center gap-y-10 divide-x-0 lg:divide-x divide-teal/40">
           {[
             { v: 8, suf: "+", l: "Completed Projects" },
             { v: 1.38, suf: "B+", l: "TZS Project Value", pre: "TZS " },
             { v: 4, suf: "+", l: "Years Operating" },
             { v: 5, suf: "+", l: "Cities Served" },
           ].map((s, i) => (
-            <div key={i} className="px-6 text-center">
-              <div className="font-heading font-black text-gold text-5xl md:text-6xl">
+            <div key={i} className="px-6 flex-1 text-center min-w-[45%] lg:min-w-0">
+              <div className="font-heading font-black text-gold text-4xl md:text-5xl drop-shadow-md">
                 {s.pre || ""}{i === 1 ? <>1.38<span>B+</span></> : <CountUp to={s.v} suffix={s.suf} />}
               </div>
-              <p className="label-cap text-white/80 mt-3">{s.l}</p>
+              <p className="label-cap text-white/90 mt-3 text-xs md:text-sm tracking-widest">{s.l}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* C: Services preview */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal className="mb-14">
-            <p className="eyebrow text-teal mb-3">What We Offer</p>
-            <h2 className="font-heading font-extrabold text-navy text-4xl md:text-5xl">End-to-End Building Solutions</h2>
+      <section className="py-24 lg:py-32 bg-[#f8f9fa] relative overflow-hidden">
+        {/* Subtle background pattern for construction feel */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#157575 1px, transparent 1px)", backgroundSize: "30px 30px" }}></div>
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 relative">
+          <Reveal className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <p className="eyebrow text-teal mb-3 flex items-center gap-2"><span className="w-8 h-[2px] bg-gold"></span> What We Offer</p>
+              <h2 className="font-heading font-extrabold text-navy text-4xl md:text-5xl">End-to-End Building Solutions</h2>
+            </div>
+            <p className="text-teal font-semibold text-sm flex items-center gap-2 bg-teal/10 px-4 py-2 rounded-full border border-teal/20 animate-pulse">
+              Swipe to explore <ChevronRight size={16} />
+            </p>
           </Reveal>
-          <div className="grid md:grid-cols-3 gap-6">
+          
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 -mx-4 hide-scrollbar">
             {[
-              { Icon: Building2, title: "Building Construction", body: "Residential, commercial and industrial buildings delivered turnkey." },
-              { Icon: HardHat, title: "Civil Engineering", body: "Structural works, foundations, concrete and infrastructure." },
-              { Icon: Bug, title: "Fumigation & Pest Control", body: "Pre/post-construction treatment, gaseous fumigation and more.", green: true },
+              { Icon: Building2, title: "Building Construction", body: "Residential, commercial and industrial buildings delivered turnkey with uncompromised quality." },
+              { Icon: HardHat, title: "Civil Engineering", body: "Structural works, robust foundations, concrete and long-lasting infrastructure solutions." },
+              { Icon: Bug, title: "Fumigation & Pest Control", body: "Pre/post-construction treatment, gaseous fumigation and comprehensive pest management.", green: true },
+              { Icon: Building2, title: "Renovation Works", body: "Transforming existing structures with modern designs, ensuring safety and aesthetics." }
             ].map(({ Icon, title, body, green }, i) => (
-              <Reveal as="article" delay={i * 140} key={i} className="group hover-lift-glow tilt-3d relative bg-white border border-black/5 rounded-2xl p-8 h-[360px] flex flex-col justify-between">
+              <Reveal as="article" delay={i * 100} key={i} className="group hover-lift-glow tilt-3d relative bg-white border border-navy/5 shadow-xl shadow-navy/5 rounded-2xl p-8 h-[380px] flex flex-col justify-between min-w-[320px] md:min-w-[400px] snap-center">
                 <div>
-                  <div className={`h-14 w-14 rounded-xl flex items-center justify-center text-white mb-6`} style={{ backgroundColor: green ? "#5b995a" : "#157575" }}>
-                    <Icon size={26} />
+                  <div className={`h-16 w-16 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg transition-transform group-hover:scale-110`} style={{ backgroundColor: green ? "#5b995a" : "#1f4590" }}>
+                    <Icon size={30} />
                   </div>
-                  <h3 className="font-heading font-bold text-navy text-2xl mb-3">{title}</h3>
-                  <p className="text-[#4a5568] leading-relaxed">{body}</p>
+                  <h3 className="font-heading font-bold text-navy text-2xl mb-4">{title}</h3>
+                  <p className="text-[#4a5568] leading-relaxed text-[15px]">{body}</p>
                 </div>
-                <Link to="/services" className="text-teal font-semibold text-sm inline-flex items-center gap-2">See more <ArrowRight size={14} /></Link>
-                <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-teal scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
+                <Link to="/services" className="text-teal font-bold text-sm inline-flex items-center gap-2 group-hover:translate-x-2 transition-transform">Explore Service <ArrowRight size={14} /></Link>
+                <span className="absolute bottom-0 left-0 right-0 h-[4px] bg-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 rounded-b-2xl" />
               </Reveal>
             ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link to="/services" className="inline-flex items-center gap-2 text-teal font-semibold uppercase tracking-[0.15em] text-sm border-b-2 border-teal pb-1">View All Services <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>

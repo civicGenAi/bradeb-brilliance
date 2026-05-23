@@ -24,7 +24,7 @@ export function Footer() {
         <div>
           <h4 className="label-cap text-white mb-5">Quick Links</h4>
           <ul className="space-y-2 text-[13px]">
-            {["Home","About","Services","Projects","Certifications","Team","Contact"].map(n => (
+            {["Home","About","Services","Projects","Team","Contact"].map(n => (
               <li key={n}><Link to={n === "Home" ? "/" : `/${n.toLowerCase()}`} className="hover:text-teal transition-colors">{n}</Link></li>
             ))}
           </ul>
