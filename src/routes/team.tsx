@@ -1,19 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Mail, Linkedin, ShieldCheck, Target, Users, Award } from "lucide-react";
 
-export const Route = createFileRoute("/team")({
-  head: () => ({
-    meta: [
-      { title: "Team — Bradeb Investment Limited" },
-      { name: "description", content: "Meet the leadership behind Bradeb's success." },
-      { property: "og:title", content: "Bradeb Team" },
-      { property: "og:description", content: "Driven by expertise. Meet our leadership." },
-    ],
-  }),
-  component: TeamPage,
-});
+
 
 const team = [
   { name:"Bradley C. Muro", role:"Managing Director", init:"BCM", bg:"#1f4590" },
@@ -22,7 +12,7 @@ const team = [
   { name:"Dennis Cuthbert", role:"Head of Site Works", init:"DC", bg:"#157575" },
 ];
 
-function TeamPage() {
+export default function TeamPage() {
   return (
     <PageShell>
       {/* HERO */}

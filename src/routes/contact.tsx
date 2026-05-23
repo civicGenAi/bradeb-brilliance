@@ -1,22 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Bradeb Investment Limited" },
-      { name: "description", content: "Get in touch with Bradeb Investment Limited for construction, civil engineering or fumigation inquiries." },
-      { property: "og:title", content: "Contact Bradeb" },
-      { property: "og:description", content: "Let's build something extraordinary together." },
-    ],
-  }),
-  component: ContactPage,
-});
 
-function ContactPage() {
+
+export default function ContactPage() {
   const [sent, setSent] = useState(false);
   return (
     <PageShell>

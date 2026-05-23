@@ -1,19 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
 import { Download, ShieldCheck } from "lucide-react";
 
-export const Route = createFileRoute("/certifications")({
-  head: () => ({
-    meta: [
-      { title: "Certifications — Bradeb Investment Limited" },
-      { name: "description", content: "Certified. Registered. Trusted. All legal certifications under Tanzanian law." },
-      { property: "og:title", content: "Bradeb Certifications" },
-      { property: "og:description", content: "BRELA · CRB Class V · TRA · WCF · Zanzibar incorporated." },
-    ],
-  }),
-  component: CertsPage,
-});
+
 
 const certs = [
   { t:"Certificate of Incorporation", body:"BRELA Tanzania", num:"No. 142322722", date:"Aug 7, 2020", color:"#1f4590" },
@@ -26,7 +16,7 @@ const certs = [
   { t:"Zanzibar Certificate of Incorporation", body:"Rev. Govt of Zanzibar", num:"Z0000152767", date:"Jun 1, 2022", color:"#157575" },
 ];
 
-function CertsPage() {
+export default function CertsPage() {
   return (
     <PageShell>
       {/* HERO */}

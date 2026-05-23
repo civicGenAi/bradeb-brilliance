@@ -1,21 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Leaf, HeartPulse, ShieldCheck } from "lucide-react";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Bradeb Investment Limited" },
-      { name: "description", content: "Built on trust. A Tanzanian construction company dedicated to excellence since 2020." },
-      { property: "og:title", content: "About Bradeb" },
-      { property: "og:description", content: "Built on trust. A Tanzanian company dedicated to excellence since 2020." },
-    ],
-  }),
-  component: AboutPage,
-});
 
-function AboutPage() {
+
+export default function AboutPage() {
   return (
     <PageShell>
       {/* HERO — diagonal split */}

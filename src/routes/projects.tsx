@@ -1,19 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { useState } from "react";
 
-export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects — Bradeb Investment Limited" },
-      { name: "description", content: "8 completed projects. TZS 1.38 Billion+ in construction value across Tanzania." },
-      { property: "og:title", content: "Bradeb Projects" },
-      { property: "og:description", content: "Our portfolio across Dar es Salaam, Moshi, Mwanza and Zanzibar." },
-    ],
-  }),
-  component: ProjectsPage,
-});
+
 
 type P = { n: string; name: string; client: string; value: string; duration: string; location: string; cat: string; pattern: number };
 const projects: P[] = [
@@ -36,7 +26,7 @@ const patterns = [
 
 const tabs = ["All","Residential","Commercial","Institutional"];
 
-function ProjectsPage() {
+export default function ProjectsPage() {
   const [filter, setFilter] = useState("All");
   const filtered = filter === "All" ? projects : projects.filter(p => p.cat === filter);
 

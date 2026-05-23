@@ -1,21 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { ArrowRight, Building2, HardHat, Wrench, Zap, Bug, Bird, Snail, ShieldCheck } from "lucide-react";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Bradeb Investment Limited" },
-      { name: "description", content: "Construction, civil engineering, mechanical, electrical and fumigation services across Tanzania." },
-      { property: "og:title", content: "Bradeb Services" },
-      { property: "og:description", content: "From foundations to finishing — construction and pest control under one roof." },
-    ],
-  }),
-  component: ServicesPage,
-});
 
-function ServicesPage() {
+
+export default function ServicesPage() {
   return (
     <PageShell>
       {/* HERO — blueprint */}

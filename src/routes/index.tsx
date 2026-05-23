@@ -1,22 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
+
+import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import logo from "@/assets/logo.png";
 import { ArrowRight, Check, Building2, HardHat, Bug } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Bradeb Investment Limited — Build With Confidence" },
-      { name: "description", content: "Tanzania's premier certified contractor: construction, civil engineering and fumigation. 8+ delivered projects, TZS 1.3B+ value." },
-      { property: "og:title", content: "Bradeb — Build With Confidence" },
-      { property: "og:description", content: "Construction · Civil Engineering · Fumigation Services in Tanzania." },
-    ],
-  }),
-  component: Index,
-});
+
 
 function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -44,7 +34,7 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
-function Index() {
+export default function Index() {
   // Mouse parallax on hero logo
   const heroRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
