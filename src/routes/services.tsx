@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
+import { Reveal, SplitText } from "@/components/site/Reveal";
 import { ArrowRight, Building2, HardHat, Wrench, Zap, Bug, Bird, Snail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
@@ -36,14 +37,14 @@ function ServicesPage() {
         </svg>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20">
           <p className="eyebrow text-teal mb-6 animate-fade-up">Our Expertise</p>
-          <h1 className="font-heading font-black text-white text-5xl md:text-7xl leading-[0.95] max-w-3xl">
+          <h1 className="font-heading font-black text-white text-5xl md:text-7xl leading-[0.95] max-w-3xl overflow-hidden">
             <span className="block animate-clip-up">Solutions That</span>
-            <span className="block text-teal animate-clip-up" style={{ animationDelay: "0.25s" }}>Build Legacies</span>
+            <span className="block text-gradient-gold animate-clip-up" style={{ animationDelay: "0.25s" }}>Build Legacies</span>
           </h1>
           <p className="mt-8 max-w-2xl text-white/70 text-lg animate-fade-up" style={{ animationDelay: "0.5s" }}>
             From foundations to finishing — construction and pest control under one roof.
           </p>
-          <Link to="/contact" className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition">
+          <Link to="/contact" className="btn-shine mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition">
             Request a Service Quote <ArrowRight size={16} />
           </Link>
         </div>
@@ -62,14 +63,14 @@ function ServicesPage() {
               { Icon: HardHat, t: "Civil Works", b: "Structural, foundations, concrete." },
               { Icon: Wrench, t: "Mechanical Contracting", b: "HVAC, plumbing, systems installation." },
               { Icon: Zap, t: "Electrical Engineering", b: "LV/HV installations and certified wiring." },
-            ].map(({ Icon, t, b }) => (
-              <article key={t} className="group bg-white border-t border-navy/30 p-6 h-[280px] flex flex-col justify-between transition-all hover:border-t-[3px] hover:border-teal hover:-translate-y-1">
-                <Icon className="text-teal" size={32} />
+            ].map(({ Icon, t, b }, i) => (
+              <Reveal as="article" delay={i * 110} key={t} className="group hover-lift-glow bg-white border-t border-navy/30 p-6 h-[280px] flex flex-col justify-between transition-all hover:border-t-[3px] hover:border-teal rounded-md">
+                <Icon className="text-teal group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" size={32} />
                 <div>
                   <h3 className="font-heading font-bold text-navy text-xl mb-2">{t}</h3>
                   <p className="text-[#4a5568] text-sm leading-relaxed">{b}</p>
                 </div>
-              </article>
+              </Reveal>
             ))}
           </div>
           <div className="mt-12">
