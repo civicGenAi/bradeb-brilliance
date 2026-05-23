@@ -4,6 +4,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import logo from "@/assets/logo.png";
 import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown, ChevronRight } from "lucide-react";
+import { ReviewsSection } from "@/components/site/Reviews";
 import { useEffect, useRef } from "react";
 
 
@@ -234,29 +235,56 @@ export default function Index() {
         </div>
       </section>
 
-      {/* E: Trust */}
-      <section className="py-20" style={{ backgroundColor: "#f5f6f8" }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 text-center">
-          <p className="text-[#4a5568] mb-8">Fully certified and legally compliant in Tanzania</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["BRELA", "CRB Building Class V", "CRB Civil Class V", "TRA VAT", "WCF Registered"].map(t => (
-              <span key={t} className="px-5 py-2.5 rounded-full bg-white border border-navy/20 text-navy font-semibold text-sm">{t}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* E: Reviews */}
+      <ReviewsSection />
 
-      {/* F: Contact teaser */}
-      <section className="py-28" style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}>
-        <Reveal className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-6 overflow-hidden">
-            <SplitText text="Ready to Start Your Project?" />
-          </h2>
-          <p className="text-white/70 mb-10 max-w-xl mx-auto">Let's discuss how Bradeb can deliver your next construction, civil or fumigation project on time and on budget.</p>
-          <Link to="/contact" className="btn-shine inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform">
-            Contact Us Today <ArrowRight size={16} />
-          </Link>
-        </Reveal>
+      {/* F: Contact teaser & Newsletter */}
+      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}>
+        {/* Subtle grid pattern overlay */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 relative z-10 grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* CTA Column */}
+          <Reveal className="text-center md:text-left">
+            <h2 className="font-heading font-extrabold text-white text-4xl lg:text-5xl mb-6 overflow-hidden leading-tight">
+              <SplitText text="Ready to Start Your Project?" />
+            </h2>
+            <p className="text-white/80 mb-10 text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
+              Let's discuss how Bradeb can deliver your next construction, civil or fumigation project on time and on budget.
+            </p>
+            <Link to="/contact" className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(201,168,76,0.3)]">
+              Contact Us Today <ArrowRight size={16} />
+            </Link>
+          </Reveal>
+
+          {/* Newsletter Column */}
+          <Reveal delay={200} className="bg-[#0a1628]/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal blur-[80px] opacity-20 pointer-events-none" />
+            <h3 className="font-heading font-bold text-white text-2xl lg:text-3xl mb-3">Stay Updated</h3>
+            <p className="text-white/60 mb-8 text-sm lg:text-base leading-relaxed">
+              Subscribe to our newsletter for the latest industry insights, project showcases, and company updates.
+            </p>
+            <form className="flex flex-col gap-3" onSubmit={(e) => { e.preventDefault(); alert("Thanks for subscribing!"); }}>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email address" 
+                  className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-teal focus:bg-white/10 transition-all text-sm"
+                  required
+                />
+                <button 
+                  type="submit" 
+                  className="rounded-full bg-teal px-8 py-4 text-white font-bold uppercase tracking-[0.1em] text-sm hover:bg-white hover:text-navy transition-colors whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </div>
+              <p className="text-white/40 text-xs mt-2 ml-4">
+                * We respect your privacy. Unsubscribe at any time.
+              </p>
+            </form>
+          </Reveal>
+        </div>
       </section>
     </PageShell>
   );

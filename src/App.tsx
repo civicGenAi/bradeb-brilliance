@@ -7,6 +7,7 @@ import Projects from "./routes/projects";
 import Team from "./routes/team";
 import Contact from "./routes/contact";
 import NotFoundPage from "./routes/not-found";
+import Reviews from "./routes/reviews";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ export function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/team" element={<Team />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/reviews" element={<Reviews />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
