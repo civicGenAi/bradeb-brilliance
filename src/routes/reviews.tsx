@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Star, Camera, Quote, Send, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Star, Camera, Quote, Send, Sparkles, CheckCircle2, PenLine } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -252,6 +252,3 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
     </div>
   );
 }
-
-// local icon import to keep top tidy
-import { PenLine } from "lucide-react";
