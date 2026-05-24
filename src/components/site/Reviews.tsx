@@ -1,4 +1,4 @@
-import { Star, MessageSquarePlus } from "lucide-react";
+import { Star, PenLine, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal";
 
@@ -24,11 +24,26 @@ export function ReviewsSection() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
 
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 relative z-10">
-        <Reveal className="text-center mb-16 lg:mb-24">
-          <p className="eyebrow text-gold mb-3 flex items-center justify-center gap-2">
-            <span className="w-8 h-[2px] bg-gold"></span> Client Feedback
-          </p>
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl">Built on Trust & Reputation</h2>
+        <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 lg:mb-20">
+          <div>
+            <p className="eyebrow text-gold mb-3 flex items-center gap-2">
+              <span className="w-8 h-[2px] bg-gold"></span> Client Feedback
+            </p>
+            <h2 className="font-heading font-extrabold text-white text-3xl md:text-5xl leading-tight">Built on Trust<br className="hidden md:block"/> &amp; Reputation</h2>
+          </div>
+
+          {/* Creative compact CTA — pill with rotating sticker */}
+          <Link
+            to="/reviews"
+            className="group relative inline-flex items-center gap-3 self-start md:self-end rounded-full bg-white/5 backdrop-blur-md border border-white/10 pl-2 pr-5 py-2 hover:bg-white/10 transition-colors"
+          >
+            <span className="relative h-10 w-10 rounded-full bg-[#c9a84c] flex items-center justify-center text-[#0a1628] shadow-[0_0_20px_rgba(201,168,76,0.35)]">
+              <PenLine size={16} />
+              <span className="absolute inset-0 rounded-full border border-[#c9a84c]/60 animate-ping" />
+            </span>
+            <span className="text-white text-[12px] font-bold uppercase tracking-[0.18em]">Write a review</span>
+            <ArrowUpRight size={16} className="text-[#26d4a0] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </Reveal>
 
         {/* Marquee Wrapper */}
@@ -47,24 +62,6 @@ export function ReviewsSection() {
             {MARQUEE_2.map((r, i) => <ReviewCard key={i} review={r} />)}
           </div>
         </div>
-
-        {/* Submit Review CTA */}
-        <Reveal delay={200} className="mt-24 lg:mt-32 max-w-3xl mx-auto">
-          <div className="p-[1px] rounded-[2rem] bg-gradient-to-b from-white/10 to-transparent">
-            <div className="bg-[#07396c]/40 backdrop-blur-xl rounded-[2rem] p-8 md:p-12 text-center border border-[#1f4590]/30 shadow-2xl">
-              <div className="w-16 h-16 rounded-full bg-[#1f4590] border border-[#26d4a0]/30 flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(38,212,160,0.15)]">
-                <MessageSquarePlus className="text-[#26d4a0]" size={28} />
-              </div>
-              <h3 className="font-heading font-bold text-white text-2xl lg:text-3xl mb-3">Have a review?</h3>
-              <p className="text-white/70 mb-10 max-w-lg mx-auto text-sm leading-relaxed">
-                Share your experience with Bradeb. Your feedback helps us improve and inspires others.
-              </p>
-              <Link to="/reviews" className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-[#157575] px-4 py-2 text-[#0a1628] font-bold uppercase tracking-[0.1em] text-sm hover:scale-105 transition-transform shadow-[0_0_15px_rgba(21,117,117,0.2)]">
-                Write Your Review
-              </Link>
-            </div>
-          </div>
-        </Reveal>
       </div>
 
       <style>{`
