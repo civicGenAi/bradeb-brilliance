@@ -79,7 +79,7 @@ export default function Index() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-20 grid lg:grid-cols-[3fr_2fr] gap-12 items-center w-full">
           <div>
             <p className="eyebrow text-teal mb-6 animate-fade-up">Tanzania's Premier Partner</p>
-            <h1 className="font-heading font-black text-white leading-[0.95] text-5xl md:text-7xl lg:text-[5.5rem]">
+            <h1 className="font-heading font-black text-white leading-[0.95] text-[2.5rem] sm:text-5xl md:text-7xl lg:text-[5.5rem]">
               <span className="block animate-clip-up">BUILD WITH</span>
               <span className="block text-stroke-white animate-clip-up" style={{ animationDelay: "0.3s" }}>CONFIDENCE</span>
               <span className="block text-teal animate-clip-up" style={{ animationDelay: "0.6s" }}>BUILD WITH BRADEB.</span>
