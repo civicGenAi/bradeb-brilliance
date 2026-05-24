@@ -3,6 +3,8 @@ import logo from "@/assets/logo.png";
 import { Facebook, Instagram, Linkedin, Twitter, MapPin, Mail, Phone, ArrowUpRight, ShieldCheck, HardHat, Wrench } from "lucide-react";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative overflow-hidden text-[#94a3b8]" style={{ backgroundColor: "#050a14" }}>
       {/* blueprint grid background */}
@@ -22,20 +24,20 @@ export function Footer() {
       <div className="relative h-1.5 w-full" style={{ backgroundImage: "repeating-linear-gradient(135deg,#c9a84c 0 16px,#0a1628 16px 32px)" }} />
 
       {/* ====== TOP BAND: badges ====== */}
-      <div className="relative border-b border-white/5">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="relative border-b border-white/5 bg-white/[0.02]">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 sm:py-8 flex flex-col sm:flex-row flex-wrap sm:justify-between items-start sm:items-center gap-6 sm:gap-4">
           {[
             { Icon: ShieldCheck, label: "CRB Certified", value: "Class V Contractor" },
-            { Icon: HardHat,    label: "WCF Registered", value: "Safety Compliant" },
-            { Icon: Wrench,     label: "Since 2020",     value: "Engineered to Last" },
+            { Icon: HardHat, label: "WCF Registered", value: "Safety Compliant" },
+            { Icon: Wrench, label: "Since 2020", value: "Engineered to Last" },
           ].map(({ Icon, label, value }) => (
             <div key={label} className="flex items-center gap-4 group">
-              <div className="h-12 w-12 rounded-xl border border-[#26d4a0]/30 bg-[#0a1628] flex items-center justify-center text-[#26d4a0] group-hover:border-[#c9a84c] group-hover:text-[#c9a84c] transition-colors">
-                <Icon size={20} />
+              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl border border-[#26d4a0]/30 bg-[#0a1628] flex items-center justify-center text-[#26d4a0] group-hover:border-[#c9a84c] group-hover:text-[#c9a84c] transition-colors shrink-0">
+                <Icon size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-[0.22em] text-[#26d4a0]/80 font-bold">{label}</p>
-                <p className="text-white text-sm font-semibold">{value}</p>
+                <p className="text-white text-xs sm:text-sm font-semibold">{value}</p>
               </div>
             </div>
           ))}
@@ -43,30 +45,24 @@ export function Footer() {
       </div>
 
       {/* ====== MAIN GRID ====== */}
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-14 md:py-20 grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-12 md:py-20 grid gap-10 md:gap-12 grid-cols-2 lg:grid-cols-12">
         {/* Brand block */}
-        <div className="lg:col-span-4">
+        <div className="col-span-2 lg:col-span-4 flex flex-col items-start">
           <div className="flex items-center gap-3 mb-5">
             <div className="relative">
-              <img src={logo} alt="Bradeb" className="h-14 w-14 bg-white p-1.5 rounded-lg" />
+              <img src={logo} alt="Bradeb" className="h-12 w-12 sm:h-14 sm:w-14 bg-white p-1.5 rounded-lg" />
               <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-[#26d4a0] animate-pulse shadow-[0_0_10px_#26d4a0]" />
             </div>
             <div>
-              <span className="font-heading font-extrabold text-white tracking-wider text-lg block leading-tight">BRADEB</span>
-              <span className="text-[10px] uppercase tracking-[0.22em] text-[#26d4a0]">Investment Limited</span>
+              <span className="font-heading font-extrabold text-white tracking-wider text-base sm:text-lg block leading-tight">BRADEB</span>
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#26d4a0]">Investment Limited</span>
             </div>
           </div>
-          <p className="text-[14px] leading-relaxed mb-5 text-[#94a3b8] max-w-sm">
+          <p className="text-[13px] sm:text-[14px] leading-relaxed mb-6 text-[#94a3b8] max-w-sm">
             Architects of Possibility. Builders of Dreams. Tanzania's trusted partner for construction, civil engineering and pest control.
           </p>
 
-          {/* coordinates badge */}
-          <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#c9a84c] border border-[#c9a84c]/30 rounded-full px-3 py-1.5 mb-6">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#c9a84c]" />
-            6.7456° S · 39.2083° E · DAR
-          </div>
-
-          <div className="flex gap-2">
+          <div className="flex gap-2 mb-6">
             {[Facebook, Instagram, Linkedin, Twitter].map((I, i) => (
               <a key={i} href="#" className="h-10 w-10 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#26d4a0] hover:bg-[#157575] hover:text-white hover:border-[#157575] transition-all">
                 <I size={15} />
@@ -76,12 +72,12 @@ export function Footer() {
         </div>
 
         {/* Quick links */}
-        <div className="lg:col-span-2">
-          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-5 flex items-center gap-2">
-            <span className="h-px w-6 bg-[#c9a84c]" /> Navigate
+        <div className="col-span-1 lg:col-span-2">
+          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-4 sm:mb-5 flex items-center gap-2">
+            <span className="h-px w-4 sm:w-6 bg-[#c9a84c]" /> Navigate
           </h4>
-          <ul className="space-y-3 text-[13px]">
-            {["Home","About","Services","Projects","Team","Reviews","Contact"].map(n => (
+          <ul className="space-y-3 text-[12px] sm:text-[13px]">
+            {["Home", "About", "Services", "Projects", "Team", "Reviews", "Contact"].map(n => (
               <li key={n}>
                 <Link to={n === "Home" ? "/" : `/${n.toLowerCase()}`} className="group inline-flex items-center gap-2 hover:text-white transition-colors">
                   <span className="h-px w-3 bg-[#26d4a0]/40 group-hover:w-5 group-hover:bg-[#26d4a0] transition-all" />
@@ -93,12 +89,12 @@ export function Footer() {
         </div>
 
         {/* Services */}
-        <div className="lg:col-span-3">
-          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-5 flex items-center gap-2">
-            <span className="h-px w-6 bg-[#c9a84c]" /> Capabilities
+        <div className="col-span-1 lg:col-span-3">
+          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-4 sm:mb-5 flex items-center gap-2">
+            <span className="h-px w-4 sm:w-6 bg-[#c9a84c]" /> Capabilities
           </h4>
-          <ul className="space-y-3 text-[13px]">
-            {["Building Construction","Civil Engineering","Fumigation Services","Pest Control","Mechanical & Electrical","Renovation Works"].map(s => (
+          <ul className="space-y-3 text-[12px] sm:text-[13px]">
+            {["Building Construction", "Civil Engineering", "Fumigation Services", "Pest Control", "Mechanical & Electrical", "Renovation Works"].map(s => (
               <li key={s} className="flex items-start gap-2">
                 <span className="text-[#26d4a0] mt-1 text-[10px]">◆</span>{s}
               </li>
@@ -107,14 +103,14 @@ export function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="lg:col-span-3">
-          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-5 flex items-center gap-2">
+        <div className="col-span-2 lg:col-span-3">
+          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-4 sm:mb-5 flex items-center gap-2">
             <span className="h-px w-6 bg-[#c9a84c]" /> Headquarters
           </h4>
-          <ul className="space-y-4 text-[13px]">
+          <ul className="space-y-4 text-[12px] sm:text-[13px]">
             <li className="flex gap-3">
               <MapPin size={16} className="text-[#26d4a0] shrink-0 mt-0.5" />
-              <span>P.O. Box 12390<br/>Mbezi Beach – Ndumbwi<br/>Dar es Salaam, Tanzania</span>
+              <span>P.O. Box 12390<br />Mbezi Beach – Ndumbwi<br />Dar es Salaam, Tanzania</span>
             </li>
             <li className="flex gap-3">
               <Mail size={16} className="text-[#26d4a0] shrink-0 mt-0.5" />
@@ -134,13 +130,17 @@ export function Footer() {
 
       {/* ====== BOTTOM BAR ====== */}
       <div className="relative border-t border-white/5 bg-black/30 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 flex flex-col md:flex-row justify-between gap-3 text-[11px]">
-          <p className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#26d4a0] animate-pulse" />
-            © 2026 Bradeb Investment Limited — All Rights Reserved.
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 flex flex-col md:flex-row justify-between items-center md:items-start gap-4 text-[10px] sm:text-[11px] text-center md:text-left">
+          <p className="flex items-center justify-center md:justify-start gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#26d4a0] animate-pulse shrink-0" />
+            <span>© {currentYear} Bradeb Investment Limited — All Rights Reserved.</span>
           </p>
-          <p className="font-mono tracking-wider text-[#64748b]">
-            CRB <span className="text-[#c9a84c]">B5/1722/01/2024</span> · TIN <span className="text-[#c9a84c]">142-322-722</span> · 🇹🇿 Tanzania
+          <p className="font-mono tracking-wider text-[#64748b] flex flex-wrap justify-center gap-2">
+            <span>CRB <span className="text-[#c9a84c]">B5/1722/01/2024</span></span>
+            <span className="hidden sm:inline">·</span>
+            <span>TIN <span className="text-[#c9a84c]">142-322-722</span></span>
+            <span className="hidden sm:inline">·</span>
+            <span>Tanzania</span>
           </p>
         </div>
       </div>

@@ -57,8 +57,8 @@ export function ReviewsSection() {
             {MARQUEE_1.map((r, i) => <ReviewCard key={i} review={r} />)}
           </div>
           
-          {/* Row 2: Moves Right */}
-          <div className="flex w-max animate-marquee-right gap-6 hover:cursor-grab active:cursor-grabbing" style={{ transform: "translateX(-50%)" }}>
+          {/* Row 2: Moves Right (Hidden on mobile) */}
+          <div className="hidden md:flex w-max animate-marquee-right gap-6 hover:cursor-grab active:cursor-grabbing" style={{ transform: "translateX(-50%)" }}>
             {MARQUEE_2.map((r, i) => <ReviewCard key={i} review={r} />)}
           </div>
         </div>
