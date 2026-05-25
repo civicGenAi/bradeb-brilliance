@@ -51,34 +51,46 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Construction services */}
-      <section className="py-24 bg-white">
+      {/* Construction services — bento */}
+      <section className="py-20 md:py-28 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="flex items-center gap-4 mb-12">
-            <span className="h-10 w-1.5 bg-teal" />
-            <h2 className="font-heading font-extrabold text-navy text-3xl md:text-4xl">Construction Services</h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="eyebrow text-teal mb-3 flex items-center gap-2"><span className="h-px w-8 bg-gold" /> Core Capabilities</p>
+              <h2 className="font-heading font-extrabold text-navy text-3xl md:text-5xl leading-tight">Construction <span className="text-teal">Services</span></h2>
+            </div>
+            <p className="text-[#4a5568] max-w-md text-sm">From the first survey peg to the final coat of paint — we deliver every discipline in-house.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid md:grid-cols-6 gap-4">
             {[
-              { Icon: Building2, t: "Building Construction", b: "Residential · commercial · industrial." },
-              { Icon: HardHat, t: "Civil Works", b: "Structural, foundations, concrete." },
-              { Icon: Wrench, t: "Mechanical Contracting", b: "HVAC, plumbing, systems installation." },
-              { Icon: Zap, t: "Electrical Engineering", b: "LV/HV installations and certified wiring." },
-            ].map(({ Icon, t, b }, i) => (
-              <Reveal as="article" delay={i * 110} key={t} className="group hover-lift-glow bg-white border-t border-navy/30 p-6 h-[280px] flex flex-col justify-between transition-all hover:border-t-[3px] hover:border-teal rounded-md">
-                <Icon className="text-teal group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500" size={32} />
-                <div>
-                  <h3 className="font-heading font-bold text-navy text-xl mb-2">{t}</h3>
+              { Icon: Building2, t: "Building Construction", b: "Residential · commercial · industrial structures built to spec.", span: "md:col-span-3 md:row-span-2", big: true },
+              { Icon: HardHat, t: "Civil Works", b: "Structural, foundations, concrete.", span: "md:col-span-3" },
+              { Icon: Wrench, t: "Mechanical Contracting", b: "HVAC, plumbing, systems installation.", span: "md:col-span-3" },
+              { Icon: Zap, t: "Electrical Engineering", b: "LV/HV installations and certified wiring.", span: "md:col-span-6" },
+            ].map(({ Icon, t, b, span, big }, i) => (
+              <Reveal as="article" delay={i * 110} key={t} className={`group relative overflow-hidden hover-lift-glow bg-gradient-to-br from-white to-[#f8f9fa] border border-black/5 rounded-2xl p-7 transition-all hover:border-teal/30 ${span} ${big ? "min-h-[320px]" : "min-h-[180px]"} flex flex-col justify-between`}>
+                <span className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-teal/5 group-hover:bg-teal/10 group-hover:scale-150 transition-all duration-700" />
+                <div className="relative flex items-start justify-between">
+                  <div className={`${big ? "h-16 w-16" : "h-12 w-12"} rounded-2xl bg-teal/10 flex items-center justify-center group-hover:bg-teal group-hover:rotate-[-6deg] transition-all`}>
+                    <Icon className="text-teal group-hover:text-white transition-colors" size={big ? 32 : 22} />
+                  </div>
+                  <span className="font-heading font-black text-navy/10 text-2xl">0{i+1}</span>
+                </div>
+                <div className="relative mt-6">
+                  <h3 className={`font-heading font-bold text-navy ${big ? "text-2xl md:text-3xl" : "text-lg"} mb-2 group-hover:text-teal transition-colors`}>{t}</h3>
                   <p className="text-[#4a5568] text-sm leading-relaxed">{b}</p>
                 </div>
               </Reveal>
             ))}
           </div>
-          <div className="mt-12">
-            <p className="eyebrow text-teal mb-4">General Supply To</p>
-            <div className="flex flex-wrap gap-3">
+
+          {/* Supply chips */}
+          <div className="mt-14 rounded-2xl border border-black/5 bg-[#f8f9fa] p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5">
+            <p className="eyebrow text-teal shrink-0 md:border-r md:border-black/10 md:pr-6">General Supply To</p>
+            <div className="flex flex-wrap gap-2">
               {["Industrial", "Commercial", "Residential", "Leisure", "Religious", "Educational"].map(s => (
-                <span key={s} className="px-5 py-2 rounded-full bg-navy text-white text-sm font-semibold">{s}</span>
+                <span key={s} className="px-4 py-2 rounded-full bg-white border border-navy/15 text-navy text-xs font-semibold hover:bg-navy hover:text-white hover:border-navy transition-all cursor-default">{s}</span>
               ))}
             </div>
           </div>
@@ -86,39 +98,57 @@ export default function ServicesPage() {
       </section>
 
       {/* Fumigation */}
-      <section className="py-24" style={{ backgroundColor: "#f5f6f8" }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-8">
-          <div className="rounded-2xl p-10" style={{ backgroundColor: "#1f4590" }}>
-            <p className="eyebrow text-teal mb-3">Fumigation</p>
-            <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-10">Pest-Free.<br />Guaranteed.</h2>
-            <ul className="space-y-5">
-              {[
-                { Icon: Bug, t: "Fumigation", b: "Gaseous treatment for warehouses and facilities." },
-                { Icon: Snail, t: "Pest Control", b: "Crawling and flying insect management." },
-                { Icon: ShieldCheck, t: "Pre/Post-Construction Treatment", b: "Termite barrier protection." },
-                { Icon: Bug, t: "Snake Control", b: "Safe removal and prevention programs." },
-                { Icon: Bird, t: "Bird Control", b: "Humane deterrent installations." },
-              ].map(({ Icon, t, b }, i) => (
-                <li key={t} className="flex gap-4 animate-fade-up" style={{ animationDelay: `${i * 0.07}s` }}>
-                  <Icon className="text-teal shrink-0 mt-1" size={22} />
-                  <div>
-                    <h3 className="font-heading font-bold text-white">{t}</h3>
-                    <p className="text-white/70 text-sm">{b}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+      {/* Fumigation — staggered cards on dark canvas */}
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#f5f6f8" }}>
+        <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white to-transparent" />
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 relative">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <p className="eyebrow text-teal mb-3">Fumigation Division</p>
+              <h2 className="font-heading font-extrabold text-navy text-3xl md:text-5xl">Pest-Free. <span className="text-teal">Guaranteed.</span></h2>
+            </div>
+            <div className="flex items-center gap-3 px-5 py-3 rounded-full bg-soft-green/15 border border-soft-green/30 self-start">
+              <span className="h-2 w-2 rounded-full bg-soft-green animate-pulse" />
+              <span className="text-soft-green text-sm font-semibold">Certified chemicals · Insured operations</span>
+            </div>
           </div>
-          <div className="rounded-2xl p-10 bg-white border border-black/5">
-            <h3 className="font-heading font-extrabold text-navy text-3xl mb-8">Why Choose Our Pest Services</h3>
-            <ul className="space-y-5 text-[#4a5568]">
+
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+            {[
+              { Icon: Bug, t: "Fumigation", b: "Gaseous treatment for warehouses." },
+              { Icon: Snail, t: "Pest Control", b: "Crawling & flying insects." },
+              { Icon: ShieldCheck, t: "Termite Barrier", b: "Pre / post-construction." },
+              { Icon: Bug, t: "Snake Control", b: "Safe removal programs." },
+              { Icon: Bird, t: "Bird Control", b: "Humane deterrents." },
+            ].map(({ Icon, t, b }, i) => (
+              <Reveal as="article" delay={i*90} variant="scale" key={t} className="group relative bg-white rounded-2xl p-6 border border-black/5 hover-lift-glow lg:[&:nth-child(even)]:translate-y-6 transition-all">
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-teal to-forest-teal flex items-center justify-center mb-5 group-hover:rotate-6 transition-transform shadow-lg shadow-teal/20">
+                  <Icon className="text-white" size={22} />
+                </div>
+                <h3 className="font-heading font-bold text-navy text-base mb-1.5 group-hover:text-teal transition-colors">{t}</h3>
+                <p className="text-[#4a5568] text-xs leading-relaxed">{b}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Why choose strip */}
+          <div className="rounded-3xl overflow-hidden grid md:grid-cols-2" style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}>
+            <div className="p-8 md:p-12">
+              <p className="eyebrow text-gold mb-4">Why Choose Our Pest Services</p>
+              <h3 className="font-heading font-extrabold text-white text-2xl md:text-3xl mb-6 leading-tight">Built on protocols, not promises.</h3>
+              <p className="text-white/70 text-sm">Every treatment plan begins with a site survey and ends with documented follow-ups.</p>
+            </div>
+            <ul className="bg-white/5 backdrop-blur p-8 md:p-12 divide-y divide-white/10">
               {[
                 "Certified, government-approved chemicals only.",
                 "Trained technicians with safety protocols.",
                 "Tailored treatment plans by site survey.",
                 "Follow-up visits and warranties included.",
-              ].map(b => (
-                <li key={b} className="flex gap-3"><span className="h-2 w-2 mt-2.5 rounded-full bg-soft-green shrink-0" /> {b}</li>
+              ].map((b, i) => (
+                <li key={b} className="flex items-start gap-4 py-3 first:pt-0 last:pb-0">
+                  <span className="font-heading font-black text-gold text-sm w-6 shrink-0">0{i+1}</span>
+                  <span className="text-white/90 text-sm leading-relaxed">{b}</span>
+                </li>
               ))}
             </ul>
           </div>
@@ -126,20 +156,38 @@ export default function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="py-24" style={{ backgroundColor: "#0a1628" }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <p className="eyebrow text-teal mb-3">Our Process</p>
-          <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl mb-14 overflow-hidden"><SplitText text="How We Work" /></h2>
-          <div className="grid md:grid-cols-5 gap-4">
-            {["Consultation", "Site Survey", "Planning", "Execution", "Handover"].map((step, i) => (
-              <Reveal as="div" delay={i * 120} variant="scale" key={step} className="group relative">
-                <div className="rounded-xl border border-white/10 p-6 h-40 flex flex-col justify-between bg-white/5 transition-all hover:border-teal hover:bg-teal/10">
-                  <span className="font-heading font-black text-gold text-3xl group-hover:scale-110 origin-left transition-transform inline-block">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="font-heading font-bold text-white">{step}</p>
-                </div>
-                {i < 4 && <ArrowRight className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-teal" size={20} />}
-              </Reveal>
-            ))}
+      {/* Process — roadmap */}
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#0a1628" }}>
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(#fff 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 relative">
+          <div className="text-center mb-16">
+            <p className="eyebrow text-gold mb-3">Our Process</p>
+            <h2 className="font-heading font-extrabold text-white text-4xl md:text-5xl overflow-hidden inline-block"><SplitText text="How We Work" /></h2>
+            <p className="text-white/60 mt-4 max-w-xl mx-auto text-sm">Five disciplined steps from first conversation to final handover.</p>
+          </div>
+
+          <div className="relative">
+            {/* connector line */}
+            <span className="hidden md:block absolute top-7 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-teal via-gold to-teal opacity-30" />
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-5 relative">
+              {[
+                { t: "Consultation", b: "Listen, scope and define goals." },
+                { t: "Site Survey", b: "On-ground assessment & checks." },
+                { t: "Planning", b: "Design, schedule and budget." },
+                { t: "Execution", b: "Build with supervision." },
+                { t: "Handover", b: "Final inspection & warranty." },
+              ].map((step, i) => (
+                <Reveal as="div" delay={i * 120} variant="scale" key={step.t} className="group relative">
+                  <span className="block mx-auto h-14 w-14 rounded-full bg-navy border-2 border-gold flex items-center justify-center font-heading font-black text-gold text-lg relative z-10 group-hover:bg-gold group-hover:text-navy transition-all shadow-lg shadow-gold/20">
+                    <span className="absolute inset-0 flex items-center justify-center">{String(i + 1).padStart(2, "0")}</span>
+                  </span>
+                  <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.03] p-5 text-center h-32 flex flex-col justify-center group-hover:border-teal group-hover:bg-teal/10 transition-all">
+                    <p className="font-heading font-bold text-white text-base mb-1">{step.t}</p>
+                    <p className="text-white/60 text-xs leading-relaxed">{step.b}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>

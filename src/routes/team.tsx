@@ -15,39 +15,47 @@ const team = [
 export default function TeamPage() {
   return (
     <PageShell>
-      {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20 overflow-hidden" style={{ background: "linear-gradient(135deg, #1f4590 0%, #07396c 100%)" }}>
-        <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 grid lg:grid-cols-[3fr_2fr] gap-12 items-center py-20">
+      {/* HERO — editorial */}
+      <section className="relative min-h-[75vh] flex items-center pt-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #07396c 50%, #1f4590 100%)" }}>
+        <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern id="tg" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="#fff"/></pattern></defs>
+          <rect width="100%" height="100%" fill="url(#tg)" />
+        </svg>
+        <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 grid lg:grid-cols-[6fr_5fr] gap-12 items-center py-16">
           <div>
-            <p className="eyebrow text-gold mb-6 animate-fade-up">The People</p>
-            <h1 className="font-heading font-black text-white text-5xl md:text-7xl leading-[0.95] animate-clip-up">Driven by Expertise.</h1>
-            <p className="text-white/80 text-lg md:text-xl mt-6 animate-fade-up" style={{ animationDelay: "0.2s" }}>Meet the leadership behind Bradeb's success.</p>
-            <p className="text-white/60 mt-3 max-w-xl animate-fade-up" style={{ animationDelay: "0.3s" }}>A team of construction veterans, project managers and pest control specialists committed to delivering excellence on every site.</p>
+            <p className="eyebrow text-gold mb-6 animate-fade-up flex items-center gap-3"><span className="h-px w-10 bg-gold" /> The People</p>
+            <h1 className="font-heading font-black text-white text-[3rem] sm:text-6xl lg:text-8xl leading-[0.9] tracking-tight">
+              <span className="block animate-clip-up">Driven by</span>
+              <span className="block text-gradient-gold animate-clip-up" style={{ animationDelay: "0.25s" }}>Expertise.</span>
+            </h1>
+            <p className="text-white/70 text-base md:text-lg mt-6 animate-fade-up max-w-xl" style={{ animationDelay: "0.5s" }}>Construction veterans, project managers and pest control specialists — committed to excellence on every site.</p>
+            <div className="flex gap-3 mt-8 flex-wrap animate-fade-up" style={{ animationDelay: "0.7s" }}>
+              {[{n:"04",t:"Leaders"},{n:"15+",t:"Years Combined"},{n:"100%",t:"In-House"}].map(s => (
+                <div key={s.n} className="px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+                  <span className="font-heading font-black text-gold text-lg">{s.n}</span>
+                  <span className="text-white/60 text-xs ml-2">{s.t}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="relative h-80">
-            <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 300 300">
-              <line x1="75" y1="75" x2="225" y2="75" stroke="#157575" />
-              <line x1="75" y1="75" x2="75" y2="225" stroke="#157575" />
-              <line x1="225" y1="75" x2="225" y2="225" stroke="#157575" />
-              <line x1="75" y1="225" x2="225" y2="225" stroke="#157575" />
-              <line x1="75" y1="75" x2="225" y2="225" stroke="#157575" strokeDasharray="4 4" />
-            </svg>
+          {/* Floating avatar stack */}
+          <div className="relative h-[380px] hidden lg:block">
             {team.map((m, i) => {
-              const positions = [
-                { top: "10%", left: "10%" },
-                { top: "10%", right: "10%" },
-                { bottom: "10%", left: "10%" },
-                { bottom: "10%", right: "10%" },
-              ];
+              const pos = [
+                { top: "0%",   right: "20%", size: 140, delay: 0 },
+                { top: "10%",  right: "55%", size: 110, delay: 0.5 },
+                { bottom: "5%", right: "10%", size: 130, delay: 1 },
+                { bottom: "15%", right: "45%", size: 100, delay: 1.5 },
+              ][i];
               return (
-                <div key={m.init} className="absolute h-24 w-24 rounded-full flex items-center justify-center font-heading font-black text-gold text-xl border-4 border-white/20 animate-scale-in-soft" style={{ ...positions[i], backgroundColor: m.bg, animationDelay: `${0.3 + i*0.12}s` }}>
+                <div key={m.init} className="absolute rounded-2xl flex items-center justify-center font-heading font-black text-gold border border-white/20 backdrop-blur animate-float shadow-2xl" style={{ ...pos, height: pos.size, width: pos.size, backgroundColor: m.bg, animationDelay: `${pos.delay}s`, fontSize: pos.size/5 }}>
                   {m.init}
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-white text-navy text-[10px] font-bold whitespace-nowrap shadow">{m.name.split(" ")[0]}</span>
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-teal" />
       </section>
 
       {/* Org chart */}
@@ -71,28 +79,46 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Cards */}
-      <section className="py-24" style={{ backgroundColor: "#f5f6f8" }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {team.map((m, i) => (
-            <Reveal as="article" delay={i * 120} variant="scale" key={m.init} className="group hover-lift-glow tilt-3d rounded-2xl overflow-hidden bg-white border border-black/5 transition-all hover:border-t-[3px] hover:border-gold">
-              <div className="h-32 flex items-end justify-center relative overflow-hidden" style={{ backgroundColor: m.bg }}>
-                <span className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="h-20 w-20 rounded-full bg-gold text-navy font-heading font-black flex items-center justify-center text-xl translate-y-10 border-4 border-white group-hover:scale-110 transition-transform">
-                  {m.init}
+      {/* Cards — staggered editorial */}
+      <section className="py-20 md:py-28" style={{ backgroundColor: "#f5f6f8" }}>
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="text-center mb-14">
+            <p className="eyebrow text-teal mb-3">Leadership</p>
+            <h2 className="font-heading font-extrabold text-navy text-3xl md:text-5xl">Meet the people behind Bradeb</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {team.map((m, i) => (
+              <Reveal as="article" delay={i * 120} variant="scale" key={m.init} className={`group relative bg-white rounded-2xl overflow-hidden border border-black/5 hover-lift-glow ${i % 2 === 1 ? "lg:translate-y-8" : ""}`}>
+                {/* Top color band */}
+                <div className="relative h-40 overflow-hidden" style={{ background: `linear-gradient(135deg, ${m.bg}, ${m.bg}dd)` }}>
+                  <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M0,80 Q50,40 100,60 T200,50 L200,100 L0,100 Z" fill="white" />
+                  </svg>
+                  <span className="absolute top-4 left-4 px-2 py-1 rounded-md bg-white/20 backdrop-blur text-white text-[10px] font-bold uppercase tracking-wider">0{i+1}</span>
+                  <span className="absolute top-4 right-4 h-2 w-2 rounded-full bg-soft-green animate-pulse" />
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 font-heading font-black text-white/10 text-7xl leading-none">{m.init}</span>
                 </div>
-              </div>
-              <div className="pt-14 pb-6 px-6 text-center">
-                <h3 className="font-heading font-bold text-navy text-lg group-hover:text-teal transition-colors">{m.name}</h3>
-                <p className="text-teal text-sm font-semibold mb-3">{m.role}</p>
-                <p className="text-[#4a5568] text-sm mb-5">Personal description goes here — bringing years of dedicated expertise to Bradeb's mission.</p>
-                <div className="flex justify-center gap-3">
-                  <a href="#" className="text-teal hover:text-navy"><Mail size={16} /></a>
-                  <a href="#" className="text-teal hover:text-navy"><Linkedin size={16} /></a>
+                {/* Initial badge */}
+                <div className="px-6 -mt-10 relative">
+                  <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-gold to-[#e8c878] text-navy font-heading font-black flex items-center justify-center text-xl border-4 border-white shadow-xl group-hover:rotate-6 transition-transform">
+                    {m.init}
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+                <div className="p-6 pt-4">
+                  <h3 className="font-heading font-bold text-navy text-lg group-hover:text-teal transition-colors">{m.name}</h3>
+                  <p className="text-teal text-xs font-bold uppercase tracking-wider mb-3">{m.role}</p>
+                  <p className="text-[#4a5568] text-sm leading-relaxed mb-5">Bringing years of dedicated expertise to Bradeb's mission.</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-black/5">
+                    <div className="flex gap-2">
+                      <a href="#" className="h-8 w-8 rounded-full bg-teal/10 text-teal flex items-center justify-center hover:bg-teal hover:text-white transition-all"><Mail size={14} /></a>
+                      <a href="#" className="h-8 w-8 rounded-full bg-teal/10 text-teal flex items-center justify-center hover:bg-teal hover:text-white transition-all"><Linkedin size={14} /></a>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#94a3b8] font-semibold">Bradeb · {2020 + i}</span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
