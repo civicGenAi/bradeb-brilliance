@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode, type ElementType } from "react";
+import { useEffect, useRef, type ReactNode, type ElementType, type CSSProperties } from "react";
 
 type Variant = "up" | "left" | "scale" | "words";
 
@@ -10,6 +10,7 @@ export function Reveal({
   className = "",
   as: As = "div",
   threshold = 0.18,
+  style,
 }: {
   children: ReactNode;
   variant?: Variant;
@@ -18,6 +19,7 @@ export function Reveal({
   className?: string;
   as?: ElementType;
   threshold?: number;
+  style?: CSSProperties;
 }) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -57,7 +59,7 @@ export function Reveal({
       : "reveal";
 
   return (
-    <As ref={ref as never} className={`${base} ${className}`}>
+    <As ref={ref as never} className={`${base} ${className}`} style={style}>
       {children}
     </As>
   );
