@@ -34,7 +34,7 @@ export default function NotFoundPage() {
         {/* 404 Text */}
         <h1 className="font-heading font-black text-[120px] leading-none md:text-[180px] tracking-tighter mb-4 text-transparent bg-clip-text"
             style={{
-              backgroundImage: "repeating-linear-gradient(-45deg, #c9a84c, #c9a84c 20px, #0a1628 20px, #0a1628 40px)",
+              backgroundImage: "repeating-linear-gradient(-45deg, #2e9ca3, #2e9ca3 20px, #0a1628 20px, #0a1628 40px)",
               backgroundSize: "200% 200%",
               animation: "hazard-stripes 10s linear infinite"
             }}>

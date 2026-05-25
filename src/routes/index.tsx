@@ -59,7 +59,7 @@ export default function Index() {
           >
             <defs>
               <pattern id="hgrid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#26d4a0" strokeWidth="1" />
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2e9ca3" strokeWidth="1" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#hgrid)" />
@@ -163,7 +163,7 @@ export default function Index() {
 
         {/* Scroll cue (Desktop Only) */}
         <div className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 text-white/80 text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex-col items-center gap-3 animate-bounce z-10">
-          <span className="bg-navy/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(38,212,160,0.3)] flex items-center gap-2">
+          <span className="bg-navy/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(46,156,163,0.3)] flex items-center gap-2">
             Scroll to explore <ArrowDown size={14} className="text-teal-bright" />
           </span>
         </div>
@@ -236,7 +236,7 @@ export default function Index() {
           className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
-              "linear-gradient(#26d4a0 1px, transparent 1px), linear-gradient(90deg, #26d4a0 1px, transparent 1px)",
+              "linear-gradient(#2e9ca3 1px, transparent 1px), linear-gradient(90deg, #2e9ca3 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         ></div>
@@ -264,7 +264,7 @@ export default function Index() {
                     <div className="w-2.5 bg-teal/20 h-[30%] rounded-t-sm"></div>
                     <div className="w-2.5 bg-teal/40 h-[50%] rounded-t-sm"></div>
                     <div className="w-2.5 bg-teal/60 h-[75%] rounded-t-sm"></div>
-                    <div className="w-2.5 bg-gold h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(201,168,76,0.4)]"></div>
+                    <div className="w-2.5 bg-gold h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(46,156,163,0.4)]"></div>
                   </div>
                 ),
               },
@@ -285,14 +285,14 @@ export default function Index() {
                       <path
                         d="M0,25 L25,28 L50,15 L75,18 L100,0"
                         fill="none"
-                        stroke="#c9a84c"
+                        stroke="#2e9ca3"
                         strokeWidth="2"
                         strokeLinejoin="round"
                       />
-                      <circle cx="100" cy="0" r="3" fill="#c9a84c" className="animate-pulse" />
+                      <circle cx="100" cy="0" r="3" fill="#2e9ca3" className="animate-pulse" />
                       <defs>
                         <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#c9a84c" />
+                          <stop offset="0%" stopColor="#2e9ca3" />
                           <stop offset="100%" stopColor="transparent" />
                         </linearGradient>
                       </defs>
@@ -313,7 +313,7 @@ export default function Index() {
                         cy="18"
                         r="16"
                         fill="none"
-                        stroke="#157575"
+                        stroke="#17767c"
                         strokeWidth="3"
                         opacity="0.2"
                       />
@@ -322,7 +322,7 @@ export default function Index() {
                         cy="18"
                         r="16"
                         fill="none"
-                        stroke="#c9a84c"
+                        stroke="#2e9ca3"
                         strokeWidth="3"
                         strokeDasharray="80 100"
                       />
@@ -392,7 +392,7 @@ export default function Index() {
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: "radial-gradient(#157575 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(#17767c 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         ></div>
@@ -445,7 +445,7 @@ export default function Index() {
                 <div>
                   <div
                     className={`h-16 w-16 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg transition-transform group-hover:scale-110`}
-                    style={{ backgroundColor: green ? "#5b995a" : "#1f4590" }}
+                    style={{ backgroundColor: green ? "#17767c" : "#1d3c6b" }}
                   >
                     <Icon size={30} />
                   </div>
@@ -519,7 +519,7 @@ export default function Index() {
       {/* F: Contact teaser & Newsletter */}
       <section
         className="py-24 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}
+        style={{ background: "linear-gradient(135deg, #1d3c6b, #07396c)" }}
       >
         {/* Subtle grid pattern overlay */}
         <div
@@ -543,7 +543,7 @@ export default function Index() {
             </p>
             <Link
               to="/contact"
-              className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(201,168,76,0.3)]"
+              className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(46,156,163,0.3)]"
             >
               Contact Us Today <ArrowRight size={16} />
             </Link>

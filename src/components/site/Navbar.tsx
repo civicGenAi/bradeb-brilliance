@@ -30,7 +30,7 @@ export function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-[1000] transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? "#1f4590" : "transparent",
+        backgroundColor: scrolled ? "#1d3c6b" : "transparent",
         boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.2)" : "none",
       }}
     >
@@ -49,7 +49,7 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               end={l.to === "/"}
-              className={({ isActive }) => `nav-link-underline text-[13px] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-teal ${isActive ? 'text-[#26d4a0]' : 'text-white'}`}
+              className={({ isActive }) => `nav-link-underline text-[13px] font-semibold uppercase tracking-[0.12em] transition-colors hover:text-teal ${isActive ? 'text-[#2e9ca3]' : 'text-white'}`}
             >
               {l.label}
             </NavLink>
@@ -84,7 +84,7 @@ export function Navbar() {
               key={l.to}
               to={l.to}
               end={l.to === "/"}
-              className={({ isActive }) => `border-l-2 pl-4 py-3 font-semibold uppercase tracking-[0.15em] text-sm transition-all hover:border-[#157575] hover:text-[#26d4a0] ${isActive ? 'border-[#157575] text-[#26d4a0]' : 'border-transparent text-white'}`}
+              className={({ isActive }) => `border-l-2 pl-4 py-3 font-semibold uppercase tracking-[0.15em] text-sm transition-all hover:border-[#17767c] hover:text-[#2e9ca3] ${isActive ? 'border-[#17767c] text-[#2e9ca3]' : 'border-transparent text-white'}`}
               style={{ animation: open ? `fade-up 0.4s ease ${i * 0.06}s both` : undefined }}
             >
               {l.label}

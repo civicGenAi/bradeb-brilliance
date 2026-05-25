@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import profilePdf from "@/assets/compay_profile.pdf";
 
 const certs = [
-  { t: "Certificate of Incorporation", body: "BRELA Tanzania", num: "No. 142322722", date: "Aug 7, 2020", color: "#1f4590" },
-  { t: "CRB Building Contractor Class V", body: "Contractors Reg. Board", num: "B5/1722/01/2024", date: "Jan 6, 2024", color: "#157575" },
-  { t: "CRB Civil Works Contractor Class V", body: "CRB Tanzania", num: "C5/1579/01/2024", date: "Jan 3, 2024", color: "#5b995a" },
-  { t: "TIN Registration", body: "Tanzania Revenue Authority", num: "TIN 142-322-722", date: "Aug 7, 2020", color: "#1f4590" },
-  { t: "VAT Registration", body: "Tanzania Revenue Authority", num: "VRN 40-044729-A", date: "Jan 13, 2022", color: "#157575" },
-  { t: "Tax Clearance Certificate", body: "TRA", num: "521-0112-0635", date: "2022", color: "#5b995a" },
-  { t: "Workers Compensation Fund", body: "WCF Tanzania", num: "Reg No. 041904", date: "Dec 20, 2023", color: "#1f4590" },
-  { t: "Zanzibar Certificate of Incorporation", body: "Rev. Govt of Zanzibar", num: "Z0000152767", date: "Jun 1, 2022", color: "#157575" },
+  { t: "Certificate of Incorporation", body: "BRELA Tanzania", num: "No. 142322722", date: "Aug 7, 2020", color: "#1d3c6b" },
+  { t: "CRB Building Contractor Class V", body: "Contractors Reg. Board", num: "B5/1722/01/2024", date: "Jan 6, 2024", color: "#17767c" },
+  { t: "CRB Civil Works Contractor Class V", body: "CRB Tanzania", num: "C5/1579/01/2024", date: "Jan 3, 2024", color: "#17767c" },
+  { t: "TIN Registration", body: "Tanzania Revenue Authority", num: "TIN 142-322-722", date: "Aug 7, 2020", color: "#1d3c6b" },
+  { t: "VAT Registration", body: "Tanzania Revenue Authority", num: "VRN 40-044729-A", date: "Jan 13, 2022", color: "#17767c" },
+  { t: "Tax Clearance Certificate", body: "TRA", num: "521-0112-0635", date: "2022", color: "#17767c" },
+  { t: "Workers Compensation Fund", body: "WCF Tanzania", num: "Reg No. 041904", date: "Dec 20, 2023", color: "#1d3c6b" },
+  { t: "Zanzibar Certificate of Incorporation", body: "Rev. Govt of Zanzibar", num: "Z0000152767", date: "Jun 1, 2022", color: "#17767c" },
 ];
 
 export default function ServicesPage() {
@@ -30,11 +30,11 @@ export default function ServicesPage() {
           <rect width="100%" height="100%" fill="url(#bp)" />
         </svg>
         <svg className="absolute -right-20 top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-20" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#157575" className="animate-draw" />
-          <circle cx="100" cy="100" r="60" fill="none" stroke="#157575" className="animate-draw" />
-          <circle cx="100" cy="100" r="30" fill="none" stroke="#157575" />
-          <path d="M100,10 L100,190 M10,100 L190,100" stroke="#157575" />
-          <path d="M30,30 L170,170 M170,30 L30,170" stroke="#157575" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#17767c" className="animate-draw" />
+          <circle cx="100" cy="100" r="60" fill="none" stroke="#17767c" className="animate-draw" />
+          <circle cx="100" cy="100" r="30" fill="none" stroke="#17767c" />
+          <path d="M100,10 L100,190 M10,100 L190,100" stroke="#17767c" />
+          <path d="M30,30 L170,170 M170,30 L30,170" stroke="#17767c" strokeWidth="0.5" />
         </svg>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20">
           <p className="eyebrow text-teal mb-6 animate-fade-up">Our Expertise</p>
@@ -132,7 +132,7 @@ export default function ServicesPage() {
           </div>
 
           {/* Why choose strip */}
-          <div className="rounded-3xl overflow-hidden grid md:grid-cols-2" style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}>
+          <div className="rounded-3xl overflow-hidden grid md:grid-cols-2" style={{ background: "linear-gradient(135deg, #1d3c6b, #07396c)" }}>
             <div className="p-8 md:p-12">
               <p className="eyebrow text-gold mb-4">Why Choose Our Pest Services</p>
               <h3 className="font-heading font-extrabold text-white text-2xl md:text-3xl mb-6 leading-tight">Built on protocols, not promises.</h3>
@@ -194,7 +194,7 @@ export default function ServicesPage() {
 
       {/* Certifications Integration */}
       <section className="py-24 bg-white relative overflow-hidden" id="certifications">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#157575 1px, transparent 1px)", backgroundSize: "30px 30px" }}></div>
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#17767c 1px, transparent 1px)", backgroundSize: "30px 30px" }}></div>
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 relative">
           <Reveal className="mb-14 text-center">
             <p className="eyebrow text-teal mb-3 justify-center flex items-center gap-2"><span className="w-8 h-[2px] bg-gold"></span> Legal & Compliance</p>
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                   <h3 className="font-heading font-bold text-navy text-xl mb-2">{l.t}</h3>
                   <p className="text-[#4a5568] text-sm mb-4">{l.body}</p>
                 </div>
-                <span className="px-3 py-1.5 rounded-md bg-gold/15 text-[#7c6420] text-[11px] font-bold uppercase">{l.valid}</span>
+                <span className="px-3 py-1.5 rounded-md bg-gold/15 text-[#0e5a5f] text-[11px] font-bold uppercase">{l.valid}</span>
               </div>
             ))}
           </div>
@@ -242,7 +242,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Compliance CTA */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: "#1f4590" }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: "#1d3c6b" }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         <div className="mx-auto max-w-4xl px-6 text-center relative z-10">
           <ShieldCheck size={48} className="mx-auto text-gold mb-6" />
@@ -250,7 +250,7 @@ export default function ServicesPage() {
             All operations strictly comply with the Companies Act 2002, Contractors Registration Act No. 17 of 1997, and Tanzania Revenue Authority requirements.
           </p>
           <div className="h-px w-24 bg-gold mx-auto my-10" />
-          <a href={profilePdf} download="Bradeb_Company_Profile.pdf" className="btn-shine inline-flex items-center gap-2 rounded-full bg-teal px-8 py-4 text-white font-bold uppercase text-sm tracking-[0.15em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(38,212,160,0.3)]">
+          <a href={profilePdf} download="Bradeb_Company_Profile.pdf" className="btn-shine inline-flex items-center gap-2 rounded-full bg-teal px-8 py-4 text-white font-bold uppercase text-sm tracking-[0.15em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(46,156,163,0.3)]">
             <Download size={18} /> Download Company Profile
           </a>
         </div>

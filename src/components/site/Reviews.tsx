@@ -18,8 +18,8 @@ export function ReviewsSection() {
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: "#0a1628" }}>
       {/* Tech-giant style radial glows using strict brand colors */}
-      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#157575] rounded-full blur-[150px] opacity-[0.15] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-[#c9a84c] rounded-full blur-[150px] opacity-[0.08] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#17767c] rounded-full blur-[150px] opacity-[0.15] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-[#2e9ca3] rounded-full blur-[150px] opacity-[0.08] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
 
@@ -37,12 +37,12 @@ export function ReviewsSection() {
             to="/reviews"
             className="group relative inline-flex items-center gap-3 self-start md:self-end rounded-full bg-white/5 backdrop-blur-md border border-white/10 pl-2 pr-5 py-2 hover:bg-white/10 transition-colors"
           >
-            <span className="relative h-10 w-10 rounded-full bg-[#c9a84c] flex items-center justify-center text-[#0a1628] shadow-[0_0_20px_rgba(201,168,76,0.35)]">
+            <span className="relative h-10 w-10 rounded-full bg-[#2e9ca3] flex items-center justify-center text-[#0a1628] shadow-[0_0_20px_rgba(46,156,163,0.35)]">
               <PenLine size={16} />
-              <span className="absolute inset-0 rounded-full border border-[#c9a84c]/60 animate-ping" />
+              <span className="absolute inset-0 rounded-full border border-[#2e9ca3]/60 animate-ping" />
             </span>
             <span className="text-white text-[12px] font-bold uppercase tracking-[0.18em]">Write a review</span>
-            <ArrowUpRight size={16} className="text-[#26d4a0] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight size={16} className="text-[#2e9ca3] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </Reveal>
 
@@ -91,11 +91,11 @@ function ReviewCard({ review }: { review: any }) {
   const isGold = review.color === "gold";
   return (
     <div className="w-[320px] md:w-[420px] shrink-0 p-[1px] rounded-2xl bg-gradient-to-br from-white/10 to-transparent">
-      <div className="bg-[#0a1628] h-full rounded-2xl p-8 flex flex-col justify-between border border-[#1f4590]/40 transition-all hover:border-[#157575] hover:bg-[#07396c]/30">
+      <div className="bg-[#0a1628] h-full rounded-2xl p-8 flex flex-col justify-between border border-[#1d3c6b]/40 transition-all hover:border-[#17767c] hover:bg-[#07396c]/30">
         <div>
           <div className="flex gap-1 mb-6">
             {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} size={14} className={isGold ? "text-[#c9a84c] fill-[#c9a84c]" : "text-[#26d4a0] fill-[#26d4a0]"} />
+              <Star key={s} size={14} className={isGold ? "text-[#2e9ca3] fill-[#2e9ca3]" : "text-[#2e9ca3] fill-[#2e9ca3]"} />
             ))}
           </div>
           <p className="text-white/80 leading-relaxed text-[15px] mb-8 font-light">
@@ -104,7 +104,7 @@ function ReviewCard({ review }: { review: any }) {
         </div>
         
         <div className="flex items-center gap-4">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border ${isGold ? "bg-[#c9a84c]/10 text-[#c9a84c] border-[#c9a84c]/30" : "bg-[#157575]/20 text-[#26d4a0] border-[#26d4a0]/30"}`}>
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border ${isGold ? "bg-[#2e9ca3]/10 text-[#2e9ca3] border-[#2e9ca3]/30" : "bg-[#17767c]/20 text-[#2e9ca3] border-[#2e9ca3]/30"}`}>
             {review.name.charAt(0)}
           </div>
           <div>

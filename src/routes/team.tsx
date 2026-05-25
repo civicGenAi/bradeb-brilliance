@@ -6,17 +6,17 @@ import { Mail, Linkedin, ShieldCheck, Target, Users, Award } from "lucide-react"
 
 
 const team = [
-  { name:"Bradley C. Muro", role:"Managing Director", init:"BCM", bg:"#1f4590" },
-  { name:"Amry Kavunja", role:"Head of Operations", init:"AK", bg:"#157575" },
-  { name:"Cuthbert M. Muro", role:"Director", init:"CMM", bg:"#1f4590" },
-  { name:"Dennis Cuthbert", role:"Head of Site Works", init:"DC", bg:"#157575" },
+  { name:"Bradley C. Muro", role:"Managing Director", init:"BCM", bg:"#1d3c6b" },
+  { name:"Amry Kavunja", role:"Head of Operations", init:"AK", bg:"#17767c" },
+  { name:"Cuthbert M. Muro", role:"Director", init:"CMM", bg:"#1d3c6b" },
+  { name:"Dennis Cuthbert", role:"Head of Site Works", init:"DC", bg:"#17767c" },
 ];
 
 export default function TeamPage() {
   return (
     <PageShell>
       {/* HERO — editorial */}
-      <section className="relative min-h-[75vh] flex items-center pt-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #07396c 50%, #1f4590 100%)" }}>
+      <section className="relative min-h-[75vh] flex items-center pt-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #07396c 50%, #1d3c6b 100%)" }}>
         <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
           <defs><pattern id="tg" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="#fff"/></pattern></defs>
           <rect width="100%" height="100%" fill="url(#tg)" />
@@ -64,7 +64,7 @@ export default function TeamPage() {
           <p className="eyebrow text-teal text-center mb-3">Organizational Structure</p>
           <h2 className="font-heading font-extrabold text-navy text-3xl md:text-4xl text-center mb-16">How We're Organized</h2>
           <div className="flex flex-col items-center gap-10">
-            <div className="px-8 py-4 rounded-xl bg-navy text-white font-heading font-bold border-2 border-teal shadow-lg" style={{ boxShadow: "0 0 0 4px rgba(21,117,117,0.15)" }}>
+            <div className="px-8 py-4 rounded-xl bg-navy text-white font-heading font-bold border-2 border-teal shadow-lg" style={{ boxShadow: "0 0 0 4px rgba(23,118,124,0.15)" }}>
               MANAGING DIRECTOR
             </div>
             <div className="w-px h-10 bg-teal" />
@@ -100,7 +100,7 @@ export default function TeamPage() {
                 </div>
                 {/* Initial badge */}
                 <div className="px-6 -mt-10 relative">
-                  <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-gold to-[#e8c878] text-navy font-heading font-black flex items-center justify-center text-xl border-4 border-white shadow-xl group-hover:rotate-6 transition-transform">
+                  <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-gold to-[#4fb3b8] text-navy font-heading font-black flex items-center justify-center text-xl border-4 border-white shadow-xl group-hover:rotate-6 transition-transform">
                     {m.init}
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function TeamPage() {
       </section>
 
       {/* Culture */}
-      <section className="py-24" style={{ backgroundColor: "#1f4590" }}>
+      <section className="py-24" style={{ backgroundColor: "#1d3c6b" }}>
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-12 items-center">
           <h2 className="font-heading font-extrabold text-white text-3xl md:text-4xl leading-tight overflow-hidden">
             <SplitText text="&ldquo;Our team's expertise spans every field of civil and building construction.&rdquo;" />

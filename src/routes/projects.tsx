@@ -18,10 +18,10 @@ const projects: P[] = [
 ];
 
 const patterns = [
-  "linear-gradient(135deg, #1f4590 0%, #157575 100%)",
-  "linear-gradient(135deg, #07396c 0%, #1f4590 100%)",
-  "linear-gradient(135deg, #157575 0%, #0f6e56 100%)",
-  "linear-gradient(135deg, #0a1628 0%, #115294 100%)",
+  "linear-gradient(135deg, #1d3c6b 0%, #17767c 100%)",
+  "linear-gradient(135deg, #07396c 0%, #1d3c6b 100%)",
+  "linear-gradient(135deg, #17767c 0%, #17767c 100%)",
+  "linear-gradient(135deg, #0a1628 0%, #1d3c6b 100%)",
 ];
 
 const tabs = ["All","Residential","Commercial","Institutional"];
@@ -33,7 +33,7 @@ export default function ProjectsPage() {
   return (
     <PageShell>
       {/* HERO — magazine */}
-      <section className="relative min-h-[80vh] flex items-end overflow-hidden pt-24 pb-12" style={{ background: "linear-gradient(135deg, #07396c 0%, #1f4590 60%, #115294 100%)" }}>
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden pt-24 pb-12" style={{ background: "linear-gradient(135deg, #07396c 0%, #1d3c6b 60%, #1d3c6b 100%)" }}>
         <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
           <defs><pattern id="pgrid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="#fff" strokeWidth="0.5"/></pattern></defs>
           <rect width="100%" height="100%" fill="url(#pgrid)" />
