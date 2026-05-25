@@ -1,7 +1,7 @@
-@import "tailwindcss" source(none);
-@source "../src";
-@import "tw-animate-css";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@source "../src";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -62,6 +62,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-navy: #1f4590;
   --color-teal: #157575;
+  --color-teal-bright: #26d4a0;
   --color-gold: #c9a84c;
   --color-dark-navy: #07396c;
   --color-steel: #115294;
@@ -238,6 +239,45 @@
   /* Kenburns slow zoom on bg images */
   @keyframes kenburns { 0% { transform: scale(1) translate(0,0); } 100% { transform: scale(1.12) translate(-2%, -1%); } }
   .animate-kenburns { animation: kenburns 18s ease-in-out infinite alternate; }
+}
+
+/* =====================================================================
+ * DESIGN SYSTEM — shared layout, type scale & control primitives.
+ * Adopt these on pages so spacing, headings and buttons stay consistent.
+ * (Phase 1 foundation — additive; existing markup is unaffected.)
+ * ===================================================================== */
+@layer utilities {
+  /* --- Horizontal containers --- */
+  .container-bradeb { margin-inline: auto; max-width: 80rem; padding-inline: 1.5rem; width: 100%; }
+  .container-wide   { margin-inline: auto; max-width: 87.5rem; padding-inline: 1.5rem; width: 100%; }
+  @media (min-width: 1024px) {
+    .container-bradeb, .container-wide { padding-inline: 2.5rem; }
+  }
+
+  /* --- Vertical section rhythm (one fluid scale for the whole site) --- */
+  .section-y    { padding-block: clamp(4rem, 8vw, 8rem); }
+  .section-y-sm { padding-block: clamp(3rem, 5vw, 5rem); }
+
+  /* --- Type scale --- */
+  .display-1 { font-family: var(--font-heading); font-weight: 800; line-height: 0.92; letter-spacing: -0.01em; font-size: clamp(2.5rem, 7vw, 5.5rem); }
+  .display-2 { font-family: var(--font-heading); font-weight: 800; line-height: 1.0;  letter-spacing: -0.01em; font-size: clamp(2rem, 5vw, 3.5rem); }
+  .heading-section { font-family: var(--font-heading); font-weight: 800; line-height: 1.05; font-size: clamp(1.75rem, 3.5vw, 3rem); }
+  .lead { font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.7; }
+
+  /* --- Buttons (pill, uppercase, brand-consistent) --- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    border-radius: 9999px; font-family: var(--font-body); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8125rem;
+    padding: 0.875rem 1.75rem; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--color-teal); color: #fff; }
+  .btn-primary:hover { background: var(--color-gold); color: var(--color-near-black); }
+  .btn-gold { background: var(--color-gold); color: var(--color-near-black); }
+  .btn-gold:hover { background: #fff; }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.4); color: #fff; }
+  .btn-outline:hover { border-color: var(--color-teal-bright); color: var(--color-teal-bright); }
 }
 
 @media (prefers-reduced-motion: reduce) {
