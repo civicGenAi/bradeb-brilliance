@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <PageShell>
       {/* HERO — architectural blueprint */}
-      <section className="relative min-h-[92vh] flex items-end pt-24 pb-12 overflow-hidden" style={{ background: "radial-gradient(circle at 20% 0%, #115294 0%, #07396c 45%, #0a1628 100%)" }}>
+      <section className="relative min-h-[92vh] flex items-end pt-24 pb-12 overflow-hidden" style={{ background: "radial-gradient(circle at 20% 0%, #1d3c6b 0%, #07396c 45%, #0a1628 100%)" }}>
         {/* Blueprint grid */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -22,14 +22,14 @@ export default function AboutPage() {
         {/* Floating skyline silhouette */}
         <svg className="absolute bottom-0 left-0 right-0 w-full opacity-25" viewBox="0 0 1200 200" preserveAspectRatio="none">
           {[60,120,80,160,100,140,90,180,110,150,70,130,95,165,85,145].map((h,i)=>(
-            <rect key={i} x={i*78} y={200-h} width="60" height={h} fill="#157575" />
+            <rect key={i} x={i*78} y={200-h} width="60" height={h} fill="#17767c" />
           ))}
         </svg>
         {/* Gold compass orbit */}
         <svg className="absolute -right-32 top-12 w-[420px] h-[420px] opacity-30 animate-spin-slow hidden md:block" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#c9a84c" strokeDasharray="3 6" />
-          <circle cx="100" cy="100" r="60" fill="none" stroke="#c9a84c" />
-          <circle cx="100" cy="10" r="4" fill="#c9a84c" />
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#2e9ca3" strokeDasharray="3 6" />
+          <circle cx="100" cy="100" r="60" fill="none" stroke="#2e9ca3" />
+          <circle cx="100" cy="10" r="4" fill="#2e9ca3" />
         </svg>
 
         <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 grid lg:grid-cols-12 gap-8 items-end">
@@ -86,9 +86,9 @@ export default function AboutPage() {
               <span className="absolute top-7 left-0 right-0 h-[2px] bg-gradient-to-r from-teal via-gold to-teal opacity-30" />
               <div className="grid grid-cols-3 gap-3 md:gap-5 relative">
                 {[
-                  { year: "2020", title: "Incorporated", body: "Founded under Companies Act 2002.", color: "#1f4590" },
-                  { year: "2022", title: "VAT Registered", body: "TRA registration; first major projects.", color: "#157575" },
-                  { year: "2024", title: "CRB Class V", body: "Building & Civil certification awarded.", color: "#c9a84c" },
+                  { year: "2020", title: "Incorporated", body: "Founded under Companies Act 2002.", color: "#1d3c6b" },
+                  { year: "2022", title: "VAT Registered", body: "TRA registration; first major projects.", color: "#17767c" },
+                  { year: "2024", title: "CRB Class V", body: "Building & Civil certification awarded.", color: "#2e9ca3" },
                 ].map((m, i) => (
                   <Reveal as="div" delay={i*150} variant="scale" key={m.year} className="group relative">
                     <span className="block mx-auto h-4 w-4 rounded-full ring-4 ring-white relative z-10 group-hover:scale-150 transition-transform" style={{ background: m.color, boxShadow: `0 0 0 6px ${m.color}22` }} />
@@ -119,8 +119,8 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-12 gap-5">
             {[
-              { t: "Mission", n:"01", b: "Deliver world-class construction and fumigation services that exceed client expectations.", bg: "#1f4590", span: "md:col-span-5 md:row-span-2 min-h-[380px]" },
-              { t: "Vision",  n:"02", b: "To be a top-rated regional market leader in construction and pest control.", bg: "#157575", span: "md:col-span-7 min-h-[180px]" },
+              { t: "Mission", n:"01", b: "Deliver world-class construction and fumigation services that exceed client expectations.", bg: "#1d3c6b", span: "md:col-span-5 md:row-span-2 min-h-[380px]" },
+              { t: "Vision",  n:"02", b: "To be a top-rated regional market leader in construction and pest control.", bg: "#17767c", span: "md:col-span-7 min-h-[180px]" },
               { t: "Values",  n:"03", b: "Integrity · Commitment · Safety First — in every project we touch.", bg: "#0a1628", accent: true, span: "md:col-span-7 min-h-[180px]" },
             ].map((c, i) => (
               <Reveal as="article" delay={i * 140} key={c.t} className={`group relative overflow-hidden hover-lift-glow rounded-3xl p-8 md:p-10 flex flex-col justify-between ${c.span}`} style={{ backgroundColor: c.bg }}>
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* Objectives */}
-      <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#1f4590" }}>
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#1d3c6b" }}>
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(45deg, transparent 49%, #fff 49%, #fff 51%, transparent 51%)", backgroundSize: "20px 20px" }} />
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[5fr_7fr] gap-14">
           <div className="lg:sticky lg:top-32 self-start">
@@ -171,7 +171,7 @@ export default function AboutPage() {
       </section>
 
       {/* EHS */}
-      <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #157575, #0f6e56)" }}>
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #17767c, #17767c)" }}>
         <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
           <defs><pattern id="hex" width="50" height="44" patternUnits="userSpaceOnUse"><polygon points="25,2 47,15 47,40 25,42 3,40 3,15" fill="none" stroke="#fff"/></pattern></defs>
           <rect width="100%" height="100%" fill="url(#hex)" />

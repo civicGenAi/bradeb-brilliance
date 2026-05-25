@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Media } from "@/components/site/Media";
-import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown } from "lucide-react";
 import { ReviewsSection } from "@/components/site/Reviews";
 import { useEffect, useRef } from "react";
 
@@ -59,7 +59,7 @@ export default function Index() {
           >
             <defs>
               <pattern id="hgrid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#26d4a0" strokeWidth="1" />
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2e9ca3" strokeWidth="1" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#hgrid)" />
@@ -106,9 +106,9 @@ export default function Index() {
               </Link>
             </div>
 
-            {/* Proof stats — baked above the fold */}
+            {/* Proof stats — baked above the fold (hidden on mobile; shown in the Performance Metrics section instead) */}
             <div
-              className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-white/15 pt-8 max-w-2xl animate-fade-up"
+              className="mt-12 hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-white/15 pt-8 max-w-2xl animate-fade-up"
               style={{ animationDelay: "1s" }}
             >
               {[
@@ -163,7 +163,7 @@ export default function Index() {
 
         {/* Scroll cue (Desktop Only) */}
         <div className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 text-white/80 text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex-col items-center gap-3 animate-bounce z-10">
-          <span className="bg-navy/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(38,212,160,0.3)] flex items-center gap-2">
+          <span className="bg-navy/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(46,156,163,0.3)] flex items-center gap-2">
             Scroll to explore <ArrowDown size={14} className="text-teal-bright" />
           </span>
         </div>
@@ -236,7 +236,7 @@ export default function Index() {
           className="absolute inset-0 opacity-[0.05]"
           style={{
             backgroundImage:
-              "linear-gradient(#26d4a0 1px, transparent 1px), linear-gradient(90deg, #26d4a0 1px, transparent 1px)",
+              "linear-gradient(#2e9ca3 1px, transparent 1px), linear-gradient(90deg, #2e9ca3 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         ></div>
@@ -252,7 +252,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {[
               {
                 v: 8,
@@ -264,7 +264,7 @@ export default function Index() {
                     <div className="w-2.5 bg-teal/20 h-[30%] rounded-t-sm"></div>
                     <div className="w-2.5 bg-teal/40 h-[50%] rounded-t-sm"></div>
                     <div className="w-2.5 bg-teal/60 h-[75%] rounded-t-sm"></div>
-                    <div className="w-2.5 bg-gold h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(201,168,76,0.4)]"></div>
+                    <div className="w-2.5 bg-gold h-[100%] rounded-t-sm shadow-[0_0_15px_rgba(46,156,163,0.4)]"></div>
                   </div>
                 ),
               },
@@ -285,14 +285,14 @@ export default function Index() {
                       <path
                         d="M0,25 L25,28 L50,15 L75,18 L100,0"
                         fill="none"
-                        stroke="#c9a84c"
+                        stroke="#2e9ca3"
                         strokeWidth="2"
                         strokeLinejoin="round"
                       />
-                      <circle cx="100" cy="0" r="3" fill="#c9a84c" className="animate-pulse" />
+                      <circle cx="100" cy="0" r="3" fill="#2e9ca3" className="animate-pulse" />
                       <defs>
                         <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#c9a84c" />
+                          <stop offset="0%" stopColor="#2e9ca3" />
                           <stop offset="100%" stopColor="transparent" />
                         </linearGradient>
                       </defs>
@@ -313,7 +313,7 @@ export default function Index() {
                         cy="18"
                         r="16"
                         fill="none"
-                        stroke="#157575"
+                        stroke="#17767c"
                         strokeWidth="3"
                         opacity="0.2"
                       />
@@ -322,7 +322,7 @@ export default function Index() {
                         cy="18"
                         r="16"
                         fill="none"
-                        stroke="#c9a84c"
+                        stroke="#2e9ca3"
                         strokeWidth="3"
                         strokeDasharray="80 100"
                       />
@@ -352,10 +352,10 @@ export default function Index() {
             ].map((s, i) => (
               <div
                 key={i}
-                className="bg-[#112340] border border-white/5 p-8 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300"
+                className={`bg-[#112340] border border-white/5 p-4 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300 ${i % 2 === 1 ? "mt-8 lg:mt-0" : ""}`}
               >
                 {s.graph}
-                <div className="font-heading font-black text-white text-[2rem] md:text-4xl drop-shadow-md mb-1 flex flex-col xl:flex-row xl:items-baseline xl:gap-2">
+                <div className="font-heading font-black text-white text-2xl sm:text-[2rem] md:text-4xl drop-shadow-md mb-1 flex flex-col xl:flex-row xl:items-baseline xl:gap-2">
                   {s.pre && (
                     <span className="text-xs md:text-sm text-teal tracking-widest uppercase">
                       {s.pre}
@@ -377,7 +377,7 @@ export default function Index() {
                 <p className="font-heading text-white/90 mt-3 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase leading-snug">
                   {s.l}
                 </p>
-                <p className="text-white/40 text-[11px] md:text-xs mt-2 leading-relaxed">
+                <p className="hidden sm:block text-white/40 text-[11px] md:text-xs mt-2 leading-relaxed">
                   {s.desc}
                 </p>
               </div>
@@ -392,7 +392,7 @@ export default function Index() {
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: "radial-gradient(#157575 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(#17767c 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         ></div>
@@ -406,13 +406,13 @@ export default function Index() {
                 End-to-End Building Solutions
               </h2>
             </div>
-            <div className="flex items-center gap-3 text-navy/40 text-[10px] font-bold uppercase tracking-[0.2em] md:hidden mt-2">
+            <p className="text-navy/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-2 flex items-center gap-3">
               <span className="w-8 h-[1px] bg-navy/20"></span>
-              Swipe to explore <ChevronRight size={14} className="animate-pulse text-teal" />
-            </div>
+              Four core disciplines
+            </p>
           </Reveal>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 -mx-4 hide-scrollbar">
+          <div className="flex flex-col gap-5 md:flex-row md:overflow-x-auto md:snap-x md:snap-mandatory md:gap-6 md:pb-12 md:pt-4 md:px-4 md:-mx-4 hide-scrollbar">
             {[
               {
                 Icon: Building2,
@@ -440,12 +440,15 @@ export default function Index() {
                 as="article"
                 delay={i * 100}
                 key={i}
-                className="group hover-lift-glow tilt-3d relative bg-white border border-navy/5 shadow-xl shadow-navy/5 rounded-2xl p-8 h-[380px] flex flex-col justify-between min-w-[320px] md:min-w-[400px] snap-center"
+                className={`group hover-lift-glow md:tilt-3d relative bg-white border border-navy/5 shadow-xl shadow-navy/5 rounded-2xl p-6 md:p-8 flex flex-col justify-between w-[88%] md:w-auto md:min-w-[400px] md:h-[380px] md:snap-center md:self-auto ${i % 2 === 1 ? "self-end" : "self-start"}`}
               >
+                <span className="md:hidden absolute top-4 right-5 font-heading font-black text-navy/[0.06] text-7xl leading-none select-none">
+                  0{i + 1}
+                </span>
                 <div>
                   <div
                     className={`h-16 w-16 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg transition-transform group-hover:scale-110`}
-                    style={{ backgroundColor: green ? "#5b995a" : "#1f4590" }}
+                    style={{ backgroundColor: green ? "#17767c" : "#1d3c6b" }}
                   >
                     <Icon size={30} />
                   </div>
@@ -519,7 +522,7 @@ export default function Index() {
       {/* F: Contact teaser & Newsletter */}
       <section
         className="py-24 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1f4590, #07396c)" }}
+        style={{ background: "linear-gradient(135deg, #1d3c6b, #07396c)" }}
       >
         {/* Subtle grid pattern overlay */}
         <div
@@ -543,7 +546,7 @@ export default function Index() {
             </p>
             <Link
               to="/contact"
-              className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(201,168,76,0.3)]"
+              className="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-near-black font-bold uppercase tracking-[0.15em] text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(46,156,163,0.3)]"
             >
               Contact Us Today <ArrowRight size={16} />
             </Link>

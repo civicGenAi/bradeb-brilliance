@@ -60,16 +60,20 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-navy: #1f4590;
-  --color-teal: #157575;
-  --color-teal-bright: #26d4a0;
-  --color-gold: #c9a84c;
+  /* Brand palette — TWO colours only: navy + teal (+ a brighter teal for
+   * highlights on dark) and white/neutral text greys. The `gold`,
+   * `soft-green`, `forest-teal`, `steel`, `deep-blue` tokens are kept for
+   * backwards-compatible class names but now resolve to the brand colours. */
+  --color-navy: #1d3c6b;
+  --color-teal: #17767c;
+  --color-teal-bright: #2e9ca3;
+  --color-gold: #2e9ca3;
   --color-dark-navy: #07396c;
-  --color-steel: #115294;
-  --color-soft-green: #5b995a;
-  --color-forest-teal: #0f6e56;
+  --color-steel: #1d3c6b;
+  --color-soft-green: #17767c;
+  --color-forest-teal: #17767c;
   --color-near-black: #0a1628;
-  --color-deep-blue: #004e9a;
+  --color-deep-blue: #1d3c6b;
   --color-off-white: #f5f6f8;
   --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -174,7 +178,7 @@
   @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   .animate-float { animation: float-y 3s ease-in-out infinite; }
 
-  @keyframes pulse-ring { 0%,100% { box-shadow: 0 0 60px 0 rgba(21,117,117,0.4); } 50% { box-shadow: 0 0 100px 20px rgba(21,117,117,0.6); } }
+  @keyframes pulse-ring { 0%,100% { box-shadow: 0 0 60px 0 rgba(23,118,124,0.4); } 50% { box-shadow: 0 0 100px 20px rgba(23,118,124,0.6); } }
   .animate-pulse-ring { animation: pulse-ring 3s ease-in-out infinite; }
 
   @keyframes clip-up { from { clip-path: inset(0 0 100% 0); opacity: 0; } to { clip-path: inset(0 0 0% 0); opacity: 1; } }
@@ -202,7 +206,7 @@
   .magnetic:hover { transform: translateY(-3px) scale(1.03); }
 
   .nav-link-underline { position: relative; }
-  .nav-link-underline::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:100%; background:#157575; transform:scaleX(0); transform-origin:left; transition: transform 0.3s ease; }
+  .nav-link-underline::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:100%; background:#17767c; transform:scaleX(0); transform-origin:left; transition: transform 0.3s ease; }
   .nav-link-underline:hover::after, .nav-link-underline[data-status="active"]::after { transform: scaleX(1); }
 
   /* Scroll reveal */
@@ -219,8 +223,8 @@
 
   /* Premium hover: lift + glow + accent border bloom */
   .hover-lift-glow { position: relative; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease; }
-  .hover-lift-glow:hover { transform: translateY(-6px); box-shadow: 0 24px 60px -20px rgba(21,117,117,0.45), 0 0 0 1px rgba(201,168,76,0.25); }
-  .hover-lift-glow::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; background: linear-gradient(135deg, transparent 30%, #c9a84c, transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.5s ease; pointer-events:none; }
+  .hover-lift-glow:hover { transform: translateY(-6px); box-shadow: 0 24px 60px -20px rgba(23,118,124,0.45), 0 0 0 1px rgba(46,156,163,0.25); }
+  .hover-lift-glow::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; background: linear-gradient(135deg, transparent 30%, #2e9ca3, transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.5s ease; pointer-events:none; }
   .hover-lift-glow:hover::before { opacity: 1; }
 
   /* Tilt-on-hover (subtle 3D) */
@@ -234,7 +238,7 @@
 
   /* Animated gradient text */
   @keyframes gradient-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-  .text-gradient-gold { background: linear-gradient(110deg, #c9a84c 0%, #f0d78c 30%, #c9a84c 60%, #f0d78c 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradient-shift 6s ease-in-out infinite; }
+  .text-gradient-gold { background: linear-gradient(110deg, #2e9ca3 0%, #6fc7cb 30%, #2e9ca3 60%, #6fc7cb 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradient-shift 6s ease-in-out infinite; }
 
   /* Kenburns slow zoom on bg images */
   @keyframes kenburns { 0% { transform: scale(1) translate(0,0); } 100% { transform: scale(1.12) translate(-2%, -1%); } }

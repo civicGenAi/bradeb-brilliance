@@ -71,7 +71,7 @@ function Placeholder({ label }: { label?: string }) {
   return (
     <div
       className="absolute inset-0 flex flex-col items-center justify-center"
-      style={{ background: "linear-gradient(135deg, #1f4590 0%, #07396c 60%, #0a1628 100%)" }}
+      style={{ background: "linear-gradient(135deg, #1d3c6b 0%, #07396c 60%, #0a1628 100%)" }}
       aria-hidden
     >
       {/* blueprint grid */}
@@ -81,7 +81,7 @@ function Placeholder({ label }: { label?: string }) {
       >
         <defs>
           <pattern id="media-grid" width="32" height="32" patternUnits="userSpaceOnUse">
-            <path d="M32 0 L0 0 0 32" fill="none" stroke="#26d4a0" strokeWidth="1" />
+            <path d="M32 0 L0 0 0 32" fill="none" stroke="#2e9ca3" strokeWidth="1" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#media-grid)" />

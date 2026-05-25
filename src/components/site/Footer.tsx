@@ -11,17 +11,17 @@ export function Footer() {
       <svg className="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
         <defs>
           <pattern id="fgrid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M40 0 L0 0 0 40" fill="none" stroke="#26d4a0" strokeWidth="1" />
+            <path d="M40 0 L0 0 0 40" fill="none" stroke="#2e9ca3" strokeWidth="1" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#fgrid)" />
       </svg>
       {/* corner glows */}
-      <div className="absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full blur-[140px] opacity-20" style={{ background: "#157575" }} />
-      <div className="absolute -bottom-40 -right-32 w-[400px] h-[400px] rounded-full blur-[140px] opacity-15" style={{ background: "#c9a84c" }} />
+      <div className="absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full blur-[140px] opacity-20" style={{ background: "#17767c" }} />
+      <div className="absolute -bottom-40 -right-32 w-[400px] h-[400px] rounded-full blur-[140px] opacity-15" style={{ background: "#2e9ca3" }} />
 
       {/* hazard stripe */}
-      <div className="relative h-1.5 w-full" style={{ backgroundImage: "repeating-linear-gradient(135deg,#c9a84c 0 16px,#0a1628 16px 32px)" }} />
+      <div className="relative h-1.5 w-full" style={{ backgroundImage: "repeating-linear-gradient(135deg,#2e9ca3 0 16px,#0a1628 16px 32px)" }} />
 
       {/* ====== TOP BAND: badges ====== */}
       <div className="relative border-b border-white/5 bg-white/[0.02]">
@@ -32,11 +32,11 @@ export function Footer() {
             { Icon: Wrench, label: "Since 2020", value: "Engineered to Last" },
           ].map(({ Icon, label, value }) => (
             <div key={label} className="flex items-center gap-4 group">
-              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl border border-[#26d4a0]/30 bg-[#0a1628] flex items-center justify-center text-[#26d4a0] group-hover:border-[#c9a84c] group-hover:text-[#c9a84c] transition-colors shrink-0">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl border border-[#2e9ca3]/30 bg-[#0a1628] flex items-center justify-center text-[#2e9ca3] group-hover:border-[#2e9ca3] group-hover:text-[#2e9ca3] transition-colors shrink-0">
                 <Icon size={20} className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.22em] text-[#26d4a0]/80 font-bold">{label}</p>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-[#2e9ca3]/80 font-bold">{label}</p>
                 <p className="text-white text-xs sm:text-sm font-semibold">{value}</p>
               </div>
             </div>
@@ -51,11 +51,11 @@ export function Footer() {
           <div className="flex items-center gap-3 mb-5">
             <div className="relative">
               <img src={logo} alt="Bradeb" className="h-12 w-12 sm:h-14 sm:w-14 bg-white p-1.5 rounded-lg" />
-              <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-[#26d4a0] animate-pulse shadow-[0_0_10px_#26d4a0]" />
+              <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-[#2e9ca3] animate-pulse shadow-[0_0_10px_#2e9ca3]" />
             </div>
             <div>
               <span className="font-heading font-extrabold text-white tracking-wider text-base sm:text-lg block leading-tight">BRADEB</span>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#26d4a0]">Investment Limited</span>
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[#2e9ca3]">Investment Limited</span>
             </div>
           </div>
           <p className="text-[13px] sm:text-[14px] leading-relaxed mb-6 text-[#94a3b8] max-w-sm">
@@ -64,7 +64,7 @@ export function Footer() {
 
           <div className="flex gap-2 mb-6">
             {[Facebook, Instagram, Linkedin, Twitter].map((I, i) => (
-              <a key={i} href="#" className="h-10 w-10 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#26d4a0] hover:bg-[#157575] hover:text-white hover:border-[#157575] transition-all">
+              <a key={i} href="#" className="h-10 w-10 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#2e9ca3] hover:bg-[#17767c] hover:text-white hover:border-[#17767c] transition-all">
                 <I size={15} />
               </a>
             ))}
@@ -73,14 +73,14 @@ export function Footer() {
 
         {/* Quick links */}
         <div className="col-span-1 lg:col-span-2">
-          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-4 sm:mb-5 flex items-center gap-2">
-            <span className="h-px w-4 sm:w-6 bg-[#c9a84c]" /> Navigate
+          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#2e9ca3] font-bold mb-4 sm:mb-5 flex items-center gap-2">
+            <span className="h-px w-4 sm:w-6 bg-[#2e9ca3]" /> Navigate
           </h4>
           <ul className="space-y-3 text-[12px] sm:text-[13px]">
             {["Home", "About", "Services", "Projects", "Team", "Reviews", "Contact"].map(n => (
               <li key={n}>
                 <Link to={n === "Home" ? "/" : `/${n.toLowerCase()}`} className="group inline-flex items-center gap-2 hover:text-white transition-colors">
-                  <span className="h-px w-3 bg-[#26d4a0]/40 group-hover:w-5 group-hover:bg-[#26d4a0] transition-all" />
+                  <span className="h-px w-3 bg-[#2e9ca3]/40 group-hover:w-5 group-hover:bg-[#2e9ca3] transition-all" />
                   {n}
                 </Link>
               </li>
@@ -90,13 +90,13 @@ export function Footer() {
 
         {/* Services */}
         <div className="col-span-1 lg:col-span-3">
-          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-4 sm:mb-5 flex items-center gap-2">
-            <span className="h-px w-4 sm:w-6 bg-[#c9a84c]" /> Capabilities
+          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#2e9ca3] font-bold mb-4 sm:mb-5 flex items-center gap-2">
+            <span className="h-px w-4 sm:w-6 bg-[#2e9ca3]" /> Capabilities
           </h4>
           <ul className="space-y-3 text-[12px] sm:text-[13px]">
             {["Building Construction", "Civil Engineering", "Fumigation Services", "Pest Control", "Mechanical & Electrical", "Renovation Works"].map(s => (
               <li key={s} className="flex items-start gap-2">
-                <span className="text-[#26d4a0] mt-1 text-[10px]">◆</span>{s}
+                <span className="text-[#2e9ca3] mt-1 text-[10px]">◆</span>{s}
               </li>
             ))}
           </ul>
@@ -104,25 +104,25 @@ export function Footer() {
 
         {/* Contact */}
         <div className="col-span-2 lg:col-span-3">
-          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#c9a84c] font-bold mb-4 sm:mb-5 flex items-center gap-2">
-            <span className="h-px w-6 bg-[#c9a84c]" /> Headquarters
+          <h4 className="text-[10px] uppercase tracking-[0.25em] text-[#2e9ca3] font-bold mb-4 sm:mb-5 flex items-center gap-2">
+            <span className="h-px w-6 bg-[#2e9ca3]" /> Headquarters
           </h4>
           <ul className="space-y-4 text-[12px] sm:text-[13px]">
             <li className="flex gap-3">
-              <MapPin size={16} className="text-[#26d4a0] shrink-0 mt-0.5" />
+              <MapPin size={16} className="text-[#2e9ca3] shrink-0 mt-0.5" />
               <span>P.O. Box 12390<br />Mbezi Beach – Ndumbwi<br />Dar es Salaam, Tanzania</span>
             </li>
             <li className="flex gap-3">
-              <Mail size={16} className="text-[#26d4a0] shrink-0 mt-0.5" />
+              <Mail size={16} className="text-[#2e9ca3] shrink-0 mt-0.5" />
               <a href="mailto:boraentity20@gmail.com" className="hover:text-white transition-colors break-all">boraentity20@gmail.com</a>
             </li>
             <li className="flex gap-3">
-              <Phone size={16} className="text-[#26d4a0] shrink-0 mt-0.5" />
+              <Phone size={16} className="text-[#2e9ca3] shrink-0 mt-0.5" />
               <a href="tel:+255754230234" className="hover:text-white transition-colors">+255 754 230 234</a>
             </li>
           </ul>
 
-          <Link to="/contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#157575] hover:bg-[#c9a84c] hover:text-[#0a1628] text-white px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors">
+          <Link to="/contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#17767c] hover:bg-[#2e9ca3] hover:text-[#0a1628] text-white px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors">
             Request a Quote <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -132,13 +132,13 @@ export function Footer() {
       <div className="relative border-t border-white/5 bg-black/30 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 flex flex-col md:flex-row justify-between items-center md:items-start gap-4 text-[10px] sm:text-[11px] text-center md:text-left">
           <p className="flex items-center justify-center md:justify-start gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#26d4a0] animate-pulse shrink-0" />
+            <span className="h-2 w-2 rounded-full bg-[#2e9ca3] animate-pulse shrink-0" />
             <span>© {currentYear} Bradeb Investment Limited — All Rights Reserved.</span>
           </p>
           <p className="font-mono tracking-wider text-[#64748b] flex flex-wrap justify-center gap-2">
-            <span>CRB <span className="text-[#c9a84c]">B5/1722/01/2024</span></span>
+            <span>CRB <span className="text-[#2e9ca3]">B5/1722/01/2024</span></span>
             <span className="hidden sm:inline">·</span>
-            <span>TIN <span className="text-[#c9a84c]">142-322-722</span></span>
+            <span>TIN <span className="text-[#2e9ca3]">142-322-722</span></span>
             <span className="hidden sm:inline">·</span>
             <span>Tanzania</span>
           </p>

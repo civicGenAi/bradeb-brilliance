@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <PageShell>
       {/* HERO + floating form */}
-      <section className="relative pt-24 pb-12 md:pb-32 overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #07396c 60%, #1f4590 100%)" }}>
+      <section className="relative pt-24 pb-12 md:pb-32 overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #07396c 60%, #1d3c6b 100%)" }}>
         <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
           <defs><pattern id="cdots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff" /></pattern></defs>
           <rect width="100%" height="100%" fill="url(#cdots)" />
