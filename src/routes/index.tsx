@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Media } from "@/components/site/Media";
-import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown } from "lucide-react";
 import { ReviewsSection } from "@/components/site/Reviews";
 import { useEffect, useRef } from "react";
 
@@ -106,9 +106,9 @@ export default function Index() {
               </Link>
             </div>
 
-            {/* Proof stats — baked above the fold */}
+            {/* Proof stats — baked above the fold (hidden on mobile; shown in the Performance Metrics section instead) */}
             <div
-              className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-white/15 pt-8 max-w-2xl animate-fade-up"
+              className="mt-12 hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-white/15 pt-8 max-w-2xl animate-fade-up"
               style={{ animationDelay: "1s" }}
             >
               {[
@@ -252,7 +252,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {[
               {
                 v: 8,
@@ -352,10 +352,10 @@ export default function Index() {
             ].map((s, i) => (
               <div
                 key={i}
-                className="bg-[#112340] border border-white/5 p-8 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300"
+                className={`bg-[#112340] border border-white/5 p-4 sm:p-8 rounded-2xl shadow-xl hover:-translate-y-1 transition-transform duration-300 ${i % 2 === 1 ? "mt-8 lg:mt-0" : ""}`}
               >
                 {s.graph}
-                <div className="font-heading font-black text-white text-[2rem] md:text-4xl drop-shadow-md mb-1 flex flex-col xl:flex-row xl:items-baseline xl:gap-2">
+                <div className="font-heading font-black text-white text-2xl sm:text-[2rem] md:text-4xl drop-shadow-md mb-1 flex flex-col xl:flex-row xl:items-baseline xl:gap-2">
                   {s.pre && (
                     <span className="text-xs md:text-sm text-teal tracking-widest uppercase">
                       {s.pre}
@@ -377,7 +377,7 @@ export default function Index() {
                 <p className="font-heading text-white/90 mt-3 text-[10px] md:text-[11px] font-bold tracking-[0.2em] uppercase leading-snug">
                   {s.l}
                 </p>
-                <p className="text-white/40 text-[11px] md:text-xs mt-2 leading-relaxed">
+                <p className="hidden sm:block text-white/40 text-[11px] md:text-xs mt-2 leading-relaxed">
                   {s.desc}
                 </p>
               </div>
@@ -406,13 +406,13 @@ export default function Index() {
                 End-to-End Building Solutions
               </h2>
             </div>
-            <div className="flex items-center gap-3 text-navy/40 text-[10px] font-bold uppercase tracking-[0.2em] md:hidden mt-2">
+            <p className="text-navy/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-2 flex items-center gap-3">
               <span className="w-8 h-[1px] bg-navy/20"></span>
-              Swipe to explore <ChevronRight size={14} className="animate-pulse text-teal" />
-            </div>
+              Four core disciplines
+            </p>
           </Reveal>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 -mx-4 hide-scrollbar">
+          <div className="flex flex-col gap-5 md:flex-row md:overflow-x-auto md:snap-x md:snap-mandatory md:gap-6 md:pb-12 md:pt-4 md:px-4 md:-mx-4 hide-scrollbar">
             {[
               {
                 Icon: Building2,
@@ -440,8 +440,11 @@ export default function Index() {
                 as="article"
                 delay={i * 100}
                 key={i}
-                className="group hover-lift-glow tilt-3d relative bg-white border border-navy/5 shadow-xl shadow-navy/5 rounded-2xl p-8 h-[380px] flex flex-col justify-between min-w-[320px] md:min-w-[400px] snap-center"
+                className={`group hover-lift-glow md:tilt-3d relative bg-white border border-navy/5 shadow-xl shadow-navy/5 rounded-2xl p-6 md:p-8 flex flex-col justify-between w-[88%] md:w-auto md:min-w-[400px] md:h-[380px] md:snap-center md:self-auto ${i % 2 === 1 ? "self-end" : "self-start"}`}
               >
+                <span className="md:hidden absolute top-4 right-5 font-heading font-black text-navy/[0.06] text-7xl leading-none select-none">
+                  0{i + 1}
+                </span>
                 <div>
                   <div
                     className={`h-16 w-16 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg transition-transform group-hover:scale-110`}
