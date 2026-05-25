@@ -1,12 +1,49 @@
 import { useState, ChangeEvent, FormEvent, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Star, Camera, Quote, Send, Sparkles, CheckCircle2, PenLine } from "lucide-react";
+import {
+  ArrowLeft,
+  Star,
+  Camera,
+  Quote,
+  Send,
+  Sparkles,
+  CheckCircle2,
+  PenLine,
+} from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/Reveal";
+import { cn } from "@/lib/utils";
 
 // Preloaded avatar set — DiceBear (no auth required)
-const STYLES = ["adventurer", "avataaars", "bottts", "fun-emoji", "lorelei", "micah", "notionists", "personas", "pixel-art", "thumbs"];
-const SEEDS = ["Hassan", "Amina", "Joseph", "Neema", "Faraja", "Zainab", "Baraka", "Imani", "Mwanaisha", "Salim", "Tumaini", "Rehema", "Issa", "Subira", "Kito"];
+const STYLES = [
+  "adventurer",
+  "avataaars",
+  "bottts",
+  "fun-emoji",
+  "lorelei",
+  "micah",
+  "notionists",
+  "personas",
+  "pixel-art",
+  "thumbs",
+];
+const SEEDS = [
+  "Hassan",
+  "Amina",
+  "Joseph",
+  "Neema",
+  "Faraja",
+  "Zainab",
+  "Baraka",
+  "Imani",
+  "Mwanaisha",
+  "Salim",
+  "Tumaini",
+  "Rehema",
+  "Issa",
+  "Subira",
+  "Kito",
+];
 const PRELOADED = SEEDS.map((seed, i) => ({
   id: `p-${i}`,
   url: `https://api.dicebear.com/9.x/${STYLES[i % STYLES.length]}/svg?seed=${seed}&backgroundType=gradientLinear`,
@@ -16,20 +53,40 @@ type Review = {
   name: string;
   role: string;
   text: string;
-  avatar: string;
+  avatar?: string;
   rating: number;
 };
 
 const INITIAL_REVIEWS: Review[] = [
-  { name: "Safia Mnyau", role: "Residential Client · Kinondoni", text: "Bradeb delivered our complex on time and exceeded expectations. Structural integrity is unmatched and the team kept us informed every single week.", avatar: PRELOADED[1].url, rating: 5 },
-  { name: "Emmanuel S.", role: "Commercial Developer", text: "Civil works laid the perfect foundation. Professional, precise, and completely reliable from day one to handover.", avatar: PRELOADED[3].url, rating: 5 },
-  { name: "Aisha T.", role: "Industrial Manager", text: "Industrial fumigation was outstanding. Strict safety protocols and zero disruption to operations across two shifts.", avatar: PRELOADED[5].url, rating: 5 },
-  { name: "John K.", role: "Infrastructure Lead", text: "Top-tier roadworks and drainage execution. The attention to detail is evident in the durability after the first rainy season.", avatar: PRELOADED[7].url, rating: 4 },
+  {
+    name: "Safia Mnyau",
+    role: "Residential Client · Kinondoni",
+    text: "Bradeb delivered our complex on time and exceeded expectations. Structural integrity is unmatched and the team kept us informed every single week.",
+    rating: 5,
+  },
+  {
+    name: "Emmanuel S.",
+    role: "Commercial Developer",
+    text: "Civil works laid the perfect foundation. Professional, precise, and completely reliable from day one to handover.",
+    rating: 5,
+  },
+  {
+    name: "Aisha T.",
+    role: "Industrial Manager",
+    text: "Industrial fumigation was outstanding. Strict safety protocols and zero disruption to operations across two shifts.",
+    rating: 5,
+  },
+  {
+    name: "John K.",
+    role: "Infrastructure Lead",
+    text: "Top-tier roadworks and drainage execution. The attention to detail is evident in the durability after the first rainy season.",
+    rating: 4,
+  },
 ];
 
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
-  const [form, setForm] = useState<Review>({ name: "", role: "", text: "", avatar: PRELOADED[0].url, rating: 5 });
+  const [form, setForm] = useState<Review>({ name: "", role: "", text: "", rating: 5 });
   const [submitted, setSubmitted] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -49,15 +106,23 @@ export default function ReviewsPage() {
     setReviews((prev) => [{ ...form }, ...prev]);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 2400);
-    setForm({ name: "", role: "", text: "", avatar: PRELOADED[0].url, rating: 5 });
+    setForm({ name: "", role: "", text: "", rating: 5 });
   };
 
   return (
     <PageShell>
       {/* ====================== HERO ====================== */}
-      <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28" style={{ background: "radial-gradient(ellipse at 20% 0%, #1d3c6b 0%, #07396c 50%, #0a1628 100%)" }}>
+      <section
+        className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
+        style={{
+          background: "radial-gradient(ellipse at 20% 0%, #1d3c6b 0%, #07396c 50%, #0a1628 100%)",
+        }}
+      >
         {/* blueprint grid */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="absolute inset-0 w-full h-full opacity-[0.08]"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <defs>
             <pattern id="rgrid" width="48" height="48" patternUnits="userSpaceOnUse">
               <path d="M48 0 L0 0 0 48" fill="none" stroke="#2e9ca3" strokeWidth="1" />
@@ -66,36 +131,71 @@ export default function ReviewsPage() {
           <rect width="100%" height="100%" fill="url(#rgrid)" />
         </svg>
         {/* glow orbs */}
-        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30" style={{ background: "#17767c" }} />
-        <div className="absolute -bottom-40 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-20" style={{ background: "#2e9ca3" }} />
+        <div
+          className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full blur-[140px] opacity-30"
+          style={{ background: "#17767c" }}
+        />
+        <div
+          className="absolute -bottom-40 right-0 w-[500px] h-[500px] rounded-full blur-[140px] opacity-20"
+          style={{ background: "#2e9ca3" }}
+        />
 
         {/* floating avatar badges */}
         <div className="hidden md:block absolute top-32 right-[8%] animate-float">
-          <img src={PRELOADED[2].url} alt="" className="w-16 h-16 rounded-full border-2 border-[#2e9ca3] shadow-2xl bg-white" />
+          <img
+            src={PRELOADED[2].url}
+            alt=""
+            className="w-16 h-16 rounded-full border-2 border-[#2e9ca3] shadow-2xl bg-white"
+          />
         </div>
-        <div className="hidden md:block absolute top-1/2 right-[22%] animate-float" style={{ animationDelay: "0.8s" }}>
-          <img src={PRELOADED[6].url} alt="" className="w-12 h-12 rounded-full border-2 border-[#2e9ca3] shadow-2xl bg-white" />
+        <div
+          className="hidden md:block absolute top-1/2 right-[22%] animate-float"
+          style={{ animationDelay: "0.8s" }}
+        >
+          <img
+            src={PRELOADED[6].url}
+            alt=""
+            className="w-12 h-12 rounded-full border-2 border-[#2e9ca3] shadow-2xl bg-white"
+          />
         </div>
-        <div className="hidden md:block absolute bottom-24 right-[14%] animate-float" style={{ animationDelay: "1.4s" }}>
-          <img src={PRELOADED[9].url} alt="" className="w-20 h-20 rounded-full border-2 border-white/40 shadow-2xl bg-white" />
+        <div
+          className="hidden md:block absolute bottom-24 right-[14%] animate-float"
+          style={{ animationDelay: "1.4s" }}
+        >
+          <img
+            src={PRELOADED[9].url}
+            alt=""
+            className="w-20 h-20 rounded-full border-2 border-white/40 shadow-2xl bg-white"
+          />
         </div>
 
         <div className="relative mx-auto max-w-6xl px-6">
           <Reveal>
-            <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-[#2e9ca3] text-xs uppercase tracking-[0.2em] mb-8">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-white/60 hover:text-[#2e9ca3] text-xs uppercase tracking-[0.2em] mb-8"
+            >
               <ArrowLeft size={14} /> Back home
             </Link>
-            <p className="eyebrow text-[#2e9ca3] mb-4 flex items-center gap-2"><Sparkles size={14}/> Voices of Bradeb</p>
+            <p className="eyebrow text-[#2e9ca3] mb-4 flex items-center gap-2">
+              <Sparkles size={14} /> Voices of Bradeb
+            </p>
             <h1 className="font-heading font-black text-white text-5xl md:text-7xl leading-[0.95] max-w-3xl">
-              Stories from the<br/>
+              Stories from the
+              <br />
               <span className="text-[#2e9ca3]">people we build for.</span>
             </h1>
             <p className="mt-6 text-white/70 max-w-xl leading-relaxed">
-              Honest words from clients across Dar es Salaam and beyond. Add yours below — pick an avatar or upload your own.
+              Honest words from clients across Dar es Salaam and beyond. Add yours below — upload a
+              photo or we'll use your initials.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-8">
-              {[["4.9","Average Rating"],["120+","Happy Clients"],["8+","Major Projects"]].map(([v,l]) => (
+              {[
+                ["4.9", "Average Rating"],
+                ["120+", "Happy Clients"],
+                ["8+", "Major Projects"],
+              ].map(([v, l]) => (
                 <div key={l} className="border-l-2 border-[#2e9ca3]/60 pl-4">
                   <p className="font-heading font-black text-white text-3xl">{v}</p>
                   <p className="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-1">{l}</p>
@@ -106,82 +206,179 @@ export default function ReviewsPage() {
         </div>
 
         {/* diagonal cut */}
-        <div className="absolute bottom-0 left-0 right-0 h-16" style={{ background: "#f5f6f8", clipPath: "polygon(0 100%, 100% 100%, 100% 50%, 0 100%)" }} />
+        <div
+          className="absolute bottom-0 left-0 right-0 h-16"
+          style={{
+            background: "#f5f6f8",
+            clipPath: "polygon(0 100%, 100% 100%, 100% 50%, 0 100%)",
+          }}
+        />
+      </section>
+
+      {/* ====================== TRUSTED BY ====================== */}
+      <section className="bg-white py-12 md:py-16 border-b border-[#1d3c6b]/5">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="eyebrow text-[#17767c] text-center mb-8">
+            Trusted by leading clients &amp; institutions
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {[
+              "JKCI",
+              "NHIF",
+              "Habitat for Humanity",
+              "ViaService",
+              "Kinondoni Municipal",
+              "WCF Tanzania",
+            ].map((c) => (
+              <div
+                key={c}
+                className="flex min-h-[64px] items-center justify-center rounded-xl border border-[#1d3c6b]/10 bg-[#f5f6f8] px-4 py-5 text-center font-heading text-xs font-bold uppercase tracking-wider text-[#1d3c6b]/70 transition-colors hover:border-[#17767c]/30 hover:text-[#17767c]"
+              >
+                {c}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ====================== BODY ====================== */}
       <section className="py-20 md:py-28" style={{ backgroundColor: "#f5f6f8" }}>
         <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-[420px_1fr] gap-10 lg:gap-16 items-start">
-
           {/* ============ FORM CARD ============ */}
           <Reveal variant="left" className="lg:sticky lg:top-28">
             <div className="bg-white rounded-3xl border border-[#1d3c6b]/10 shadow-[0_20px_60px_-20px_rgba(29,60,107,0.25)] overflow-hidden">
               {/* header strip */}
-              <div className="px-6 py-5 flex items-center gap-3" style={{ background: "linear-gradient(135deg,#1d3c6b,#07396c)" }}>
-                <div className="h-9 w-9 rounded-full bg-[#2e9ca3] flex items-center justify-center text-[#0a1628]"><PenLine /></div>
+              <div
+                className="px-6 py-5 flex items-center gap-3"
+                style={{ background: "linear-gradient(135deg,#1d3c6b,#07396c)" }}
+              >
+                <div className="h-9 w-9 rounded-full bg-[#2e9ca3] flex items-center justify-center text-[#0a1628]">
+                  <PenLine />
+                </div>
                 <div>
-                  <h2 className="font-heading font-extrabold text-white text-base">Share Your Story</h2>
-                  <p className="text-white/60 text-[10px] uppercase tracking-[0.2em]">Takes 30 seconds</p>
+                  <h2 className="font-heading font-extrabold text-white text-base">
+                    Share Your Story
+                  </h2>
+                  <p className="text-white/60 text-[10px] uppercase tracking-[0.2em]">
+                    Takes 30 seconds
+                  </p>
                 </div>
               </div>
 
               <form onSubmit={handleSubmit} className="p-6 space-y-5">
                 <Field label="Full Name">
-                  <input name="name" value={form.name} onChange={handleChange} placeholder="John Doe" required className="bradeb-input" />
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
+                    className="bradeb-input"
+                  />
                 </Field>
                 <Field label="Role / Company">
-                  <input name="role" value={form.role} onChange={handleChange} placeholder="Property Owner" required className="bradeb-input" />
+                  <input
+                    name="role"
+                    value={form.role}
+                    onChange={handleChange}
+                    placeholder="Property Owner"
+                    required
+                    className="bradeb-input"
+                  />
                 </Field>
 
-                {/* Avatar picker */}
+                {/* Photo (optional) */}
                 <div>
-                  <label className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d3c6b] block mb-3">Choose Avatar</label>
-                  <div className="bg-[#f5f6f8] rounded-2xl p-3 border border-[#1d3c6b]/10">
-                    <div className="grid grid-cols-5 gap-2 max-h-[180px] overflow-y-auto pr-1">
-                      {PRELOADED.map((a) => {
-                        const sel = form.avatar === a.url;
-                        return (
-                          <button type="button" key={a.id} onClick={() => setForm((p) => ({ ...p, avatar: a.url }))}
-                            className={`relative aspect-square rounded-full overflow-hidden border-2 transition-all ${sel ? "border-[#2e9ca3] ring-2 ring-[#2e9ca3]/30 scale-105" : "border-transparent hover:border-[#17767c]"}`}>
-                            <img src={a.url} alt="" className="w-full h-full object-cover bg-white" />
-                            {sel && <span className="absolute -bottom-1 -right-1 bg-[#2e9ca3] rounded-full text-[#0a1628]"><CheckCircle2 size={14}/></span>}
-                          </button>
-                        );
-                      })}
-                      <button type="button" onClick={() => fileRef.current?.click()}
-                        className="aspect-square rounded-full border-2 border-dashed border-[#1d3c6b]/30 flex items-center justify-center text-[#1d3c6b] hover:border-[#17767c] hover:text-[#17767c] transition-colors">
-                        <Camera size={14}/>
+                  <label className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d3c6b] block mb-3">
+                    Photo (optional)
+                  </label>
+                  <div className="flex items-center gap-4">
+                    <Avatar
+                      name={form.name || "Bradeb Client"}
+                      src={form.avatar}
+                      className="w-14 h-14 rounded-full border border-[#2e9ca3]/40 text-base shrink-0"
+                    />
+                    <div className="flex flex-col items-start gap-2">
+                      <button
+                        type="button"
+                        onClick={() => fileRef.current?.click()}
+                        className="inline-flex items-center gap-2 rounded-full border border-[#1d3c6b]/20 px-4 py-2 text-xs font-semibold text-[#1d3c6b] hover:border-[#17767c] hover:text-[#17767c] transition-colors"
+                      >
+                        <Camera size={14} /> Upload photo
                       </button>
-                      <input ref={fileRef} type="file" accept="image/*" onChange={handleUpload} className="hidden" />
+                      {form.avatar ? (
+                        <button
+                          type="button"
+                          onClick={() => setForm((p) => ({ ...p, avatar: undefined }))}
+                          className="text-[11px] text-[#4a5568] hover:text-[#1d3c6b]"
+                        >
+                          Remove · use initials
+                        </button>
+                      ) : (
+                        <span className="text-[11px] text-[#4a5568]">
+                          Otherwise we'll use your initials.
+                        </span>
+                      )}
                     </div>
-                  </div>
-                  <div className="mt-3 flex items-center gap-3 bg-[#1d3c6b]/5 rounded-xl p-2.5">
-                    <img src={form.avatar} alt="" className="w-10 h-10 rounded-full bg-white border border-[#2e9ca3]" />
-                    <div>
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-[#17767c] font-bold">Selected</p>
-                      <p className="text-[11px] text-[#4a5568]">Looking good!</p>
-                    </div>
+                    <input
+                      ref={fileRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleUpload}
+                      className="hidden"
+                    />
                   </div>
                 </div>
 
                 {/* Rating */}
                 <div>
-                  <label className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d3c6b] block mb-2">Rating</label>
+                  <label className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d3c6b] block mb-2">
+                    Rating
+                  </label>
                   <div className="flex gap-1">
-                    {[1,2,3,4,5].map((n) => (
-                      <button type="button" key={n} onClick={() => setForm((p) => ({ ...p, rating: n }))} className="p-1 transition-transform hover:scale-110">
-                        <Star size={26} className={n <= form.rating ? "fill-[#2e9ca3] text-[#2e9ca3]" : "text-[#1d3c6b]/20"} />
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <button
+                        type="button"
+                        key={n}
+                        onClick={() => setForm((p) => ({ ...p, rating: n }))}
+                        className="p-1 transition-transform hover:scale-110"
+                      >
+                        <Star
+                          size={26}
+                          className={
+                            n <= form.rating ? "fill-[#2e9ca3] text-[#2e9ca3]" : "text-[#1d3c6b]/20"
+                          }
+                        />
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <Field label="Your Review">
-                  <textarea name="text" value={form.text} onChange={handleChange} placeholder="Tell us about your experience…" rows={4} required className="bradeb-input resize-none" />
+                  <textarea
+                    name="text"
+                    value={form.text}
+                    onChange={handleChange}
+                    placeholder="Tell us about your experience…"
+                    rows={4}
+                    required
+                    className="bradeb-input resize-none"
+                  />
                 </Field>
 
-                <button type="submit" className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#1d3c6b] hover:bg-[#17767c] text-white font-bold uppercase tracking-[0.15em] text-xs py-4 transition-colors shadow-[0_10px_30px_-10px_rgba(29,60,107,0.6)]">
-                  {submitted ? <><CheckCircle2 size={16}/> Posted!</> : <><Send size={14}/> Publish Review</>}
+                <button
+                  type="submit"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#1d3c6b] hover:bg-[#17767c] text-white font-bold uppercase tracking-[0.15em] text-xs py-4 transition-colors shadow-[0_10px_30px_-10px_rgba(29,60,107,0.6)]"
+                >
+                  {submitted ? (
+                    <>
+                      <CheckCircle2 size={16} /> Posted!
+                    </>
+                  ) : (
+                    <>
+                      <Send size={14} /> Publish Review
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -192,26 +389,50 @@ export default function ReviewsPage() {
             <Reveal className="flex items-end justify-between mb-8">
               <div>
                 <p className="eyebrow text-[#17767c] mb-2">{reviews.length} Reviews</p>
-                <h2 className="font-heading font-extrabold text-[#0a1628] text-2xl md:text-3xl">What clients are saying</h2>
+                <h2 className="font-heading font-extrabold text-[#0a1628] text-2xl md:text-3xl">
+                  What clients are saying
+                </h2>
               </div>
             </Reveal>
 
             <div className="grid sm:grid-cols-2 gap-5">
               {reviews.map((r, i) => (
-                <Reveal as="article" delay={i * 80} key={i}
-                  className="group relative bg-white rounded-2xl p-6 border border-[#1d3c6b]/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-                  <Quote className="absolute top-4 right-4 text-[#1d3c6b]/8 group-hover:text-[#2e9ca3]/30 transition-colors" size={56} strokeWidth={1.2} />
+                <Reveal
+                  as="article"
+                  delay={i * 80}
+                  key={i}
+                  className="group relative bg-white rounded-2xl p-6 border border-[#1d3c6b]/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
+                >
+                  <Quote
+                    className="absolute top-4 right-4 text-[#1d3c6b]/8 group-hover:text-[#2e9ca3]/30 transition-colors"
+                    size={56}
+                    strokeWidth={1.2}
+                  />
                   <div className="flex gap-1 mb-4">
-                    {Array.from({length:5}).map((_,k)=>(
-                      <Star key={k} size={14} className={k < r.rating ? "fill-[#2e9ca3] text-[#2e9ca3]" : "text-[#1d3c6b]/15"} />
+                    {Array.from({ length: 5 }).map((_, k) => (
+                      <Star
+                        key={k}
+                        size={14}
+                        className={
+                          k < r.rating ? "fill-[#2e9ca3] text-[#2e9ca3]" : "text-[#1d3c6b]/15"
+                        }
+                      />
                     ))}
                   </div>
-                  <p className="text-[#4a5568] leading-relaxed text-[14px] mb-6 relative z-10">"{r.text}"</p>
+                  <p className="text-[#4a5568] leading-relaxed text-[14px] mb-6 relative z-10">
+                    "{r.text}"
+                  </p>
                   <div className="flex items-center gap-3 pt-4 border-t border-[#1d3c6b]/10">
-                    <img src={r.avatar} alt={r.name} className="w-11 h-11 rounded-full bg-[#f5f6f8] border-2 border-[#2e9ca3]/40" />
+                    <Avatar
+                      name={r.name}
+                      src={r.avatar}
+                      className="w-11 h-11 rounded-full border-2 border-[#2e9ca3]/40 text-sm shrink-0"
+                    />
                     <div>
                       <h4 className="font-heading font-bold text-[#0a1628] text-sm">{r.name}</h4>
-                      <p className="text-[#17767c] text-[10px] uppercase tracking-[0.15em] mt-0.5">{r.role}</p>
+                      <p className="text-[#17767c] text-[10px] uppercase tracking-[0.15em] mt-0.5">
+                        {r.role}
+                      </p>
                     </div>
                   </div>
                 </Reveal>
@@ -247,8 +468,34 @@ export default function ReviewsPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d3c6b] block mb-2">{label}</label>
+      <label className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1d3c6b] block mb-2">
+        {label}
+      </label>
       {children}
     </div>
+  );
+}
+
+function Avatar({ name, src, className }: { name: string; src?: string; className?: string }) {
+  if (src) {
+    return <img src={src} alt={name} className={cn("object-cover bg-[#f5f6f8]", className)} />;
+  }
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+  return (
+    <span
+      className={cn(
+        "flex items-center justify-center bg-gradient-to-br from-[#1d3c6b] to-[#17767c] font-heading font-extrabold text-white",
+        className,
+      )}
+      aria-label={name}
+    >
+      {initials}
+    </span>
   );
 }

@@ -55,7 +55,7 @@ export function Media({
           className={cn("absolute inset-0 h-full w-full object-cover", imgClassName)}
         />
       ) : (
-        <Placeholder label={label} />
+        <Placeholder label={label} minimal={!!children} />
       )}
 
       {scrim !== "none" && (
@@ -67,7 +67,7 @@ export function Media({
   );
 }
 
-function Placeholder({ label }: { label?: string }) {
+function Placeholder({ label, minimal }: { label?: string; minimal?: boolean }) {
   return (
     <div
       className="absolute inset-0 flex flex-col items-center justify-center"
@@ -95,15 +95,19 @@ function Placeholder({ label }: { label?: string }) {
         draggable={false}
       />
 
-      {/* corner tag */}
-      <span className="absolute left-3 top-3 rounded-md bg-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/60 backdrop-blur-sm">
-        Photo
-      </span>
+      {!minimal && (
+        <>
+          {/* corner tag */}
+          <span className="absolute left-3 top-3 rounded-md bg-white/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/60 backdrop-blur-sm">
+            Photo
+          </span>
 
-      {label && (
-        <span className="absolute bottom-3 left-3 right-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white/55">
-          {label}
-        </span>
+          {label && (
+            <span className="absolute bottom-3 left-3 right-3 text-[11px] font-medium uppercase tracking-[0.12em] text-white/55">
+              {label}
+            </span>
+          )}
+        </>
       )}
     </div>
   );
