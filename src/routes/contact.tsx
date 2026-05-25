@@ -13,11 +13,11 @@ export default function ContactPage() {
       {/* HERO + floating form */}
       <section className="relative pt-24 pb-12 md:pb-32 overflow-hidden" style={{ background: "linear-gradient(135deg, #0a1628 0%, #07396c 60%, #1f4590 100%)" }}>
         <svg className="absolute inset-0 w-full h-full opacity-[0.05]" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="cdots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff"/></pattern></defs>
+          <defs><pattern id="cdots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff" /></pattern></defs>
           <rect width="100%" height="100%" fill="url(#cdots)" />
         </svg>
         {Array.from({ length: 12 }).map((_, i) => (
-          <span key={i} className="absolute h-1 w-1 rounded-full bg-teal animate-particle" style={{ left: `${(i*47)%100}%`, animationDelay: `${i*0.7}s`, animationDuration: `${12 + (i%5)*2}s`, opacity: 0.4 }} />
+          <span key={i} className="absolute h-1 w-1 rounded-full bg-teal animate-particle" style={{ left: `${(i * 47) % 100}%`, animationDelay: `${i * 0.7}s`, animationDuration: `${12 + (i % 5) * 2}s`, opacity: 0.4 }} />
         ))}
         <div className="relative mx-auto max-w-7xl w-full px-6 lg:px-10 py-12 md:py-20 grid lg:grid-cols-[6fr_5fr] gap-12 items-start">
           {/* Left - intro */}
@@ -36,7 +36,7 @@ export default function ContactPage() {
                 { Icon: Phone, label: "Call", v: "+255 754 230 234", href: "tel:+255754230234" },
                 { Icon: Mail, label: "Email", v: "boraentity20@gmail.com", href: "mailto:boraentity20@gmail.com" },
               ].map(({ Icon, label, v, href }, i) => (
-                <a key={label} href={href} className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold/40 rounded-xl p-4 transition-all animate-fade-up" style={{ animationDelay: `${0.5 + i*0.1}s` }}>
+                <a key={label} href={href} className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-gold/40 rounded-xl p-4 transition-all animate-fade-up" style={{ animationDelay: `${0.5 + i * 0.1}s` }}>
                   <div className="h-9 w-9 rounded-lg bg-teal/15 text-teal flex items-center justify-center mb-3 group-hover:bg-gold group-hover:text-navy transition-all"><Icon size={16} /></div>
                   <p className="text-white/50 text-[10px] uppercase tracking-[0.15em] mb-1">{label}</p>
                   <p className="text-white text-sm font-semibold leading-snug">{v}</p>
@@ -76,11 +76,11 @@ export default function ContactPage() {
                   <div className="grid grid-cols-2 gap-3">
                     <select className="bg-[#f5f6f8] rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal text-navy">
                       <option>Select Service</option>
-                      {["Building Construction","Civil Engineering","Mechanical","Electrical","Fumigation","Other"].map(s => <option key={s}>{s}</option>)}
+                      {["Building Construction", "Civil Engineering", "Mechanical", "Electrical", "Fumigation", "Other"].map(s => <option key={s}>{s}</option>)}
                     </select>
                     <select className="bg-[#f5f6f8] rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal text-navy">
                       <option>Budget Range</option>
-                      {["Under TZS 50M","TZS 50M–200M","TZS 200M–500M","TZS 500M+","Not Sure"].map(s => <option key={s}>{s}</option>)}
+                      {["Under TZS 50M", "TZS 50M–200M", "TZS 200M–500M", "TZS 500M+", "Not Sure"].map(s => <option key={s}>{s}</option>)}
                     </select>
                   </div>
                   <textarea rows={4} placeholder="Tell us about your project..." className="w-full bg-[#f5f6f8] rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal text-navy resize-none" />
@@ -103,8 +103,8 @@ export default function ContactPage() {
             <h2 className="font-heading font-extrabold text-navy text-3xl md:text-4xl mb-8">Come visit us in Mbezi Beach.</h2>
             <div className="space-y-5">
               {[
-                { Icon: MapPin, t: "Address", lines: ["P.O. Box 12390, Dar es Salaam, Tanzania","Mbezi Beach – Ndumbwi, Kinondoni"] },
-                { Icon: Phone, t: "Phone", lines: ["+255 754 230 234","+255 785 050 215"] },
+                { Icon: MapPin, t: "Address", lines: ["P.O. Box 12390, Dar es Salaam, Tanzania", "Mbezi Beach – Ndumbwi, Kinondoni"] },
+                { Icon: Phone, t: "Phone", lines: ["+255 754 230 234", "+255 785 050 215"] },
                 { Icon: Mail, t: "Email", lines: ["boraentity20@gmail.com"] },
               ].map(({ Icon, t, lines }) => (
                 <div key={t} className="group flex gap-4 p-4 rounded-xl hover:bg-[#f5f6f8] transition-colors">
@@ -128,40 +128,10 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl min-h-[420px]">
-            <iframe
-              title="Bradeb Office Map"
-              src="https://www.google.com/maps?q=Mbezi+Beach+Ndumbwi+Dar+es+Salaam&output=embed"
-              className="absolute inset-0 w-full h-full"
-              loading="lazy"
-              style={{ border: 0 }}
-            />
-            <div className="absolute top-4 left-4 bg-white rounded-xl shadow-2xl p-4 max-w-[240px]">
-              <p className="font-heading font-bold text-navy text-sm">Bradeb Investment Ltd</p>
-              <p className="text-soft-green text-xs font-semibold mt-1 flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-soft-green animate-pulse" /> Open · Mon–Fri 8am–5pm</p>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* QUICK CONTACT */}
-      <section className="py-16" style={{ backgroundColor: "#1f4590" }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid sm:grid-cols-3 gap-8 text-center">
-          {[
-            { Icon: Phone, t: "Phone", v: "+255 754 230 234", href: "tel:+255754230234" },
-            { Icon: Mail, t: "Email", v: "boraentity20@gmail.com", href: "mailto:boraentity20@gmail.com" },
-            { Icon: MapPin, t: "Location", v: "Mbezi Beach, Dar es Salaam", href: "https://maps.google.com/?q=Mbezi+Beach" },
-          ].map(({ Icon, t, v, href }, i) => (
-            <Reveal key={t} delay={i * 120} variant="scale" className="block">
-              <a href={href} className="group block">
-                <Icon className="mx-auto text-teal mb-4 group-hover:scale-125 group-hover:text-gold transition-all duration-300" size={32} />
-                <p className="label-cap text-teal mb-2">{t}</p>
-                <p className="text-white font-semibold group-hover:text-gold transition-colors">{v}</p>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </section>
     </PageShell>
   );
 }
