@@ -97,11 +97,20 @@ const projects: P[] = [
   },
 ];
 
-const tabs = ["All", "Residential", "Commercial", "Institutional"];
+const amount = (p: P) => Number(p.value.replace(/[^0-9]/g, ""));
+
+const bands: { key: string; match: (v: number) => boolean }[] = [
+  { key: "All", match: (v) => v >= 0 },
+  { key: "Under TZS 100M", match: (v) => v < 100_000_000 },
+  { key: "TZS 100M – 500M", match: (v) => v >= 100_000_000 && v < 500_000_000 },
+  { key: "TZS 500M – 1B", match: (v) => v >= 500_000_000 && v < 1_000_000_000 },
+  { key: "TZS 1B+", match: (v) => v >= 1_000_000_000 },
+];
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState("All");
-  const filtered = filter === "All" ? projects : projects.filter((p) => p.cat === filter);
+  const activeBand = bands.find((b) => b.key === filter) ?? bands[0];
+  const filtered = projects.filter((p) => activeBand.match(amount(p)));
 
   return (
     <PageShell>
@@ -172,19 +181,19 @@ export default function ProjectsPage() {
       {/* Filter rail */}
       <section className="sticky top-20 z-20 backdrop-blur bg-white/90 border-b border-black/5">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-4 flex items-center gap-3 overflow-x-auto hide-scrollbar">
-          <span className="eyebrow text-teal shrink-0 hidden md:block">Filter</span>
-          {tabs.map((t) => {
-            const count =
-              t === "All" ? projects.length : projects.filter((p) => p.cat === t).length;
+          <span className="eyebrow text-teal shrink-0 hidden md:block">By value</span>
+          {bands.map((b) => {
+            const count = projects.filter((p) => b.match(amount(p))).length;
+            if (b.key !== "All" && count === 0) return null;
             return (
               <button
-                key={t}
-                onClick={() => setFilter(t)}
-                className={`shrink-0 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.15em] transition-all flex items-center gap-2 ${filter === t ? "bg-navy text-white shadow-lg shadow-navy/20" : "bg-[#f5f6f8] text-navy hover:bg-navy/10"}`}
+                key={b.key}
+                onClick={() => setFilter(b.key)}
+                className={`shrink-0 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.15em] transition-all flex items-center gap-2 ${filter === b.key ? "bg-navy text-white shadow-lg shadow-navy/20" : "bg-[#f5f6f8] text-navy hover:bg-navy/10"}`}
               >
-                {t}{" "}
+                {b.key}{" "}
                 <span
-                  className={`px-1.5 rounded-full text-[10px] ${filter === t ? "bg-gold text-navy" : "bg-white text-teal"}`}
+                  className={`px-1.5 rounded-full text-[10px] ${filter === b.key ? "bg-gold text-navy" : "bg-white text-teal"}`}
                 >
                   {count}
                 </span>

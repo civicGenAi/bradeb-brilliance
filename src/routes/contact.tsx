@@ -71,8 +71,8 @@ export default function ContactPage() {
                 {
                   Icon: Mail,
                   label: "Email",
-                  v: "boraentity20@gmail.com",
-                  href: "mailto:boraentity20@gmail.com",
+                  v: "info@bradebinvestmentltd.com",
+                  href: "mailto:info@bradebinvestmentltd.com",
                 },
               ].map(({ Icon, label, v, href }, i) => (
                 <a
@@ -226,7 +226,7 @@ export default function ContactPage() {
                   ],
                 },
                 { Icon: Phone, t: "Phone", lines: ["+255 754 230 234", "+255 785 050 215"] },
-                { Icon: Mail, t: "Email", lines: ["boraentity20@gmail.com"] },
+                { Icon: Mail, t: "Email", lines: ["info@bradebinvestmentltd.com"] },
               ].map(({ Icon, t, lines }) => (
                 <div
                   key={t}
@@ -256,6 +256,32 @@ export default function ContactPage() {
                 <p className="label-cap text-gold mb-2">Emergency</p>
                 <p className="font-heading font-extrabold text-gold text-lg">+255 754 230 234</p>
               </div>
+            </div>
+
+            {/* Department emails */}
+            <div className="mt-3 rounded-xl border border-navy/10 p-5">
+              <p className="label-cap text-teal mb-3">Departments</p>
+              <ul className="space-y-2.5">
+                {[
+                  ["General Enquiries", "info@bradebinvestmentltd.com"],
+                  ["Managing Director", "md@bradebinvestmentltd.com"],
+                  ["Quantity Surveyor", "qs@bradebinvestmentltd.com"],
+                  ["Accounts", "accounts@bradebinvestmentltd.com"],
+                ].map(([role, email]) => (
+                  <li
+                    key={email}
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5"
+                  >
+                    <span className="text-navy text-sm font-semibold">{role}</span>
+                    <a
+                      href={`mailto:${email}`}
+                      className="text-teal text-sm hover:underline break-all"
+                    >
+                      {email}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
