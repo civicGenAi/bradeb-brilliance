@@ -115,18 +115,18 @@ export default function TeamPage() {
             </div>
             <div className="w-px h-10 bg-teal" />
             <div className="grid md:grid-cols-3 gap-6 w-full">
-              {["Head of Construction", "Head of Fumigation & Fire", "Head of Finance"].map((t) => (
+              {[
+                "Technical Director",
+                "Director of Finance and Administration",
+                "Director of Fumigation and Pest Control Services",
+              ].map((t) => (
                 <div
                   key={t}
-                  className="px-6 py-4 rounded-xl bg-navy text-white text-center font-heading font-bold text-sm"
+                  className="px-6 py-5 rounded-xl bg-navy text-white text-center font-heading font-bold text-sm leading-snug"
                 >
                   {t}
                 </div>
               ))}
-            </div>
-            <div className="w-px h-10 bg-teal" />
-            <div className="px-6 py-4 rounded-xl bg-teal text-white font-heading font-bold">
-              Site Works
             </div>
           </div>
         </div>
