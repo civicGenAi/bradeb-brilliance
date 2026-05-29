@@ -47,7 +47,7 @@ export default function TeamPage() {
               className="text-white/70 text-base md:text-lg mt-6 animate-fade-up max-w-xl"
               style={{ animationDelay: "0.5s" }}
             >
-              Construction veterans, project managers and pest control specialists — committed to
+              Construction veterans, project managers and pest control specialists, committed to
               excellence on every site.
             </p>
             <div
@@ -155,7 +155,7 @@ export default function TeamPage() {
                   aspect="3/4"
                   rounded="rounded-none"
                   scrim="strong"
-                  label={`${m.name} — headshot`}
+                  label={`${m.name} · headshot`}
                   imgClassName="transition-transform duration-700 group-hover:scale-105"
                 >
                   <span className="absolute top-4 left-4 px-2 py-1 rounded-md bg-white/20 backdrop-blur text-white text-[10px] font-bold uppercase tracking-wider">

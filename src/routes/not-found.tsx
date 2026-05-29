@@ -15,11 +15,12 @@ export default function NotFoundPage() {
       </svg>
 
       {/* Hazard stripes overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.02] pointer-events-none" 
-        style={{ 
-          backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 20px)" 
-        }} 
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 20px)",
+        }}
       />
 
       <div className="relative z-10 text-center px-6 max-w-2xl mx-auto flex flex-col items-center">
@@ -32,26 +33,30 @@ export default function NotFoundPage() {
         </div>
 
         {/* 404 Text */}
-        <h1 className="font-heading font-black text-[120px] leading-none md:text-[180px] tracking-tighter mb-4 text-transparent bg-clip-text"
-            style={{
-              backgroundImage: "repeating-linear-gradient(-45deg, #2e9ca3, #2e9ca3 20px, #0a1628 20px, #0a1628 40px)",
-              backgroundSize: "200% 200%",
-              animation: "hazard-stripes 10s linear infinite"
-            }}>
+        <h1
+          className="font-heading font-black text-[120px] leading-none md:text-[180px] tracking-tighter mb-4 text-transparent bg-clip-text"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(-45deg, #2e9ca3, #2e9ca3 20px, #0a1628 20px, #0a1628 40px)",
+            backgroundSize: "200% 200%",
+            animation: "hazard-stripes 10s linear infinite",
+          }}
+        >
           404
         </h1>
-        
+
         {/* Subtitle */}
         <h2 className="font-heading font-extrabold text-white text-2xl md:text-4xl uppercase tracking-widest mb-6 border-y border-white/10 py-4">
           Site Demolished
         </h2>
-        
+
         <p className="text-white/70 mb-12 text-lg">
-          The structural plans you're looking for don't exist. This sector is either under heavy construction or has been completely leveled.
+          The structural plans you're looking for don't exist. This sector is either under heavy
+          construction or has been completely leveled.
         </p>
-        
-        <Link 
-          to="/" 
+
+        <Link
+          to="/"
           className="btn-shine inline-flex items-center gap-3 rounded-full bg-teal px-8 py-4 text-navy font-black uppercase text-sm tracking-[0.15em] hover:scale-105 transition-transform"
         >
           <ArrowLeft size={18} /> Return to Base

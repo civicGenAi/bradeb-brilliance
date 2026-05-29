@@ -109,7 +109,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Incorporated in 2020 in Dar es Salaam, we have grown into a CRB Class V certified
-                contractor — delivering residential, commercial, institutional and industrial
+                contractor, delivering residential, commercial, institutional and industrial
                 projects across Tanzania.
               </p>
             </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
                 Accountable from sketch to handover
               </span>
             </div>
-            <Media aspect="4/3" label="Bradeb — site & team" className="mt-8 shadow-xl" />
+            <Media aspect="4/3" label="Bradeb · site & team" className="mt-8 shadow-xl" />
           </Reveal>
 
           {/* Horizontal scrollable timeline */}
@@ -214,7 +214,7 @@ export default function AboutPage() {
               {
                 t: "Values",
                 n: "03",
-                b: "Integrity · Commitment · Safety First — in every project we touch.",
+                b: "Integrity · Commitment · Safety First, in every project we touch.",
                 bg: "#0a1628",
                 accent: true,
                 span: "md:col-span-7 min-h-[180px]",

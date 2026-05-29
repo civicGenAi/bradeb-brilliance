@@ -61,14 +61,14 @@ const SLIDES: Slide[] = [
     key: "voda",
     tag: "Commercial Builds",
     title: ["Corporate spaces,", "built to brief."],
-    body: "Commercial fit-outs and corporate facilities, delivered turnkey — on time and on standard.",
+    body: "Commercial fit-outs and corporate facilities, delivered turnkey, on time and on standard.",
     cta: { label: "See Our Work", to: "/projects" },
   },
   {
     key: "habitat",
     tag: "Renovation",
     title: ["Renovations", "that restore."],
-    body: "We give existing structures a second life — safely, cleanly and to a higher standard.",
+    body: "We give existing structures a second life, safely, cleanly and to a higher standard.",
     cta: { label: "View Projects", to: "/projects" },
   },
   {
@@ -625,7 +625,7 @@ export default function Index() {
               Kijitonyama Residential Complex
             </h2>
             <p className="text-white/70 mb-8 max-w-2xl">
-              A 9-month residential build delivered to Safia & Mohamed Mnyau in Kinondoni —
+              A 9-month residential build delivered to Safia & Mohamed Mnyau in Kinondoni,
               exemplifying Bradeb's signature quality and on-time delivery.
             </p>
             <div className="flex flex-wrap gap-6 mb-10">
@@ -649,7 +649,7 @@ export default function Index() {
           <Reveal variant="scale" className="order-1 lg:order-2">
             <Media
               aspect="4/3"
-              label="Kijitonyama Residential Complex — Kinondoni"
+              label="Kijitonyama Residential Complex · Kinondoni"
               scrim="soft"
               className="shadow-2xl"
             >
