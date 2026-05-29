@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Media } from "@/components/site/Media";
-import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown } from "lucide-react";
+import { ArrowRight, Check, Building2, HardHat, Bug } from "lucide-react";
 import { ReviewsSection } from "@/components/site/Reviews";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -35,166 +35,269 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   return <span ref={ref}>0{suffix}</span>;
 }
 
-export default function Index() {
+// Auto-loads any images dropped into src/assets/home-hero/ (jpg/png/webp…).
+// Each slide is paired to an image whose filename contains its `key`.
+const heroImages = import.meta.glob("../assets/home-hero/*.{jpg,jpeg,png,webp,avif,JPG,PNG,WEBP}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+function heroImage(key: string): string | undefined {
+  const hit = Object.entries(heroImages).find(([path]) => path.toLowerCase().includes(key));
+  return hit?.[1];
+}
+
+type Slide = {
+  key: string;
+  tag: string;
+  title: string[];
+  body: string;
+  cta: { label: string; to: string };
+};
+
+const SLIDES: Slide[] = [
+  {
+    key: "voda",
+    tag: "Commercial Builds",
+    title: ["Corporate spaces,", "built to brief."],
+    body: "Commercial fit-outs and corporate facilities, delivered turnkey — on time and on standard.",
+    cta: { label: "See Our Work", to: "/projects" },
+  },
+  {
+    key: "habitat",
+    tag: "Renovation",
+    title: ["Renovations", "that restore."],
+    body: "We give existing structures a second life — safely, cleanly and to a higher standard.",
+    cta: { label: "View Projects", to: "/projects" },
+  },
+  {
+    key: "welding",
+    tag: "Civil & Structural",
+    title: ["Steel & structure,", "engineered to last."],
+    body: "Fabrication, foundations and concrete works built with precision and discipline.",
+    cta: { label: "Civil Engineering", to: "/services" },
+  },
+  {
+    key: "work",
+    tag: "On Site",
+    title: ["On site.", "On schedule."],
+    body: "Professional supervision and craftsmanship, from groundbreaking to handover.",
+    cta: { label: "Explore Services", to: "/services" },
+  },
+  {
+    key: "safety",
+    tag: "Health & Safety",
+    title: ["Safety in", "every step."],
+    body: "A zero-harm culture, with documented EHS procedures enforced on every site.",
+    cta: { label: "Our Standards", to: "/about" },
+  },
+];
+
+function HeroSlider() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const t = setTimeout(() => setActive((a) => (a + 1) % SLIDES.length), 6000);
+    return () => clearTimeout(t);
+  }, [active]);
+
+  const s = SLIDES[active];
+
   return (
-    <PageShell>
-      {/* HERO */}
-      <section className="relative min-h-screen overflow-hidden flex items-center">
-        {/* Cinematic photo background — drop a real flagship-build photo into this slot */}
-        <div className="absolute inset-0 z-0">
-          <Media
-            aspect="auto"
-            rounded="rounded-none"
-            imgClassName="animate-kenburns"
-            className="h-full w-full"
-            label="Flagship build — replace with hero photo"
-          />
-          {/* legibility scrims */}
-          <span className="absolute inset-0 bg-gradient-to-r from-[#0a1628]/95 via-[#0a1628]/75 to-[#0a1628]/30" />
-          <span className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-transparent to-[#0a1628]/40" />
-          {/* blueprint grid overlay */}
+    <section className="relative min-h-screen overflow-hidden">
+      {/* MOBILE — full-bleed image background */}
+      <div className="lg:hidden absolute inset-0 z-0">
+        {SLIDES.map((slide, i) => (
+          <div
+            key={slide.key}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-out ${i === active ? "opacity-100" : "opacity-0"}`}
+            aria-hidden={i !== active}
+          >
+            <Media
+              src={heroImage(slide.key)}
+              alt={slide.title.join(" ")}
+              aspect="auto"
+              rounded="rounded-none"
+              imgClassName="animate-kenburns"
+              className="h-full w-full"
+            >
+              <span />
+            </Media>
+          </div>
+        ))}
+        <span className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-[#0a1628]/35" />
+      </div>
+
+      {/* DESKTOP — image left · content right */}
+      <div className="hidden lg:grid grid-cols-[1fr_1fr] min-h-screen">
+        <div className="relative overflow-hidden">
+          {SLIDES.map((slide, i) => (
+            <div
+              key={slide.key}
+              className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out ${i === active ? "opacity-100" : "opacity-0"}`}
+              aria-hidden={i !== active}
+            >
+              <Media
+                src={heroImage(slide.key)}
+                alt={slide.title.join(" ")}
+                aspect="auto"
+                rounded="rounded-none"
+                imgClassName="animate-kenburns"
+                className="h-full w-full"
+              >
+                <span className="absolute left-6 bottom-6 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur text-white text-[11px] font-bold uppercase tracking-[0.18em]">
+                  {slide.tag}
+                </span>
+              </Media>
+            </div>
+          ))}
+          {/* seam blend into navy */}
+          <span className="absolute inset-y-0 right-0 w-40 bg-gradient-to-r from-transparent to-[#0a1628]" />
+          <span className="absolute top-8 left-8 z-10 font-heading font-black text-white/85 text-sm tracking-[0.3em]">
+            0{active + 1} <span className="text-white/40">/ 0{SLIDES.length}</span>
+          </span>
+        </div>
+
+        <div
+          className="relative flex items-center"
+          style={{ background: "linear-gradient(135deg, #1d3c6b 0%, #07396c 60%, #0a1628 100%)" }}
+        >
           <svg
             className="absolute inset-0 w-full h-full opacity-[0.06]"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
           >
             <defs>
-              <pattern id="hgrid" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2e9ca3" strokeWidth="1" />
+              <pattern id="hgridd" width="56" height="56" patternUnits="userSpaceOnUse">
+                <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#2e9ca3" strokeWidth="1" />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#hgrid)" />
+            <rect width="100%" height="100%" fill="url(#hgridd)" />
           </svg>
-        </div>
-
-        <div className="container-bradeb relative z-10 pt-32 pb-28 md:pb-24 w-full">
-          <div className="max-w-3xl">
-            <p className="eyebrow text-teal-bright mb-6 animate-fade-up">
-              CRB Class V · Est. 2020 · Dar es Salaam
-            </p>
-            <h1 className="display-1 text-white">
-              <span className="block animate-clip-up">BUILD WITH</span>
-              <span
-                className="block text-stroke-white animate-clip-up"
-                style={{ animationDelay: "0.25s" }}
+          <div className="relative px-12 xl:px-20 py-28 w-full">
+            <div key={active} className="max-w-xl">
+              <p className="eyebrow text-teal-bright mb-5 flex items-center gap-3 animate-fade-up">
+                <span className="h-px w-8 bg-teal-bright" /> {s.tag}
+              </p>
+              <h1 className="display-2 text-white">
+                {s.title.map((line, idx) => (
+                  <span
+                    key={idx}
+                    className="block animate-clip-up"
+                    style={{ animationDelay: `${0.08 + idx * 0.14}s` }}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </h1>
+              <p
+                className="mt-5 lead text-white/80 animate-fade-up"
+                style={{ animationDelay: "0.4s" }}
               >
-                CONFIDENCE.
-              </span>
-            </h1>
-            <p
-              className="mt-4 font-heading font-extrabold text-teal-bright text-2xl sm:text-3xl md:text-4xl animate-fade-up"
-              style={{ animationDelay: "0.5s" }}
-            >
-              Build with Bradeb.
-            </p>
-            <p
-              className="mt-6 lead text-white/80 max-w-xl animate-fade-up"
-              style={{ animationDelay: "0.65s" }}
-            >
-              Tanzania's trusted certified contractor since 2020 — delivering excellence across
-              construction, civil engineering and fumigation.
-            </p>
-
-            <div
-              className="mt-9 flex flex-wrap gap-4 animate-fade-up"
-              style={{ animationDelay: "0.8s" }}
-            >
-              <Link to="/projects" className="btn btn-gold btn-shine magnetic">
-                Explore Our Work <ArrowRight size={16} />
-              </Link>
-              <Link to="/contact" className="btn btn-outline magnetic">
-                Get a Quote
-              </Link>
+                {s.body}
+              </p>
+              <div className="mt-8 animate-fade-up" style={{ animationDelay: "0.55s" }}>
+                <Link to={s.cta.to} className="btn btn-gold btn-shine magnetic">
+                  {s.cta.label} <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
-
-            {/* Proof stats — baked above the fold (hidden on mobile; shown in the Performance Metrics section instead) */}
-            <div
-              className="mt-12 hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 border-t border-white/15 pt-8 max-w-2xl animate-fade-up"
-              style={{ animationDelay: "1s" }}
-            >
-              {[
-                {
-                  node: (
-                    <>
-                      <CountUp to={8} />
-                      <span className="text-gold">+</span>
-                    </>
-                  ),
-                  l: "Projects",
-                },
-                {
-                  node: (
-                    <>
-                      TZS 1.38<span className="text-gold">B+</span>
-                    </>
-                  ),
-                  l: "Value",
-                },
-                {
-                  node: (
-                    <>
-                      <CountUp to={4} />
-                      <span className="text-gold">+</span>
-                    </>
-                  ),
-                  l: "Regions",
-                },
-                {
-                  node: (
-                    <>
-                      <CountUp to={100} />
-                      <span className="text-gold">%</span>
-                    </>
-                  ),
-                  l: "Delivered",
-                },
-              ].map((s, i) => (
-                <div key={i}>
-                  <p className="font-heading font-black text-white text-2xl md:text-3xl">
-                    {s.node}
-                  </p>
-                  <p className="text-white/55 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] mt-1">
-                    {s.l}
-                  </p>
-                </div>
+            <div className="mt-12 flex items-center gap-3">
+              {SLIDES.map((slide, i) => (
+                <button
+                  key={slide.key}
+                  onClick={() => setActive(i)}
+                  aria-label={`Show ${slide.tag}`}
+                  className="group py-2"
+                >
+                  <span
+                    className={`block h-2.5 rounded-full transition-all duration-500 ${i === active ? "w-10 bg-teal-bright" : "w-2.5 bg-white/30 group-hover:bg-white/60"}`}
+                  />
+                </button>
               ))}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Scroll cue (Desktop Only) */}
-        <div className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 text-white/80 text-[10px] md:text-[11px] tracking-[0.3em] uppercase flex-col items-center gap-3 animate-bounce z-10">
-          <span className="bg-navy/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(46,156,163,0.3)] flex items-center gap-2">
-            Scroll to explore <ArrowDown size={14} className="text-teal-bright" />
-          </span>
-        </div>
-
-        {/* Marquee */}
-        <div
-          className="absolute bottom-0 left-0 right-0 overflow-hidden py-4 z-10"
-          style={{ backgroundColor: "#0d1f42" }}
-        >
-          <div className="flex whitespace-nowrap animate-marquee text-teal-bright font-semibold text-xs uppercase tracking-[0.25em]">
-            {Array.from({ length: 2 }).map((_, i) => (
-              <div key={i} className="flex gap-12 px-6 shrink-0">
-                {[
-                  "CRB Certified Class V",
-                  "Building Contractor",
-                  "Civil Contractor",
-                  "VAT Registered",
-                  "WCF Employer",
-                  "Est. 2020",
-                  "Dar es Salaam",
-                ].map((t) => (
-                  <span key={t} className="flex items-center gap-12">
-                    {t}
-                    <span className="text-teal-bright/40">◆</span>
-                  </span>
-                ))}
-              </div>
+      {/* MOBILE — content overlay */}
+      <div className="lg:hidden relative z-10 min-h-screen flex flex-col justify-end px-6 pt-28 pb-32">
+        <div key={active} className="max-w-md">
+          <p className="eyebrow text-teal-bright mb-4 flex items-center gap-3 animate-fade-up">
+            <span className="h-px w-8 bg-teal-bright" /> {s.tag}
+          </p>
+          <h1 className="display-2 text-white">
+            {s.title.map((line, idx) => (
+              <span
+                key={idx}
+                className="block animate-clip-up"
+                style={{ animationDelay: `${0.08 + idx * 0.14}s` }}
+              >
+                {line}
+              </span>
             ))}
+          </h1>
+          <p className="mt-4 text-white/80 animate-fade-up" style={{ animationDelay: "0.4s" }}>
+            {s.body}
+          </p>
+          <div className="mt-7 animate-fade-up" style={{ animationDelay: "0.55s" }}>
+            <Link to={s.cta.to} className="btn btn-gold btn-shine">
+              {s.cta.label} <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
-      </section>
+        <div className="mt-9 flex items-center gap-3">
+          {SLIDES.map((slide, i) => (
+            <button
+              key={slide.key}
+              onClick={() => setActive(i)}
+              aria-label={`Show ${slide.tag}`}
+              className="group py-2"
+            >
+              <span
+                className={`block h-2 rounded-full transition-all duration-500 ${i === active ? "w-8 bg-teal-bright" : "w-2 bg-white/30"}`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Marquee */}
+      <div
+        className="absolute bottom-0 left-0 right-0 overflow-hidden py-4 z-20"
+        style={{ backgroundColor: "#0d1f42" }}
+      >
+        <div className="flex whitespace-nowrap animate-marquee text-teal-bright font-semibold text-xs uppercase tracking-[0.25em]">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="flex gap-12 px-6 shrink-0">
+              {[
+                "CRB Certified Class V",
+                "Building Contractor",
+                "Civil Contractor",
+                "VAT Registered",
+                "WCF Employer",
+                "Est. 2020",
+                "Dar es Salaam",
+              ].map((t) => (
+                <span key={t} className="flex items-center gap-12">
+                  {t}
+                  <span className="text-teal-bright/40">◆</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Index() {
+  return (
+    <PageShell>
+      {/* HERO */}
+      <HeroSlider />
 
       {/* A: Intro */}
       <section className="py-24 lg:py-32" style={{ backgroundColor: "#f5f6f8" }}>
