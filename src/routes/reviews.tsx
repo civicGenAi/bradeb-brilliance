@@ -186,7 +186,7 @@ export default function ReviewsPage() {
               <span className="text-[#2e9ca3]">people we build for.</span>
             </h1>
             <p className="mt-6 text-white/70 max-w-xl leading-relaxed">
-              Honest words from clients across Dar es Salaam and beyond. Add yours below — upload a
+              Honest words from clients across Dar es Salaam and beyond. Add yours below. Upload a
               photo or we'll use your initials.
             </p>
 

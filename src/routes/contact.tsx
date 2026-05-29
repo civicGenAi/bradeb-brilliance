@@ -54,7 +54,7 @@ export default function ContactPage() {
               className="text-white/70 mt-6 max-w-lg animate-fade-up"
               style={{ animationDelay: "0.4s" }}
             >
-              Tell us about your construction, civil or fumigation project — we'll respond within 24
+              Tell us about your construction, civil or fumigation project, we'll respond within 24
               hours.
             </p>
 
@@ -104,8 +104,8 @@ export default function ContactPage() {
                 <MessageCircle size={13} /> WhatsApp Us
               </a>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 text-white/70 px-4 py-2 text-xs">
-                <span className="h-1.5 w-1.5 rounded-full bg-soft-green animate-pulse" /> Open ·
-                Mon–Fri 8–5
+                <span className="h-1.5 w-1.5 rounded-full bg-soft-green animate-pulse" /> Open · Mon
+                to Fri, 8 to 5
               </span>
             </div>
           </div>
@@ -177,8 +177,8 @@ export default function ContactPage() {
                       <option>Budget Range</option>
                       {[
                         "Under TZS 50M",
-                        "TZS 50M–200M",
-                        "TZS 200M–500M",
+                        "TZS 50M to 200M",
+                        "TZS 200M to 500M",
                         "TZS 500M+",
                         "Not Sure",
                       ].map((s) => (
@@ -222,7 +222,7 @@ export default function ContactPage() {
                   t: "Address",
                   lines: [
                     "P.O. Box 12390, Dar es Salaam, Tanzania",
-                    "Mbezi Beach – Ndumbwi, Kinondoni",
+                    "Mbezi Beach, Ndumbwi, Kinondoni",
                   ],
                 },
                 { Icon: Phone, t: "Phone", lines: ["+255 754 230 234", "+255 785 050 215"] },
@@ -249,8 +249,8 @@ export default function ContactPage() {
             <div className="mt-8 grid grid-cols-2 gap-3">
               <div className="rounded-xl bg-[#f5f6f8] p-5">
                 <p className="label-cap text-teal mb-2">Business Hours</p>
-                <p className="text-navy font-semibold text-sm">Mon–Fri · 8am–5pm</p>
-                <p className="text-navy font-semibold text-sm">Sat · 9am–1pm</p>
+                <p className="text-navy font-semibold text-sm">Mon to Fri · 8am to 5pm</p>
+                <p className="text-navy font-semibold text-sm">Sat · 9am to 1pm</p>
               </div>
               <div className="rounded-xl bg-near-black p-5">
                 <p className="label-cap text-gold mb-2">Emergency</p>
@@ -288,7 +288,7 @@ export default function ContactPage() {
           {/* Map */}
           <div className="relative rounded-2xl overflow-hidden border border-navy/10 shadow-xl min-h-[420px] lg:min-h-full">
             <iframe
-              title="Bradeb Investment Limited — Mbezi Beach, Dar es Salaam"
+              title="Bradeb Investment Limited, Mbezi Beach, Dar es Salaam"
               src="https://www.google.com/maps?q=Mbezi%20Beach%20Ndumbwi%2C%20Kinondoni%2C%20Dar%20es%20Salaam&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

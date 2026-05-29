@@ -102,8 +102,8 @@ const amount = (p: P) => Number(p.value.replace(/[^0-9]/g, ""));
 const bands: { key: string; match: (v: number) => boolean }[] = [
   { key: "All", match: (v) => v >= 0 },
   { key: "Under TZS 100M", match: (v) => v < 100_000_000 },
-  { key: "TZS 100M – 500M", match: (v) => v >= 100_000_000 && v < 500_000_000 },
-  { key: "TZS 500M – 1B", match: (v) => v >= 500_000_000 && v < 1_000_000_000 },
+  { key: "TZS 100M to 500M", match: (v) => v >= 100_000_000 && v < 500_000_000 },
+  { key: "TZS 500M to 1B", match: (v) => v >= 500_000_000 && v < 1_000_000_000 },
   { key: "TZS 1B+", match: (v) => v >= 1_000_000_000 },
 ];
 
@@ -154,7 +154,7 @@ export default function ProjectsPage() {
               className="text-white/70 mt-6 max-w-xl animate-fade-up text-sm md:text-base"
               style={{ animationDelay: "0.5s" }}
             >
-              Spanning Dar es Salaam, Moshi, Mwanza & Zanzibar — every project carries the same
+              Spanning Dar es Salaam, Moshi, Mwanza & Zanzibar. Every project carries the same
               Bradeb signature: on time, on budget, on standard.
             </p>
           </div>
@@ -220,7 +220,7 @@ export default function ProjectsPage() {
                   aspect="auto"
                   rounded="rounded-none"
                   scrim="strong"
-                  label={`${p.name} — ${p.location}`}
+                  label={`${p.name} · ${p.location}`}
                   imgClassName="transition-transform duration-700 group-hover:scale-105"
                   className={featured ? "h-56 md:h-72" : "h-44 md:h-48"}
                 >
@@ -272,7 +272,7 @@ export default function ProjectsPage() {
           <p className="font-heading font-extrabold text-gold text-2xl md:text-3xl">
             Total Portfolio Value: TZS 1,381,722,212
           </p>
-          <p className="text-white/70 mt-2 label-cap">8 Projects · 4 Regions · 2020–2025</p>
+          <p className="text-white/70 mt-2 label-cap">8 Projects · 4 Regions · 2020 to 2025</p>
         </div>
       </section>
     </PageShell>

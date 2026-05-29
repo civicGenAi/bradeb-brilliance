@@ -172,7 +172,9 @@ export function Navbar() {
                 <Phone size={16} className="text-teal-bright" />
                 <span className="text-sm font-semibold tracking-wide">+255 754 230 234</span>
               </a>
-              <p className="mt-2 text-white/40 text-xs">Mbezi Beach, Dar es Salaam · Mon–Fri 8–5</p>
+              <p className="mt-2 text-white/40 text-xs">
+                Mbezi Beach, Dar es Salaam · Mon to Fri, 8 to 5
+              </p>
             </div>
           </div>
         </div>

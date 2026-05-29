@@ -119,7 +119,7 @@ export default function ServicesPage() {
             className="mt-8 max-w-2xl text-white/70 text-lg animate-fade-up"
             style={{ animationDelay: "0.5s" }}
           >
-            From foundations to finishing — construction and pest control under one roof.
+            From foundations to finishing, construction and pest control under one roof.
           </p>
           <Link
             to="/contact"
@@ -143,7 +143,7 @@ export default function ServicesPage() {
               </h2>
             </div>
             <p className="text-[#4a5568] max-w-md text-sm">
-              From the first survey peg to the final coat of paint — we deliver every discipline
+              From the first survey peg to the final coat of paint, we deliver every discipline
               in-house.
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function ServicesPage() {
                       aspect="auto"
                       rounded="rounded-none"
                       scrim="strong"
-                      label="Building construction — flagship site"
+                      label="Building construction · flagship site"
                       imgClassName="transition-transform duration-700 group-hover:scale-105"
                       className="absolute inset-0 h-full w-full"
                     />

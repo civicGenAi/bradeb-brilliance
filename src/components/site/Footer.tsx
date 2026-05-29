@@ -165,7 +165,7 @@ export function Footer() {
               <span>
                 P.O. Box 12390
                 <br />
-                Mbezi Beach – Ndumbwi
+                Mbezi Beach, Ndumbwi
                 <br />
                 Dar es Salaam, Tanzania
               </span>
@@ -201,7 +201,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 flex flex-col md:flex-row justify-between items-center md:items-start gap-4 text-[10px] sm:text-[11px] text-center md:text-left">
           <p className="flex items-center justify-center md:justify-start gap-2">
             <span className="h-2 w-2 rounded-full bg-[#2e9ca3] animate-pulse shrink-0" />
-            <span>© {currentYear} Bradeb Investment Limited — All Rights Reserved.</span>
+            <span>© {currentYear} Bradeb Investment Limited. All Rights Reserved.</span>
           </p>
           <Link
             to="/consumer-policy"

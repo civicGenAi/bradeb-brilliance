@@ -27,7 +27,7 @@ const sections: { h: string; body: string[] }[] = [
   {
     h: "4. Information We Collect",
     body: [
-      "We collect the information you provide directly — such as your name, organisation, phone number, email address, project location and project details — when you contact us, request a quote, or submit a review.",
+      "We collect the information you provide directly, such as your name, organisation, phone number, email address, project location and project details, when you contact us, request a quote, or submit a review.",
       "We may also keep records relating to contracts, site visits, correspondence and payments for the duration required by law.",
     ],
   },
@@ -81,7 +81,7 @@ const sections: { h: string; body: string[] }[] = [
   {
     h: "12. Contact Us",
     body: [
-      "Bradeb Investment Limited — P.O. Box 12390, Mbezi Beach – Ndumbwi, Kinondoni, Dar es Salaam, Tanzania.",
+      "Bradeb Investment Limited. P.O. Box 12390, Mbezi Beach, Ndumbwi, Kinondoni, Dar es Salaam, Tanzania.",
       "Email: info@bradebinvestmentltd.com · Phone: +255 754 230 234.",
     ],
   },
