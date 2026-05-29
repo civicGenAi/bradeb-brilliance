@@ -45,7 +45,7 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Bradeb" className="h-12 w-auto bg-white rounded-md p-1" />
+          <img src={logo} alt="Bradeb" className="h-12 w-auto logo-on-dark" />
           <span className="hidden sm:flex flex-col leading-tight">
             <span className="font-heading font-extrabold text-white text-sm tracking-wider">
               BRADEB
@@ -122,7 +122,7 @@ export function Navbar() {
             {/* panel header */}
             <div className="flex items-center justify-between">
               <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3">
-                <img src={logo} alt="Bradeb" className="h-10 w-auto bg-white rounded-md p-1" />
+                <img src={logo} alt="Bradeb" className="h-10 w-auto logo-on-dark" />
                 <span className="font-heading font-extrabold text-white text-sm tracking-wider">
                   BRADEB
                 </span>

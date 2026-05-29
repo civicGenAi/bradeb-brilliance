@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, SplitText } from "@/components/site/Reveal";
 import { Media } from "@/components/site/Media";
-import { ArrowRight, Check, Building2, HardHat, Bug } from "lucide-react";
+import { ArrowRight, Check, Building2, HardHat, Bug, ArrowDown } from "lucide-react";
 import { ReviewsSection } from "@/components/site/Reviews";
 import { useEffect, useRef, useState } from "react";
 
@@ -129,95 +129,137 @@ function HeroSlider() {
         <span className="absolute inset-0 bg-gradient-to-t from-[#0a1628] via-[#0a1628]/55 to-[#0a1628]/35" />
       </div>
 
-      {/* DESKTOP — image left · content right */}
-      <div className="hidden lg:grid grid-cols-[1fr_1fr] min-h-screen">
-        <div className="relative overflow-hidden">
-          {SLIDES.map((slide, i) => (
-            <div
-              key={slide.key}
-              className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out ${i === active ? "opacity-100" : "opacity-0"}`}
-              aria-hidden={i !== active}
-            >
-              <Media
-                src={heroImage(slide.key)}
-                alt={slide.title.join(" ")}
-                aspect="auto"
-                rounded="rounded-none"
-                imgClassName="animate-kenburns"
-                className="h-full w-full"
-              >
-                <span className="absolute left-6 bottom-6 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur text-white text-[11px] font-bold uppercase tracking-[0.18em]">
-                  {slide.tag}
-                </span>
-              </Media>
-            </div>
-          ))}
-          {/* seam blend into navy */}
-          <span className="absolute inset-y-0 right-0 w-40 bg-gradient-to-r from-transparent to-[#0a1628]" />
-          <span className="absolute top-8 left-8 z-10 font-heading font-black text-white/85 text-sm tracking-[0.3em]">
-            0{active + 1} <span className="text-white/40">/ 0{SLIDES.length}</span>
-          </span>
-        </div>
-
-        <div
-          className="relative flex items-center"
-          style={{ background: "linear-gradient(135deg, #1d3c6b 0%, #07396c 60%, #0a1628 100%)" }}
+      {/* DESKTOP — creative, image-free */}
+      <div
+        className="hidden lg:flex relative min-h-screen items-center"
+        style={{
+          background: "radial-gradient(ellipse at 25% 35%, #1d3c6b 0%, #07396c 62%, #0a1628 100%)",
+        }}
+      >
+        {/* blueprint grid */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-[0.06]"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden
         >
-          <svg
-            className="absolute inset-0 w-full h-full opacity-[0.06]"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden
-          >
-            <defs>
-              <pattern id="hgridd" width="56" height="56" patternUnits="userSpaceOnUse">
-                <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#2e9ca3" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hgridd)" />
-          </svg>
-          <div className="relative px-12 xl:px-20 py-28 w-full">
-            <div key={active} className="max-w-xl">
-              <p className="eyebrow text-teal-bright mb-5 flex items-center gap-3 animate-fade-up">
-                <span className="h-px w-8 bg-teal-bright" /> {s.tag}
-              </p>
-              <h1 className="display-2 text-white">
-                {s.title.map((line, idx) => (
-                  <span
-                    key={idx}
-                    className="block animate-clip-up"
-                    style={{ animationDelay: `${0.08 + idx * 0.14}s` }}
-                  >
-                    {line}
-                  </span>
-                ))}
-              </h1>
-              <p
-                className="mt-5 lead text-white/80 animate-fade-up"
-                style={{ animationDelay: "0.4s" }}
-              >
-                {s.body}
-              </p>
-              <div className="mt-8 animate-fade-up" style={{ animationDelay: "0.55s" }}>
-                <Link to={s.cta.to} className="btn btn-gold btn-shine magnetic">
-                  {s.cta.label} <ArrowRight size={16} />
-                </Link>
-              </div>
-            </div>
-            <div className="mt-12 flex items-center gap-3">
-              {SLIDES.map((slide, i) => (
-                <button
-                  key={slide.key}
-                  onClick={() => setActive(i)}
-                  aria-label={`Show ${slide.tag}`}
-                  className="group py-2"
+          <defs>
+            <pattern id="hgridd" width="56" height="56" patternUnits="userSpaceOnUse">
+              <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#2e9ca3" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hgridd)" />
+        </svg>
+
+        {/* rotating structural shield */}
+        <svg
+          className="absolute -right-40 -top-32 w-[680px] h-[680px] opacity-[0.18] animate-spin-slow"
+          viewBox="0 0 200 200"
+          aria-hidden
+        >
+          <polygon
+            points="100,10 180,50 180,150 100,190 20,150 20,50"
+            fill="none"
+            stroke="#2e9ca3"
+            strokeWidth="1"
+          />
+          <polygon
+            points="100,30 160,60 160,140 100,170 40,140 40,60"
+            fill="none"
+            stroke="#2e9ca3"
+            strokeWidth="0.5"
+          />
+          <polygon
+            points="100,55 140,75 140,125 100,150 60,125 60,75"
+            fill="none"
+            stroke="#17767c"
+            strokeWidth="0.5"
+          />
+        </svg>
+
+        {/* orbit ring */}
+        <svg
+          className="absolute right-[7%] top-1/2 -translate-y-1/2 w-[520px] h-[520px] opacity-20 hidden xl:block"
+          viewBox="0 0 200 200"
+          aria-hidden
+        >
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#2e9ca3" strokeDasharray="2 8" />
+          <circle cx="100" cy="8" r="3" fill="#2e9ca3" className="animate-pulse" />
+        </svg>
+
+        {/* skyline */}
+        <svg
+          className="absolute bottom-0 left-0 w-full h-72 opacity-[0.12]"
+          viewBox="0 0 1200 200"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <path
+            className="animate-draw"
+            d="M0,200 L0,120 L60,120 L60,80 L120,80 L120,140 L180,140 L180,60 L240,60 L240,100 L300,100 L300,40 L360,40 L360,90 L420,90 L420,70 L480,70 L480,120 L540,120 L540,50 L600,50 L600,110 L660,110 L660,80 L720,80 L720,30 L780,30 L780,90 L840,90 L840,130 L900,130 L900,70 L960,70 L960,110 L1020,110 L1020,60 L1080,60 L1080,140 L1140,140 L1140,90 L1200,90 L1200,200 Z"
+            fill="none"
+            stroke="#2e9ca3"
+            strokeWidth="1"
+          />
+        </svg>
+
+        {/* giant slide index */}
+        <span
+          className="absolute right-4 xl:right-16 top-1/2 -translate-y-1/2 font-heading font-black text-white/[0.04] leading-none select-none pointer-events-none"
+          style={{ fontSize: "min(36vw, 520px)" }}
+          aria-hidden
+        >
+          0{active + 1}
+        </span>
+
+        <div className="container-bradeb relative z-10 w-full">
+          <div key={active} className="max-w-2xl">
+            <p className="eyebrow text-teal-bright mb-6 flex items-center gap-3 animate-fade-up">
+              <span className="h-px w-10 bg-teal-bright" /> {s.tag}
+            </p>
+            <h1 className="display-1 text-white">
+              {s.title.map((line, idx) => (
+                <span
+                  key={idx}
+                  className="block animate-clip-up"
+                  style={{ animationDelay: `${0.08 + idx * 0.14}s` }}
                 >
-                  <span
-                    className={`block h-2.5 rounded-full transition-all duration-500 ${i === active ? "w-10 bg-teal-bright" : "w-2.5 bg-white/30 group-hover:bg-white/60"}`}
-                  />
-                </button>
+                  {line}
+                </span>
               ))}
+            </h1>
+            <p
+              className="mt-6 lead text-white/80 max-w-xl animate-fade-up"
+              style={{ animationDelay: "0.45s" }}
+            >
+              {s.body}
+            </p>
+            <div className="mt-9 animate-fade-up" style={{ animationDelay: "0.6s" }}>
+              <Link to={s.cta.to} className="btn btn-gold btn-shine magnetic">
+                {s.cta.label} <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
+          <div className="mt-14 flex items-center gap-3">
+            {SLIDES.map((slide, i) => (
+              <button
+                key={slide.key}
+                onClick={() => setActive(i)}
+                aria-label={`Show ${slide.tag}`}
+                className="group py-2"
+              >
+                <span
+                  className={`block h-2.5 rounded-full transition-all duration-500 ${i === active ? "w-10 bg-teal-bright" : "w-2.5 bg-white/30 group-hover:bg-white/60"}`}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* scroll cue */}
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 text-white/70 text-[11px] tracking-[0.3em] uppercase flex flex-col items-center gap-2 animate-bounce">
+          <span className="flex items-center gap-2">
+            Scroll <ArrowDown size={14} className="text-teal-bright" />
+          </span>
         </div>
       </div>
 
