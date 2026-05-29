@@ -82,11 +82,7 @@ export function Footer() {
         <div className="col-span-2 lg:col-span-4 flex flex-col items-start">
           <div className="flex items-center gap-3 mb-5">
             <div className="relative">
-              <img
-                src={logo}
-                alt="Bradeb"
-                className="h-12 w-12 sm:h-14 sm:w-14 bg-white p-1.5 rounded-lg"
-              />
+              <img src={logo} alt="Bradeb" className="h-12 w-auto sm:h-14 logo-on-dark" />
               <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-[#2e9ca3] animate-pulse shadow-[0_0_10px_#2e9ca3]" />
             </div>
             <div>
